@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add
+
+PATH: 
+  C:\Users\Mike\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Mike\bin;C:\Program Files\Dell\DW WLAN Card;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Anaconda3;C:\Anaconda3\Scripts;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\sqlite,C;C:\Program Files\Git\Users\Mike\Python\Python37\Scripts;C:\Users\Mike\Python\Python37;C:\Users\Mike\AppData\Local\atom\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\Mike\AppData\Local\GitHubDesktop\bin;C:\Users\Mike\AppData\Roaming\npm;C:\Program Files\MongoDB\Server\3.6\bin;C:\Users\Mike\AppData\Local\Yarn\bin, C;C:\Program Files\Git\Python27\Scripts\pip3.exe, C;C:\Program Files\Git\Program Files\heroku\bin, C;C:\Program Files\Git\Users\Mike\sqlite3;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Python27
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.9.4
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Missing list of packages to add to your project.
+      at new MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at Object.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:40587:13)
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:98:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:116:14
+      at new Promise (<anonymous>)
+      at new F (C:\Program Files (x86)\Yarn\lib\cli.js:23451:28)
+      at Object.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:95:12)
+      at Object.run (C:\Program Files (x86)\Yarn\lib\cli.js:40599:19)
+      at run (C:\Program Files (x86)\Yarn\lib\cli.js:89113:20)
