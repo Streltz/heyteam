@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-
 import ConvosReducer from './ConvosReducer';
+import UserReducer from './UserReducer';
 
 const rootReducer = combineReducers({
-	convos: ConvosReducer
+	convos: ConvosReducer,
+	user: UserReducer
 })
 
 

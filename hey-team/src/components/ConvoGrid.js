@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getConvos } from '../actions';
+import { getConvos } from '../actions/convoAction';
 import ViewConvo from './ViewConvo';
 
 class ConvoGrid extends React.Component {
