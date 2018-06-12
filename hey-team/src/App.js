@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard';
 import Landing from './components/Landing';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
+import Billing from './components/Billing';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path ="/editconvo/:id" component = {EditConvo} />
           <Route path ="/signin" component = {Signin} />
           <Route path ="/signup" component = {Signup} />
+          <Route path ="/billing" component = {Billing} />
           {/* <Route path ="/preferences" component = {Preferences} /> */}
           {/* <Route path ="/billing" component = {Billing} /> */}
         </div>
