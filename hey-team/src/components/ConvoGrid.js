@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ConvoGrid extends Component {
+class ConvoGrid extends React.Component {
     state = {
         title: "",
         content: ""

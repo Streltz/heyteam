@@ -22,8 +22,8 @@ class ViewConvo extends React.Component {
   }
 
   render() {
-    const Converter = require('react-showdown').Converter;
-    const converter = new Converter();
+    // const Converter = require('react-showdown').Converter;
+    // const converter = new Converter();
 
     return (
       <div className='convo-view'>
@@ -34,7 +34,7 @@ class ViewConvo extends React.Component {
           </div>
           {!this.props.loading ? <div>
             {/* <div className='convo-title'><span>{this.props.current.title}</span><span className='note-timestamp'>{moment(this.props.current.dateCreated).format(' hh:mm:ss A MMM-DD-YYYY')}</span></div> */}
-            <div className='convo-entry'>{converter.convert(this.props.current.entry)}</div>
+            {/* <div className='convo-entry'>{converter.convert(this.props.current.entry)}</div> */}
           </div>
           :
           <div>
