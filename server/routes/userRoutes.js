@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('./userModel.js');
+const User = require('../models/userModel.js');
 const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -41,6 +41,7 @@ userRouter.post('/signup', function(req, res){
 	bcrypt.hash(password, 11, (err, hash) => {
 		if (err) throw err;
 		user.password = hash;
+		console.log(user);
 		user.save().then(savedUser => {
 			res.json(savedUser);
 		});
@@ -69,6 +70,13 @@ userRouter.post('/login', function(req, res){
 			});
 		}
 	});
+});
+
+userRouter.post('/search-participant', function(req, res){
+	const { search } = req.body;
+	// TODO
+	// use slack api to look up slack user by search term
+	// send back response with a slack user
 });
 
 module.exports = userRouter;

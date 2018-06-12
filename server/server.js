@@ -4,7 +4,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const userRoutes = require('./user/userRoutes');
+const userRoutes = require('./routes/userRoutes');
+const responseRoutes = require('./routes/responseRoutes');
+const conversationRoutes = require('./routes/conversationRoutes');
 
 const server = express();
 
@@ -16,7 +18,7 @@ server.get('/', function(req, res) {
 });
 
 mongoose
-  .connect('mongodb://"databasename":"password"@ds019756.mlab.com:19756/heyteam')
+  .connect('mongodb://localhost:27017/heyteam')
   .then(conn => {
     console.log('connected to mongo HeyTeam');
   })
@@ -24,7 +26,7 @@ mongoose
     console.log('error connect to mongo', err);
 });
 
-server.use('/api/user', userRoutes);
+server.use('/', userRoutes, responseRoutes, conversationRoutes);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
