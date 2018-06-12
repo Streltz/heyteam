@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class EditConvo extends Component {
     state = {
         Title: '',
@@ -29,7 +30,7 @@ class EditConvo extends Component {
         axios
         .get( `http://localhost:4444/convos/`)
         .then((response) => {
-            this.setState(() => convo.id === Number(this.props.match.params.id));
+            // this.setState(() => convo.id === Number(this.props.match.params.id));
         })
         .catch((error) => {
             alert('Server error');
@@ -40,10 +41,12 @@ class EditConvo extends Component {
     render() {
         return (
             <div>
-                <LeftColumnPanel />
+                {/* <LeftColumnPanel /> */}
                 <div className="edit">
                     <div className="edit_heading">Edit Convo</div>
-                    <form className="edit-convo" onChange={this.processChange} onSubmit={this.processUpdate}>
+                    <form className="edit-convo" 
+                    onChange={this.processChange} 
+                    onSubmit={this.processUpdate}>
                         <input type="text" 
                             className="edit-convo_title" id="Title" 
                             placeholder="Conversation Title"
