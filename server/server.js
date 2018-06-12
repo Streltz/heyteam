@@ -26,7 +26,7 @@ mongoose
     console.log('error connect to mongo', err);
 });
 
-server.use('/', userRoutes, responseRoutes, conversationRoutes);
+server.use('/', userRoutes, conversationRoutes);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
