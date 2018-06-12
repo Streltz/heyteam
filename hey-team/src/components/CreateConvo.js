@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addConvo } from '../actions/convoAction';
+import { addConvo } from '../actions';
 
 import Loading from './Loading';
 
