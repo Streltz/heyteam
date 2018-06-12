@@ -6,6 +6,9 @@ import AddConvo from './components/CreateConvo';
 import EditConvo from './components/EditConvo';
 import ViewConvo from './components/ViewConvo';
 import Dashboard from './components/Dashboard';
+import Landing from './components/Landing';
+import Signin from './components/Signin';
+import Signup from './components/Signup';
 
 class App extends Component {
   render() {
@@ -13,10 +16,13 @@ class App extends Component {
       <div className="App">
         <Router>
         <div className="left-panel">
+          <Route path ="/" component = {Landing} exact />
           <Route path ="/dashboard" component = {Dashboard} />
           {/*<Route path ="/addconvo" component = {AddConvo} />*/}
           <Route path ="/viewconvo/:id" component = {ViewConvo} />
           <Route path ="/editconvo/:id" component = {EditConvo} />
+          <Route path ="/signin" component = {Signin} />
+          <Route path ="/signup" component = {Signup} />
           {/* <Route path ="/preferences" component = {Preferences} /> */}
           {/* <Route path ="/billing" component = {Billing} /> */}
         </div>
