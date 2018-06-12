@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { getConvos } from '../actions/convoAction';
+import ViewConvo from './ViewConvo';
 
-class ConvoGrid extends Component {
+class ConvoGrid extends React.Component {
     state = {
         title: "",
         content: ""
@@ -12,9 +15,9 @@ class ConvoGrid extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.id) {
-            this.setState({ deleting: true });
-        }
+        // if (this.props.match.params.id) {
+        //     this.setState({ deleting: true });
+        // }
         this.props.getConvos();
     }
 
@@ -30,8 +33,18 @@ class ConvoGrid extends Component {
       }
       
     render() {
-        return ( ConvoGrid )
+        return ( <div>{
+          this.props.convos.map(convo => {
+            return <ViewConvo key={convo.id} convo={convo} />
+          })
+        }</div> )
     }
 }
 
-export default ConvoGrid;
+const mapStateToProps = (state) => {
+    return {
+      convos: state.convos
+    } 
+}
+
+export default connect(mapStateToProps, { getConvos })(ConvoGrid);

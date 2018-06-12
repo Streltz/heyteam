@@ -58,4 +58,21 @@ export const deleteConversation = info => {
  	};
 };
 
+export const getConvos = info => {
+	// return dispatch => {
+	// 	 dispatch({ type: 'LOADING_CONVO' });
+	// 	 axios
+	// 		 .get('http://localhost:5000/conversations')
+	// 		 .then(response => {
+	// 				 dispatch({ type: 'DELETED_CONVO', payload: response.data });
+	// 			})
+	// 	  .catch(err => {
+	// 				dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });
+	// 	});
+ // 	};
+ return { type: 'TEST', payload: null}
+};
+
+
+
 export default addConvo;
