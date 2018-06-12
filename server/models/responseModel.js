@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ResponseSchema = new mongoose.Schema({
-	username: {type: String, required: true},
+	participant: {type: String, required: true},
+	conversation: {type: ObjectId, ref: 'Conversation'},
+	question: {type: ObjectId, ref: 'Conversation'},
+	response_text:{type: String, required: true},
 	date_submitted: {Type: Date},
-	response: [{type: ObjectId, ref: 'Answer'}]
 });
 
 const ResponseModel = mongoose.model('Response', ResponseSchema);
