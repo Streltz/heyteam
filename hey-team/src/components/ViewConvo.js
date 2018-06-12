@@ -16,14 +16,14 @@ class ViewConvo extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.match.params.id === undefined) {
-      this.setState({ redirect: true });
-    }
+    // if (this.props.match.params.id === undefined) {
+    //   this.setState({ redirect: true });
+    // }
   }
 
   render() {
-    const Converter = require('react-showdown').Converter;
-    const converter = new Converter();
+    // const Converter = require('react-showdown').Converter;
+    // const converter = new Converter();
 
     return (
       <div className='convo-view'>
@@ -33,8 +33,10 @@ class ViewConvo extends React.Component {
             {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
           </div>
           {!this.props.loading ? <div>
+            <div>{this.props.convo.title}</div>
+            <div>{this.props.convo.questions}</div>
             {/* <div className='convo-title'><span>{this.props.current.title}</span><span className='note-timestamp'>{moment(this.props.current.dateCreated).format(' hh:mm:ss A MMM-DD-YYYY')}</span></div> */}
-            <div className='convo-entry'>{converter.convert(this.props.current.entry)}</div>
+            {/* <div className='convo-entry'>{converter.convert(this.props.current.entry)}</div> */}
           </div>
           :
           <div>

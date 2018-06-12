@@ -1,4 +1,15 @@
-const ConvosReducer = (state ={}, action) => {
+const initialConvo = [{
+    id: '01',
+    title: 'test title',
+    questions: ['question1', 'question2']
+}, 
+{
+    id: '02',
+    title: 'test title 2',
+    questions: ['question1', 'question2']
+}]
+
+const ConvosReducer = (state = initialConvo, action) => {
     switch (action.type) {
         case 'LOADING_CONVOS':
             return { ...state, loading:true };
@@ -20,7 +31,9 @@ const ConvosReducer = (state ={}, action) => {
             }),
             loading: false
         };
+        default:
+            return state;
     }
 }
 
-    export default ConvosReducer;
+export default ConvosReducer;
