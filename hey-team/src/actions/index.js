@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-export const addConversation = {info, history} => {
+export const addConvo = (info, history) => {
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios 
@@ -20,12 +20,12 @@ export const editConversation = (title, entry, id, history) => {
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios
-			.get(`${URL}/convos/${info_id}`)
+			// .get(`${URL}/convos/${info_id}`)
 			.then(response => {
 					dispatch({ type: 'CONVO_EDITED', payload: response.data });
 				})
 		  .catch(err => {
-					disptch({ type: 'ERROR_EDITING_CONVO', payload: err });
+					// disptch({ type: 'ERROR_EDITING_CONVO', payload: err });
 			});
 	 };
 };
@@ -53,7 +53,9 @@ export const deleteConversation = info => {
 					 dispatch({ type: 'DELETED_CONVO', payload: response.data });
 				})
 		  .catch(err => {
-					dispatch{( type: 'ERROR_DELETING_CONVO', payload: err });
-			});
-	 };
+					dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });
+		});
+ 	};
 };
+
+export default addConvo;
