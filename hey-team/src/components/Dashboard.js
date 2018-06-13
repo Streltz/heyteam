@@ -12,14 +12,14 @@ class Dashboard extends React.Component {
     render() {
       return (<div>
         <SideBar />
-        <Header />
+        <Header history={this.props.history}/>
         <ConvoGrid />
       </div>) 
     }
   }
   
 const mapStateToProps = (state) => {
-
+  return {}
 }
 
 export default connect(mapStateToProps, {  })(Dashboard);

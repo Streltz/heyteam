@@ -1,23 +1,50 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { addConvo } from '../actions';
+import { signUp} from '../actions/userAction';
+import { Link } from 'react-router-dom';
 
-// import Loading from './Loading';
+class SignUp extends React.Component {
+  state = {
+    name: '',
+    email: '',
+    password: ''
+  }
+  handleSignUp = () => {
+      this.props.signUp(this.state, this.props.history); 
+  }
 
-class Signup extends React.Component {
-    state = {
-    }
-    
-    render() {
-      return (
-          <div>Signup form goes here</div>
-      );
-    }
+  handleOnChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
   
-const mapStateToProps = (state) => {
-    return {
-    } 
+  render() {
+    return (
+      <div className="signup">
+        <div className="title">HeyTeam Sign Up</div>
+        <input type="text" name="name" value={this.state.name} 
+        placeholder="Username" onChange={this.handleOnChange}/><br />
+
+        <input type="text" name="email" value={this.state.email} 
+        placeholder="Email" onChange={this.handleOnChange}/><br />
+
+        <input type="password" name="password" value={this.state.password} 
+        placeholder="Password" onChange={this.handleOnChange}/><br />
+
+        <button onClick={() => {this.handleSignUp()}}>Sign up</button><br />
+        <div>Already have an account?</div>
+        <Link to="/signin"><button className="signin">Sign in</button><br /></Link>
+
+      </div>
+    );
+  }
 }
 
-export default connect(mapStateToProps, {  })(Signup);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  } 
+}
+
+export default connect(mapStateToProps, {signUp})(SignUp);
