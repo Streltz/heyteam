@@ -10,6 +10,7 @@ import Landing from './components/Landing';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Billing from './components/Billing';
+import RequireAuth from './components/HOC/RequireAuth';
 
 class App extends Component {
   render() {
@@ -18,7 +19,7 @@ class App extends Component {
         <Router>
         <div className="left-panel">
           <Route path ="/" component = {Landing} exact />
-          <Route path ="/dashboard" component = {Dashboard} />
+          <Route path ="/dashboard" component = {RequireAuth(Dashboard)} />
           {/*<Route path ="/addconvo" component = {AddConvo} />*/}
           <Route path ="/viewconvo/:id" component = {ViewConvo} />
           <Route path ="/editconvo/:id" component = {EditConvo} />
