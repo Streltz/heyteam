@@ -1,0 +1,105 @@
+html
+{
+    background-color: rgb(238, 238, 238);
+}
+
+main
+{
+    padding-top: 50px;
+    overflow-x: hidden;
+    background-color: rgb(238, 238, 238);
+}
+
+  
+  /* Middle Body Container */
+section {
+    margin-top: -220px;
+    padding-top: 200px;
+    height: 700px;
+    color: #fff;
+    background-color: rgb(57, 75, 89);
+
+    text-align: center;
+}
+
+.nav-link-group
+{
+    text-decoration: none;
+    list-style: none;
+
+    color: white;
+    padding: 0px;
+    margin-right: -32%;
+    float:right;
+
+}
+
+#description-section
+{
+    margin-top: 7%;
+    margin-left: 26%;
+}
+
+.nav-link-group:link
+{
+    color: white;
+}
+
+.Logo
+{
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    padding: 0px;
+
+    float: left;
+}
+
+#buy-now
+{
+    margin-top: 30px;
+    color: white;
+}
+
+.header-text
+{
+    font-size: 1.7em;
+    font-weight: 500;
+    padding: 0px;
+}
+
+.desc-text
+{
+    font-size: 1.3em;
+    font-weight: 300;
+}
+.btn-blue
+{
+    background: #368bec none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 6px;
+    box-shadow: 0 5px 0 #07439e;
+    color: #fff;
+    height: 40px;
+}
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
