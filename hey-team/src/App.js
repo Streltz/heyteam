@@ -6,7 +6,7 @@ import AddConvo from './components/CreateConvo';
 import EditConvo from './components/EditConvo';
 import ViewConvo from './components/ViewConvo';
 import Dashboard from './components/Dashboard';
-import Landing from './components/Landing';
+import Landing from './components/Landing/Landing';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Billing from './components/Billing';
