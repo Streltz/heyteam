@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getConvos } from '../actions/convoAction';
-import ViewConvo from './ViewConvo';
+import { getConvos } from '../../actions/convoAction';
+import ViewConvo from '../ConvoDetail/ViewConvo';
+import Convo from './Convo';
+import { Link } from 'react-router-dom';
+import './styles.css';
 
 class ConvoGrid extends React.Component {
     state = {
@@ -33,11 +36,17 @@ class ConvoGrid extends React.Component {
       }
       
     render() {
-        return ( <div>{
+      return ( 
+        <div className="grid">
+        {
           this.props.convos.map(convo => {
-            return <ViewConvo key={convo.id} convo={convo} />
+            return (
+              <Link key={convo.id} to={`viewconvo/${convo.id}`}><Convo convo={convo}/></Link>
+            )
           })
-        }</div> )
+        }
+        </div> 
+      )
     }
 }
 

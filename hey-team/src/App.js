@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import AddConvo from './components/CreateConvo';
 import EditConvo from './components/EditConvo';
-import ViewConvo from './components/ViewConvo';
+import ViewConvo from './components/ConvoDetail/ViewConvo';
 import Dashboard from './components/Dashboard';
 import Landing from './components/Landing/Landing';
 import Signin from './components/Signin';
