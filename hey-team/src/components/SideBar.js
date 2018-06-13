@@ -11,6 +11,16 @@ class SideBar extends React.Component {
     render() {
       return (
           <div>SideBar</div>
+					<p>
+					<Link to="/viewconvo">
+					  <div className="view-button button"> Conversation</div>
+					</Link>
+					<Link to="/preferences">
+					  <dic className="preferences-button button">+Preferences</div>
+					<Link to="/billing">
+					  <div className="billing-button button">+ Billing</div>
+					<Link>
+						
       );
     }
   }
