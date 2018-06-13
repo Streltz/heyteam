@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const UserSchema = new mongoose.Schema({
