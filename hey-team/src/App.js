@@ -7,8 +7,8 @@ import EditConvo from './components/EditConvo';
 import ViewConvo from './components/ConvoDetail/ViewConvo';
 import Dashboard from './components/Dashboard';
 import Landing from './components/Landing/Landing';
-import Signin from './components/Sign-In/Signin';
-import Signup from './components/Signup';
+import Signin from './components/login/Signin';
+import Signup from './components/login/Signup';
 import Billing from './components/Billing';
 import RequireAuth from './components/HOC/RequireAuth';
 

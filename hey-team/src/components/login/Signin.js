@@ -4,7 +4,7 @@ import { signIn } from '../../actions/userAction';
 import { Link } from 'react-router-dom';
 import { Card} from 'reactstrap';
 
-import './signin.css';
+import './styles.css';
 
 class Signin extends React.Component {
   state = {
@@ -25,12 +25,11 @@ class Signin extends React.Component {
 
   render() {
     return (
-      <main className="main-signin">
+      <main className="main-login">
         <Card className="edge-dull">
           <div className="login card-dull">
-
             <div class="logo text-left col-md-12">Hey-Bot</div>
-            <div class="text-left col-md-12"> Sign In </div>
+            <div class="text-left col-md-12 heading"> Sign In </div>
             <div class="text-left card-descriptor col-md-12">with your Hey-Bot Account</div>
             <br />
 
