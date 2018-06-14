@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import Loading from './Loading';
 import Carousel from './carousel';
 
-import './styles.css'
+import './landing.css'
 
 class Landing extends React.Component {
     state = {
@@ -14,7 +14,7 @@ class Landing extends React.Component {
   
     render() {
       return (
-        <main>
+        <main class="landing-main">
           <style>
             @import url('https://fonts.googleapis.com/css?family=Lato:700');
           </style>
@@ -31,7 +31,7 @@ class Landing extends React.Component {
             </div>                         
           </header>
 
-          <section>
+          <section class="banner-section">
             <div class="col-md-12">
               <div class="col-md-6" id="description-section">
                 <div class="col-md-12 header-text">Conversation Manager within Slack</div>
