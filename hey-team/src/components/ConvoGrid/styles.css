@@ -1,7 +1,7 @@
 .grid {
 	background: #173753;
-	display: flex;
 	flex-wrap: wrap;
+	min-height: 100%;
 }
 
 .convo {

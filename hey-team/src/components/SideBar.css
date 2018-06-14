@@ -1,35 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:bold');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:bold');
 
-.SideBar {
-  width: 242px;
+/*.LeftColumnPanel {
+  background: gray;
+  height: 100vh;
+}*/
+
+.LeftColumnPanel {
+  width: 200px;
   height: 100%;
-  min-height: calc(100vh - 2px);
+  min-height: calc(100vh - 50px);
   background: #d7d7d7;
   border-right: 2px solid #c0c0c0;
 }
 
-/*.LeftColumnPanel p {
-  color: #4a494a;
-  font-size: 38px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 33px;
-  position: absolute;
-  left: 15px;
-  top: 22px;
-  margin: 0;
-  padding: 0;
-} */
-
-.button {
+/*.button {
   width: 210px;
   height: 47px;
   position: absolute;
   left: 17px;
   border: 1px solid #94a3a4;
   box-shadow: 1px 0 #c2c8c8;
-  color: white;
+  color: #19647E;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 17px;
@@ -40,7 +31,7 @@
   text-align: center;
   text-decoration: none;
   padding-top: 14px;
-}
+}*/
 
 .view-button {
   top: 118px;
@@ -48,4 +39,4 @@
 
 .create-button {
   top: 185px;
-}
+} 
