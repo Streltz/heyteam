@@ -50,7 +50,7 @@
     
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
     .main-login {
         padding-left: 30%;
         padding-right: 30%;
@@ -58,8 +58,8 @@
 }
 @media screen and (max-width: 1200px) and (min-width: 580px){
     .main-login {
-        padding-left: 20%;
-        padding-right: 20%;
+        padding-left: 28%;
+        padding-right: 28%;
     }
 }
 
