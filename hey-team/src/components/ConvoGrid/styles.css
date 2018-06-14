@@ -1,7 +1,6 @@
 .grid {
 	background: #173753;
-	display: flex;
-	flex-wrap: wrap;
+	justify-content: right;
 }
 
 .convo {

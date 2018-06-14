@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:bold');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:bold');
+
 
 .SideBar {
+  float: left;
   width: 242px;
   height: 100%;
   min-height: calc(100vh - 2px);
@@ -8,7 +10,7 @@
   border-right: 2px solid #c0c0c0;
 }
 
-/*.LeftColumnPanel p {
+/* .LeftColumnPanel p {
   color: #4a494a;
   font-size: 38px;
   font-family: "Roboto", sans-serif;
@@ -20,7 +22,7 @@
   top: 22px;
   margin: 0;
   padding: 0;
-} */
+}
 
 .button {
   width: 210px;
@@ -29,7 +31,7 @@
   left: 17px;
   border: 1px solid #94a3a4;
   box-shadow: 1px 0 #c2c8c8;
-  color: white;
+  color: #19647E;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 17px;
@@ -48,4 +50,4 @@
 
 .create-button {
   top: 185px;
-}
+} */

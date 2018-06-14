@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 //import { addConvo } from '../actions';
+import './SideBar'
 
 // import Loading from './Loading';
 
@@ -11,14 +12,14 @@ class SideBar extends React.Component {
     
     render() {
       return (
-          <div SideBar>
-					<Link to="/viewconvo">
-					  <div className="view-button button"> Conversation</div>
+          <div className="LeftColumnPanel">
+					<Link to="/dashboard">
+					  <div className="view-button button"> Conversations</div>
 					</Link>
-					<Link to="/preferences">
+					<Link to="/dashboard/preferences">
 					  <div className="preferences-button button">+Preferences</div>
 					</Link>	
-					<Link to="/billing">
+					<Link to="/dashboard/billing">
 					  <div className="billing-button button">+ Billing</div>
 					</Link>
 					</div>		
