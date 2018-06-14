@@ -1,0 +1,39 @@
+.grid {
+	background: #173753;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.convo {
+	border: 1px solid gray;
+	width: 300px;
+	margin: 10px;
+	background: #F9F4F6;
+	color: black;
+}
+
+.convo:hover {
+	background: #6DAEDB;
+	text-decoration: none;
+}
+
+.edit-delete {
+	text-align: right;
+}
+.edit, .delete {
+	display: inline-block;
+	margin: 2px 5px;
+}
+
+.convo-content {
+	text-align: left;
+	margin: 20px;
+}
+
+.title {
+	font-size: 19px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/*f9f4f6 19647e 173753 fdaedb*/

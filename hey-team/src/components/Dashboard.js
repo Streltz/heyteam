@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import SideBar from './SideBar';
-import ConvoGrid from './ConvoGrid';
+import ConvoGrid from '../components/ConvoGrid/ConvoGrid';
 
 class Dashboard extends React.Component {
     state = {
