@@ -5,7 +5,7 @@ import SideBar from './SideBar.js';
 import ConvoGrid from '../components/ConvoGrid/ConvoGrid';
 import { Switch, Route } from 'react-router-dom';
 import Billing from './Billing';
-// import Preferences from './Preferences';
+import Preferences from './Preferences';
 import ViewConvo from './ConvoDetail/ViewConvo';
 import EditConvo from './EditConvo';
 import './Dashboard.css';
@@ -26,6 +26,7 @@ class Dashboard extends React.Component {
         <Switch>
         <Route path ="/dashboard" component = {ConvoGrid} exact />
         <Route path ="/dashboard/billing" component = {Billing} />
+        <Route path ="/dashboard/preferences" component = {Preferences} />
         </Switch>
         </div>
         </div>

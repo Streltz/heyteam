@@ -14,13 +14,13 @@ class SideBar extends React.Component {
       return (
           <div className="LeftColumnPanel">
 					<Link to="/dashboard">
-					  <div className="view-button button"> Conversations</div>
+					  <div className="view-button button">Conversations</div>
 					</Link>
 					<Link to="/dashboard/preferences">
-					  <div className="preferences-button button">+Preferences</div>
+					  <div className="preferences-button button">Preferences</div>
 					</Link>	
 					<Link to="/dashboard/billing">
-					  <div className="billing-button button">+ Billing</div>
+					  <div className="billing-button button">Billing</div>
 					</Link>
 					</div>		
       );
