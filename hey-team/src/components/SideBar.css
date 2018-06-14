@@ -1,7 +1,11 @@
   @import url('https://fonts.googleapis.com/css?family=Roboto:bold');
 
+/*.LeftColumnPanel {
+  background: gray;
+  height: 100vh;
+}*/
 
-.SideBar {
+.LeftColumnPanel {
   float: left;
   width: 242px;
   height: 100%;
@@ -22,7 +26,7 @@
   top: 22px;
   margin: 0;
   padding: 0;
-}
+}*/
 
 .button {
   width: 210px;
@@ -50,4 +54,4 @@
 
 .create-button {
   top: 185px;
-} */
+} 

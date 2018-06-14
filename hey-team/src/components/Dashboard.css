@@ -1,12 +1,12 @@
 .FullPage {
-    flex-direction: row;
+display: flex;
+
 }
 
 .Sidebar {
-    display: flex;
     color: red;
 }
 
 .Content{
-    display: flex;
+
 }
