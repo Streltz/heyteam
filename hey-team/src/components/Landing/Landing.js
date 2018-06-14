@@ -14,14 +14,10 @@ class Landing extends React.Component {
   
     render() {
       return (
-        <main class="landing-main">
-          <style>
-            @import url('https://fonts.googleapis.com/css?family=Lato:700');
-          </style>
-
+        <main class="landing-main">          
           <header>
             <div class="col-md-12">            
-              <div class="Logo col-md-3">
+              <div class="Logo-1 col-md-3">
                 Hey-Bot
               </div>
               <div class="nav-link-group col-md-9">
