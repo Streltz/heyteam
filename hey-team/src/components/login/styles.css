@@ -56,7 +56,7 @@
         padding-right: 30%;
     }
 }
-@media screen and (max-width: 1200px) and (min-width: 580px){
+@media screen and (max-width: 1000px) and (min-width: 580px){
     .main-login {
         padding-left: 28%;
         padding-right: 28%;
