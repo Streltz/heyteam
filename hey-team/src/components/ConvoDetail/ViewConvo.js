@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Loading from '../Loading';
 import Response from './Response';
 import './convo_detail.css';
+import { Link } from 'react-router-dom';
 
 class ViewConvo extends React.Component {
   state = {
@@ -33,7 +34,10 @@ class ViewConvo extends React.Component {
           </div>
           {!this.props.loading ? 
             <div className="viewconvo">
-              <h4>Participants</h4>
+            <div className="participants-edit">
+              <h4 className="part-title">Participants</h4>
+              <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
+            </div>
                 <div className="participants">
                   {
                     convo.participants.map(participant => {

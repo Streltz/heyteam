@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header';
+import { Link } from 'react-router-dom';
 class Convo extends React.Component {
     state = {
     }
@@ -9,9 +10,8 @@ class Convo extends React.Component {
   render() {
     return (
       <div class="convo" >
-
         <div className="edit-delete">
-          <div className="edit">edit</div>
+          <Link to="/dashboard/edit"><div className="edit">edit</div></Link>
           <div className="delete">delete</div>
         </div>
         <div className="convo-content">
