@@ -9,9 +9,10 @@ class Billing extends React.Component {
   render() {
     return (
       <div>
-        Billing Page
         <StripeProvider apiKey="pk_test_8UHcn9VUzIRm8MGqifwA82kD">
-          <Store />
+          <row>
+            <Store />
+          </row>
         </StripeProvider>
       </div>
     );
