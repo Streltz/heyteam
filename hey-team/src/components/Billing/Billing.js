@@ -11,7 +11,7 @@ class Billing extends React.Component {
       <div>
         Billing Page
         <StripeProvider apiKey="pk_test_8UHcn9VUzIRm8MGqifwA82kD">
-
+          <Store />
         </StripeProvider>
       </div>
     );
