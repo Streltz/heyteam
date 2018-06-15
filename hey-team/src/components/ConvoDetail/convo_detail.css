@@ -27,7 +27,14 @@
 	padding: 10px;
 }
 
+.response-boxes {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .response {
 	border: 1px solid gray;
 	padding: 10px;
+	margin: 5px;
 }
+

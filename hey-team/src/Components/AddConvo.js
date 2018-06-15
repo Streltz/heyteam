@@ -15,13 +15,13 @@ class AddConvo extends Component {
     };
 
     handleSubmit = e => {
-        e.preventDefault();
-        axios.post('http://localhost:4444/convos/', this.state).then(() => {
-        window.location.href = '/';
-        })
-        .catch((error) => {
-            throw error;
-        });
+        // e.preventDefault();
+        // axios.post('http://localhost:4444/convos/', this.state).then(() => {
+        // window.location.href = '/';
+        // })
+        // .catch((error) => {
+        //     throw error;
+        // });
     }
         render() {
             return(

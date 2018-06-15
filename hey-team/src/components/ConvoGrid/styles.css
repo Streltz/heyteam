@@ -1,12 +1,15 @@
 .grid {
+	display: flex;
 	flex-wrap: wrap;
+	align-content: flex-start;
 	min-height: 100%;
 }
 
 .convo {
 	border: 1px solid gray;
 	width: 300px;
-	margin: 10px;
+	height: 200px;
+	margin: 0px 10px 10px 10px;
 	background: #F9F4F6;
 	color: black;
 }
@@ -33,6 +36,11 @@
 	font-size: 19px;
 	font-weight: bold;
 	margin-bottom: 10px;
+}
+
+.addnew-title {
+	text-align: center;
+	padding-top: 50px;
 }
 
 /*f9f4f6 19647e 173753 fdaedb*/

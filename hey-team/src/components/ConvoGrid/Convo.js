@@ -8,7 +8,7 @@ class Convo extends React.Component {
     
   render() {
     return (
-      <div class="convo" style={{display: 'inline-block'}}>
+      <div class="convo" >
 
         <div className="edit-delete">
           <div className="edit">edit</div>
