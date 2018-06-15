@@ -38,13 +38,20 @@ class ConvoGrid extends React.Component {
     render() {
       return ( 
         <div className="grid">
-        {
-          this.props.convos.map(convo => {
-            return (
-              <Link key={convo.id} to={`viewconvo/${convo.id}`}><Convo convo={convo}/></Link>
-            )
-          })
-        }
+          {
+            this.props.convos.map(convo => {
+              return (
+                <Link key={convo.id} to={`dashboard/${convo.id}`}><Convo convo={convo}/></Link>
+              )
+            })
+          }
+          <Link to="/dashboard/add">
+            <div class="convo" >
+              <div className="addnew-title">
+                <h5>Add a new Conversation</h5>
+              </div> 
+            </div>
+          </Link> 
         </div> 
       )
     }

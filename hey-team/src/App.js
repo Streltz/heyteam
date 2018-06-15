@@ -20,14 +20,9 @@ class App extends Component {
         <div className="left-panel">
           <Route path ="/" component = {Landing} exact />
           <Route path ="/dashboard" component = {RequireAuth(Dashboard)} />
-          {/*<Route path ="/addconvo" component = {AddConvo} />*/}
-          <Route path ="/viewconvo/:id" component = {ViewConvo} />
           <Route path ="/editconvo/:id" component = {EditConvo} />
           <Route path ="/signin" component = {Signin} />
           <Route path ="/signup" component = {Signup} />
-          <Route path ="/billing" component = {Billing} />
-          {/* <Route path ="/preferences" component = {Preferences} /> */}
-          {/* <Route path ="/billing" component = {Billing} /> */}
         </div>
         </Router>
       </div>
