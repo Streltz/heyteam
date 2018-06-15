@@ -11,6 +11,13 @@ import EditConvo from './EditConvo';
 import AddConvo from './AddConvo/AddConvo';
 import './Dashboard.css';
 
+<nav class="Dashboard">
+  <a class="Dashboard-item" href="/dashboard">Home</a>
+  <a class="breadcrumb-item" href="#">Library</a>
+  <a class="breadcrumb-item" href="#">Data</a>
+  <span class="breadcrumb-item active">Bootstrap</span>
+</nav>
+
 class Dashboard extends React.Component {
     state = {
     }
