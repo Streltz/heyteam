@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
-import SideBar from './SideBar.js';
+import SideBar from './Sidebar/SideBar';
 import ConvoGrid from '../components/ConvoGrid/ConvoGrid';
 import { Switch, Route } from 'react-router-dom';
-import Billing from './Billing';
+import Billing from './Billing/Billing';
 import Preferences from './Preferences';
 import ViewConvo from './ConvoDetail/ViewConvo';
 import EditConvo from './EditConvo';
