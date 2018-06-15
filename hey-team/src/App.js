@@ -21,7 +21,7 @@ class App extends Component {
           <Route path ="/" component = {Landing} exact />
           <Route path ="/dashboard" component = {RequireAuth(Dashboard)} />
           {/*<Route path ="/addconvo" component = {AddConvo} />*/}
-          <Route path ="/viewconvo/:id" component = {ViewConvo} />
+          
           <Route path ="/editconvo/:id" component = {EditConvo} />
           <Route path ="/signin" component = {Signin} />
           <Route path ="/signup" component = {Signup} />

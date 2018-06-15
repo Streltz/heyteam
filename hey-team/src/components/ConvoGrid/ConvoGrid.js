@@ -41,7 +41,7 @@ class ConvoGrid extends React.Component {
         {
           this.props.convos.map(convo => {
             return (
-              <Link key={convo.id} to={`viewconvo/${convo.id}`}><Convo convo={convo}/></Link>
+              <Link key={convo.id} to={`dashboard/${convo.id}`}><Convo convo={convo}/></Link>
             )
           })
         }
