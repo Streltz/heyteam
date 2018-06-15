@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 import Landing from './components/Landing/Landing';
 import Signin from './components/login/Signin';
 import Signup from './components/login/Signup';
-import Billing from './components/Billing';
+import Billing from './components/Billing/Billing';
 import RequireAuth from './components/HOC/RequireAuth';
 
 class App extends Component {

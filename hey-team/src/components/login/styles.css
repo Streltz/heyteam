@@ -32,6 +32,11 @@
     height: 40px;
     width: 80px;
 }
+.light-blue-btn:hover
+{
+    background: #549ff5 none repeat scroll 0 0;
+}
+
 .logo
 {
     font-family: 'Lato', sans-serif;
@@ -45,18 +50,22 @@
     font-size: 1.2em;
     padding: 0px;
 }
-.descriptor
-{
-    
-}
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1630px){
     .main-login {
-        padding-left: 30%;
-        padding-right: 30%;
+        padding-left: 37% !important;
+        padding-right: 37% !important;
     }
 }
-@media screen and (max-width: 1000px) and (min-width: 580px){
+
+@media screen and (max-width: 1630px) and (min-width: 1000px) {
+    .main-login {
+        padding-left: 34%;
+        padding-right: 34%;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 650px){
     .main-login {
         padding-left: 28%;
         padding-right: 28%;
@@ -64,7 +73,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 600px){
+@media screen and (max-width: 650px){
     .main-login
     {
         padding: 0px;        
