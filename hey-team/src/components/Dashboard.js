@@ -9,15 +9,13 @@ import Preferences from './Preferences';
 import ViewConvo from './ConvoDetail/ViewConvo';
 import EditConvo from './EditConvo';
 import AddConvo from './AddConvo/AddConvo';
+
 import './Dashboard.css';
 
-class Dashboard extends React.Component {
-    state = {
-    }
-  
+class Dashboard extends React.Component {    
     
     render() {
-      return (<div>
+      return (<div>        
         <Header history={this.props.history}/>
         <div className="FullPage">
         <div className="Sidebar">
@@ -28,7 +26,6 @@ class Dashboard extends React.Component {
           <Route path ="/dashboard" component = {ConvoGrid} exact />
           <Route path ="/dashboard/billing" component = {Billing} />
           <Route path ="/dashboard/preferences" component = {Preferences} />
-          <Route path ="/dashboard/edit" component = {EditConvo} />
           <Route path ="/dashboard/add" component = {AddConvo} />
 
           <Route path ="/dashboard/:id" component = {ViewConvo} />
