@@ -11,10 +11,6 @@ class Convo extends React.Component {
   render() {
     return (
       <div class="convo" >
-        <div className="edit-delete">
-          <Link to="/dashboard/edit"><div className="edit">edit</div></Link>
-          <div className="delete">delete</div>
-        </div>
         <div className="convo-content">
           <div class="title">{this.props.convo.title}</div>
           <div class="questions">

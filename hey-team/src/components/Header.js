@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signOut } from '../actions/userAction';
 
+
 class Header extends React.Component {
   state = { }
 
@@ -13,7 +14,6 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <div>Breadcrumb</div>
         <div onClick={() => {this.handleSignOut()}}><u>Sign Out</u></div>
       </div>
     );
