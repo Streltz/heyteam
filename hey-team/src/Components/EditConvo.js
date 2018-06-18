@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import './EditConvo.css';
 
 class EditConvo extends Component {
   state = {
@@ -35,8 +35,8 @@ class EditConvo extends Component {
   render() {
     return (
       <div>
-        {/* <LeftColumnPanel /> */}
-        <div className="edit">
+{/*         
+         className="edit">
           <div className="edit_heading">Edit Convo</div>
           <form className="edit-convo" 
           onChange={this.processChange} 
@@ -52,6 +52,7 @@ class EditConvo extends Component {
             <input type="submit" className="edit-convo_update-button" content="Update" />
           </form>
         </div>
+         */}
       </div>
     );
   }
