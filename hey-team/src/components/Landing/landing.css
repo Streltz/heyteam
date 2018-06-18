@@ -2,7 +2,7 @@
 html
 {
     background-color: rgb(229, 234, 241);
-    overflow: hidden;
+    overflow: auto;
 }
 
 .landing-main
@@ -12,6 +12,10 @@ html
     background-color: rgb(229, 234, 241);
 }
 
+.Carousel {
+    height: 300px;
+    width: 400px;
+}
   
   /* Middle Body Container */
 .banner-section {
