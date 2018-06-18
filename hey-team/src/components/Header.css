@@ -3,18 +3,24 @@
 }
 
 .headContain {
-    background-color: cadetblue;
+    background-color: #24292e;
     align-items: flex-start
 }
 
 .slack-logo-wrapper {
+    float: left;
     height: 25px;
     padding: 2px;
+}
+
+.slacklogo {
+    background-image: url('../logo/slack-1.svg');
 }
 
 .heyTeam {
     font-family: Courier Header;
     font-size: 55px;
+    font-color: white;
 }
 
 .signOut {

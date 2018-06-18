@@ -19,7 +19,8 @@ class Header extends React.Component {
     
       <div className="headContain">
         <div className="slack-logo-wrapper">
-          <img className="slacklogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDQvf1ORt2PMY4S_V1AoFs57ekWOJKkkppVgs7Je8ZLLC6FBlWSQ"/>
+          <div className="slacklogo">
+          </div>
           </div>
           <div className="heyTeam">
         <font familty="Courier Header">Hey Team!</font>
