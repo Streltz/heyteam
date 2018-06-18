@@ -5,40 +5,34 @@ import { signOut } from '../actions/userAction';
 import './Header.css'
 
 class Header extends React.Component {
-  state = { }
+  state = {}
 
   handleSignOut = () => {
     console.log('prop history', this.props);
     this.props.signOut(this.props.history)
   }
-  
+
   render() {
     return (
       <div>
- 
-    
-      <div className="headContain">
-        <div className="slack-logo-wrapper">
-          <div className="slacklogo">
+        <div className="headContain">
+          <div className="logo-wrapper text-left">
+            <div class="Logo-1 headbar-logo">
+              Hey-Bot
+            </div>
+            <div className="logo">
+            </div>
           </div>
-          </div>
-          <div className="heyTeam">
-        <font familty="Courier Header">Hey Team!</font>
-        <div className="signOut">
-        <button>
-        <div onClick={() => {this.handleSignOut()}}><u>Sign Out</u></div>
-        </button>
+          <div class="signOut" onClick={() => { this.handleSignOut() }}><u>Sign Out</u></div>          
+        </div>
       </div>
-    </div>
-    </div>
-    </div>
     );
   }
 }
-  
+
 const mapStateToProps = (state) => {
-    return {
-    } 
+  return {
+  }
 }
 
 

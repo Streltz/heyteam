@@ -1,29 +1,49 @@
-.logo-layout {
-    flex-basis: 0%;
-}
-
 .headContain {
-    background-color: #24292e;
-    align-items: flex-start
+    background-color: #24292e;   
+    height: 56px; 
 }
 
-.slack-logo-wrapper {
+.logo-wrapper {
     float: left;
     height: 25px;
     padding: 2px;
+    margin-left: 300px;
+}
+.logo
+{
+    fill: white !important;
+    display: block;
+    background: url(../assets/slack-1.svg);
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    size: 100%;
+    
+    margin-top: 12px;
 }
 
-.slacklogo {
-    background-image: url('../logo/slack-1.svg');
+.headbar-logo
+{
+    margin-left: 50px !important;
+    margin-top: 0px;
+    font-size: 2.2em !important;
 }
 
-.heyTeam {
+.heyTeam 
+{
     font-family: Courier Header;
     font-size: 55px;
-    font-color: white;
+    color: white;
 }
 
 .signOut {
-    text-align-last: right;
-    height: 35%;
+    color: white;
+    margin-right: -30%;
+    cursor: pointer;
+    padding-top: 12px;
+}
+
+u, ins {
+    text-decoration: none;
 }
