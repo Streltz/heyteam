@@ -30,12 +30,13 @@ class AddConvo extends Component {
         <form onSubmit={e => e.preventDefault()}>
           <input 
               onChange={this.handleInput}
-              className="form-control"
               name="title"
               type="text"
               value={this.state.title}
-              placeholder="Add a Title"
+              placeholder="Enter Name for this conversation"
           />
+          <h3>Schedule</h3>
+          <input placeholder/>
           <textarea 
               type="text"
               name="body" 

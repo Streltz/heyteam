@@ -5,14 +5,14 @@ export const addConvo = (info, history) => {
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios 
-			.post(`${URL}/convos/new`, info)
-			.then(response => {
-					dispatch({ type: 'CONVO_ADDED', payload: response.data });
-					history.push('/');
-				})
-		  .catch(err => {
-					dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
-			});
+		.post(`${URL}/convos/new`, info)
+		.then(response => {
+			dispatch({ type: 'CONVO_ADDED', payload: response.data });
+				history.push('/');
+			})
+		.catch(err => {
+			dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
+		});
   };
 };
 

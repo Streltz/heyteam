@@ -19,13 +19,14 @@ class ViewConvo extends React.Component {
   }
 
   render() {
+    console.log('CONVOS', this.props.convos);
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
     const id = this.props.match.params.id;
     const convo = this.props.convos.find(convo => {
       return convo.id === id;
     });
-
+    console.log('single convo', convo);
     return (
       <div className='view-wrapper'>
           <div className='button-container'>

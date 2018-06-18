@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
           <Route path ="/dashboard/billing" component = {Billing} />
           <Route path ="/dashboard/preferences" component = {Preferences} />
           <Route path ="/dashboard/add" component = {AddConvo} />
-
+          <Route path ="/dashboard/edit" component = {EditConvo} />
           <Route path ="/dashboard/:id" component = {ViewConvo} />
         </Switch>
         </div>
