@@ -1,0 +1,52 @@
+.view-wrapper {
+	height: 100%;
+	text-align: left;
+	color: white;
+	padding: 20px;
+	color: black;
+}
+
+.viewconvo {
+
+}
+
+.participants-edit {
+}
+
+.part-title {
+	display: inline-block;
+}
+
+.part-edit-delete {
+	display: inline-block;
+	float: right;
+}
+
+.participants {
+	display: flex;
+}
+
+.participant {
+	border: 1px solid gray;
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+}
+
+.question-box {
+	border: 1px solid gray;
+	font-size: 17px;
+	padding: 10px;
+}
+
+.response-boxes {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.response {
+	border: 1px solid gray;
+	padding: 10px;
+	margin: 5px;
+}
+

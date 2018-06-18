@@ -12,17 +12,25 @@ class SideBar extends React.Component {
     
     render() {
       return (
-          <div className="LeftColumnPanel">
+        <div className="LeftColumnPanel text-left">
 					<Link to="/dashboard">
-					  <div className="view-button button">Conversations</div>
+					  <div className="sidebar-content">
+              <i class="material-icons">supervisor_account</i> Conversations 
+             </div>
 					</Link>
+
 					<Link to="/dashboard/preferences">
-					  <div className="preferences-button button">Preferences</div>
+            <div className="sidebar-content"> 
+              <i class="material-icons">settings</i> Preferences 
+            </div>
 					</Link>	
-					<Link to="/dashboard/billing">
-					  <div className="billing-button button">Billing</div>
-					</Link>
-					</div>		
+					
+          <Link to="/dashboard/billing">
+            <div className="sidebar-content">
+              <i class="fa fa-cc-stripe"></i> Billing
+            </div>
+          </Link>
+				</div>		
       );
     }
   }

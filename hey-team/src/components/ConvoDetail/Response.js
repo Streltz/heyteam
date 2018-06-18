@@ -2,7 +2,7 @@ import React from 'react';
 
 function Response(props) {
   return (
-    <div className='response'  style={response}>
+    <div className='response'>
     	<div>{props.response.username}</div>
     	<div>{props.response.time}</div>
     	<div>
@@ -20,9 +20,5 @@ function Response(props) {
     </div>
   );
 }
-const response = {
-  border: '1px solid gray',
-  margin: '10px 0px'
-};
 
 export default Response;

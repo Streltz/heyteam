@@ -2,9 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import Loading from '../Loading';
-import Response from '../Response';
+import Response from './Response';
+import './convo_detail.css';
+import { Link } from 'react-router-dom';
 
 class ViewConvo extends React.Component {
   state = {
@@ -26,46 +27,51 @@ class ViewConvo extends React.Component {
     });
 
     return (
-      <div className='convo-view' style={convoView}>
+      <div className='view-wrapper'>
           <div className='button-container'>
             {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
             {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
           </div>
-          {!this.props.loading ? <div className="viewconvo">
-            <div>Participants</div>
-            <div>
-              {
-                convo.participants.map(participant => {
-                  return (
-                    <div>{participant}</div>
-                  )
-                })
-              }
+          {!this.props.loading ? 
+            <div className="viewconvo">
+            <div className="participants-edit">
+              <h4 className="part-title">Participants</h4>
+              <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
             </div>
-            <div>questions</div>
-            <div style={questionBox}>
-              {
-                convo.questions.map(question => {
-                  return (
-                    <div>{question}s</div>
-                  )
-                })
-              }
-            </div>
-            <div className="schedule">Schedule</div>
-            <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
-            <div className="responses">Responses</div>
-            <div>
-              {
-                convo.responses.map(response => {
-                  return (
-                    <div><Response questions={convo.questions} response={response}/></div>
-                  )
-                })
-              }
-            </div>
-            {/* <div className='convo-title'><span>{this.props.current.title}</span><span className='note-timestamp'>{moment(this.props.current.dateCreated).format(' hh:mm:ss A MMM-DD-YYYY')}</span></div> */}
-            {/* <div className='convo-entry'>{converter.convert(this.props.current.entry)}</div> */}
+                <div className="participants">
+                  {
+                    convo.participants.map(participant => {
+                      return (
+                        <div className="participant">img</div>
+                      )
+                    })
+                  }
+                </div>
+                <br/>
+                <h4>Questions</h4>
+                <div className="question-box">
+                  {
+                    convo.questions.map(question => {
+                      return (
+                        <div>{question}s</div>
+                      )
+                    })
+                  }
+                </div>
+                <br/>
+                <h4 className="schedule">Schedule</h4>
+                <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
+                <br/>
+                <h4>Responses</h4>
+                <div className="response-boxes">
+                  {
+                    convo.responses.map(response => {
+                      return (
+                        <Response questions={convo.questions} response={response}/>
+                      )
+                    })
+                  }
+                </div>
           </div>
           :
           <div>
@@ -78,14 +84,6 @@ class ViewConvo extends React.Component {
     )
   }
 }
-
-const convoView = {
-  textAlign: 'left',
-};
-const questionBox = {
-  border: '1px solid gray',
-};
-
 
 const mapStateToProps = (state) => {
   return {
