@@ -1,0 +1,16 @@
+.new-convo {
+	text-align: left;
+	margin: 10px 0px 0px 25px;
+}
+
+.day-selected {
+	background: gray;
+}
+
+.days {
+	display: flex;
+}
+
+.day {
+	margin: 5px;
+}
