@@ -12,7 +12,7 @@ class SideBar extends React.Component {
     
     render() {
       return (
-        <div className="LeftColumnPanel text-left sidebar-content">
+        <div className="LeftColumnPanel text-left">
 					<Link to="/dashboard">
 					  <div className="sidebar-content">
               <i class="material-icons">supervisor_account</i> Conversations 
