@@ -1,0 +1,29 @@
+.new-convo {
+	text-align: left;
+	margin: 10px 0px 0px 25px;
+}
+
+.day-selected {
+	background: gray;
+}
+
+.days {
+	display: flex;
+}
+
+.day {
+	margin: 5px;
+}
+
+.select-time {
+	display: inline-block;
+	margin: 2px;
+}
+.select-ampm {
+	display: inline-block;
+	margin: 2px;
+}
+.select-zone {
+	display: inline-block;
+	margin: 2px;
+}
