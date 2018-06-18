@@ -1,0 +1,23 @@
+.logo-layout {
+    flex-basis: 0%;
+}
+
+.headContain {
+    background-color: cadetblue;
+    align-items: flex-start
+}
+
+.slack-logo-wrapper {
+    height: 25px;
+    padding: 2px;
+}
+
+.heyTeam {
+    font-family: Courier Header;
+    font-size: 55px;
+}
+
+.signOut {
+    text-align-last: right;
+    height: 35%;
+}
