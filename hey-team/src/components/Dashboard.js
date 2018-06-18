@@ -5,7 +5,7 @@ import SideBar from './Sidebar/SideBar';
 import ConvoGrid from '../components/ConvoGrid/ConvoGrid';
 import { Switch, Route } from 'react-router-dom';
 import Billing from './Billing/Billing';
-import Preferences from './Preferences';
+import Preferences from './Preferences/Preferences';
 import ViewConvo from './ConvoDetail/ViewConvo';
 import EditConvo from './EditConvo';
 import AddConvo from './AddConvo/AddConvo';
