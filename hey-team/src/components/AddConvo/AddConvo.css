@@ -14,3 +14,16 @@
 .day {
 	margin: 5px;
 }
+
+.select-time {
+	display: inline-block;
+	margin: 2px;
+}
+.select-ampm {
+	display: inline-block;
+	margin: 2px;
+}
+.select-zone {
+	display: inline-block;
+	margin: 2px;
+}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './AddConvo.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { addConvo } from '../../actions/convoAction';
+import { connect } from 'react-redux';
 
 class AddConvo extends Component {
   state = {
@@ -13,19 +15,30 @@ class AddConvo extends Component {
       search: '',
       redirect: false,
       timeDropdownOpen: false,
-      zoneDropdownOpen: false
+      zoneDropdownOpen: false,
+      ampmDropdownOpen: false,
+      selectedTime: 'Select Time',
+      selectedZone: 'Time Zone',
+      selectedAmpm: 'AM'
   };
 
   toggle = (type)=>{
     if(type === 'time'){
       this.setState({
-      timeDropdownOpen: !this.state.timeDropdownOpen
-    });
+        timeDropdownOpen: !this.state.timeDropdownOpen
+      });
     }
+
     if(type === 'zone'){
       this.setState({
-      zoneDropdownOpen: !this.state.zoneDropdownOpen
-    });
+        zoneDropdownOpen: !this.state.zoneDropdownOpen
+      });
+    }
+
+    if(type === 'ampm'){
+      this.setState({
+        ampmDropdownOpen: !this.state.ampmDropdownOpen
+      });
     }
     
   }
@@ -47,14 +60,18 @@ class AddConvo extends Component {
   }
 
   handleSubmit = e => {
-      // e.preventDefault();
-      // axios.post('http://localhost:4444/convos/', this.state).then(() => {
-      // window.location.href = '/';
-      // })
-      // .catch((error) => {
-      //     throw error;
-      // });
+      e.preventDefault();
+      const convo = {};
+      convo.title = this.state.title;
+      convo.schedule = this.state.schedule;
+      convo.time = this.state.selectedTime;
+      convo.timezone = this.state.selectedZone;
+      convo.ampm = this.state.selectedAmpm;
+      convo.questions = this.state.questions;
+      convo.participants = this.state.participants;
+      this.props.addConvo(convo, this.props.history);
   }
+
   handleDaySelect = (data) => {
     const schedule = this.state.schedule;
     const index = this.state.schedule.indexOf(data);
@@ -72,6 +89,18 @@ class AddConvo extends Component {
   searchUser = (e) => {
     this.setState({search: e.target.value});
     //TODO use slack API to search for user on input change
+  }
+
+  handleTimeSelect = (data) => {
+    this.setState({selectedTime: data});
+  }
+
+  handleZoneSelect = (data) => {
+    this.setState({selectedZone: data});
+  }
+
+    handleAmpmSelect = (data) => {
+    this.setState({selectedAmpm: data});
   }
 
   render() {
@@ -100,37 +129,53 @@ class AddConvo extends Component {
           </div>
           <br/>
           <div className="time">
+            <div className='select-time'>
+              <ButtonDropdown isOpen={this.state.timeDropdownOpen} toggle={()=>{this.toggle('time')}}>
+                <DropdownToggle color="light" caret>
+                  {this.state.selectedTime}
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('1:00')}}>1:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('2:00')}}>2:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('3:00')}}>3:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('4:00')}}>4:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('5:00')}}>5:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('6:00')}}>6:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('7:00')}}>7:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('8:00')}}>8:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('9:00')}}>9:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('10:00')}}>10:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('11:00')}}>11:00</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleTimeSelect('12:00')}}>12:00</DropdownItem>
+                </DropdownMenu>
+              </ButtonDropdown>
+            </div>
 
-            <ButtonDropdown isOpen={this.state.timeDropdownOpen} toggle={()=>{this.toggle('time')}}>
-              <DropdownToggle caret>
-                Select Time
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>12:00 AM</DropdownItem>
-                <DropdownItem>1:00 AM</DropdownItem>
-                <DropdownItem>2:00 AM</DropdownItem>
-                <DropdownItem>3:00 AM</DropdownItem>
-                <DropdownItem>4:00 AM</DropdownItem>
-                <DropdownItem>5:00 AM</DropdownItem>
-                <DropdownItem>6:00 AM</DropdownItem>
-                <DropdownItem>7:00 AM</DropdownItem>
-                <DropdownItem>8:00 AM</DropdownItem>
-              </DropdownMenu>
-            </ButtonDropdown>
+            <div className="select-ampm">
+              <ButtonDropdown isOpen={this.state.ampmDropdownOpen} toggle={()=>{this.toggle('ampm')}}>
+                <DropdownToggle color="light"  caret>
+                  {this.state.selectedAmpm}
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem onClick={()=>{this.handleAmpmSelect('AM')}}>AM</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleAmpmSelect('PM')}}>PM</DropdownItem>
+                </DropdownMenu>
+              </ButtonDropdown>
+            </div>
 
-
-            <ButtonDropdown isOpen={this.state.zoneDropdownOpen} toggle={()=>{this.toggle('zone')}}>
-              <DropdownToggle caret>
-                TimeZone
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>PST</DropdownItem>
-                <DropdownItem>CST</DropdownItem>
-                <DropdownItem>MST</DropdownItem>
-              </DropdownMenu>
-            </ButtonDropdown>
-
-            <div>TimeZone (Select)</div>
+            <div className="select-zone">
+              <ButtonDropdown isOpen={this.state.zoneDropdownOpen} toggle={()=>{this.toggle('zone')}}>
+                <DropdownToggle color="light"  caret>
+                  {this.state.selectedZone}
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem onClick={()=>{this.handleZoneSelect('PST')}}>Pacific Standard Time</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleZoneSelect('MST')}}>Moutain Standard Time</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleZoneSelect('CST')}}>Central Standard Time</DropdownItem>
+                  <DropdownItem onClick={()=>{this.handleZoneSelect('EST')}}>Eastern Standard Time</DropdownItem>
+                </DropdownMenu>
+              </ButtonDropdown>
+            </div>
           </div>
 
           <br/>
@@ -164,5 +209,10 @@ class AddConvo extends Component {
   };
 };
 
+const mapStateToProps = (state) => {
+  return {
+    convos: state.convos
+  }
+}
 
-export default AddConvo;
+export default connect(mapStateToProps, { addConvo })(AddConvo);
