@@ -7,60 +7,64 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 
 class ConvoGrid extends React.Component {
-    state = {
-        title: "",
-        content: ""
-    };
+  state = {
+    title: "",
+    content: ""
+  };
 
-    viewConvo = (convo) => {
-        this.props.viewConvo(convo);
-        this.setState({ view: true, id: convo._id});
-    }
+  viewConvo = (convo) => {
+    this.props.viewConvo(convo);
+    this.setState({ view: true, id: convo._id });
+  }
 
-    componentDidMount() {
-        // if (this.props.match.params.id) {
-        //     this.setState({ deleting: true });
-        // }
-        this.props.getConvos();
-    }
+  componentDidMount() {
+    // if (this.props.match.params.id) {
+    //     this.setState({ deleting: true });
+    // }
+    this.props.getConvos();
+  }
 
-    deleteConvo = () => {
-        this.props.deleteConvo(this.props.match.params.id);
-        this.props.history.push('/');
-        this.setState({ deleting: false });
-      }
+  deleteConvo = () => {
+    this.props.deleteConvo(this.props.match.params.id);
+    this.props.history.push('/');
+    this.setState({ deleting: false });
+  }
+
+  cancelDelete = () => {
+    this.props.history.push('/');
+    this.setState({ deleting: false });
+  }
+
+  render() {
+    console.log(this.props.convos);
     
-    cancelDelete = () => {
-        this.props.history.push('/');
-        this.setState({ deleting: false });
-      }
-      
-    render() {
-      return ( 
+    return (
+      <main id="convo-main">
         <div className="grid">
           {
             this.props.convos.map(convo => {
               return (
-                <Link key={convo.id} to={`dashboard/${convo.id}`}><Convo convo={convo}/></Link>
+                <Link key={convo.id} to={`dashboard/${convo.id}`}>
+                  <Convo convo={convo} />
+                </Link>
               )
             })
           }
-          <Link to="/dashboard/add">
-            <div class="convo" >
-              <div className="addnew-title">
-                <h5>Add a new Conversation</h5>
-              </div> 
-            </div>
-          </Link> 
-        </div> 
-      )
-    }
+        </div>
+        <Link to="/dashboard/add">
+          <div className="fixed-bttm-right-btn circle-btn-blue">
+            <i class="fa fa-plus"></i>
+          </div>
+        </Link>
+      </main>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-      convos: state.convos
-    } 
+  return {
+    convos: state.convos
+  }
 }
 
 export default connect(mapStateToProps, { getConvos })(ConvoGrid);

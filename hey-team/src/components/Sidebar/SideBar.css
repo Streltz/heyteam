@@ -5,18 +5,19 @@
   background-color: rgb(229, 234, 241);
   padding-top: 20px;
   padding-left: 40px;
+  font-size: 1.2em;
+  font-weight: 300;
 }
 
 .sidebar-content
 {
   color: #32325d !important;
   text-decoration: none !important;
-  font-size: 1.1em;
-  font-weight: 300;
+
   padding-top: 6px;
 }
 .sidebar-content:hover, .sidebar-content:visited, .sidebar-content:active 
 {
   text-decoration: none !important;
-  color: #32325de0 !important;
+  font-size: 1.009em;
 }

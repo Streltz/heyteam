@@ -3,31 +3,36 @@ import { connect } from 'react-redux';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 
+import { Card, CardBody,
+  CardTitle, } from 'reactstrap';
+
 class Convo extends React.Component {
-    state = {
-    }
-  
-    
+  state = {
+  }
+
+
   render() {
     return (
-      <div class="convo" >
-        <div className="convo-content">
-          <div class="title">{this.props.convo.title}</div>
-          <div class="questions">
-            {
-              this.props.convo.questions.map(question => {
-                return <div>{question}</div>
-              })
-            }
+      <Card className="edge-convo">
+        <CardBody>
+          <CardTitle><div className="title">{this.props.convo.title}</div></CardTitle>
+          <div className="convo-content">            
+            <div className="questions">
+              {
+                this.props.convo.questions.map(question => {
+                  return <div className="question">{question}</div>
+                })
+              }
+            </div>
           </div>
-        </div>  
-      </div>
+        </CardBody>
+      </Card>
     )
   }
 }
-  
+
 const mapStateToProps = (state) => {
   return {}
 }
 
-export default connect(mapStateToProps, {  })(Convo);
+export default connect(mapStateToProps, {})(Convo);
