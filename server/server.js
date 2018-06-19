@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/userRoutes');
 const conversationRoutes = require('./routes/conversationRoutes');
+const paymentAPI = require('./routes/payment');
 
 const server = express();
 
@@ -20,7 +21,7 @@ mongoose
     console.log('error connect to mongo', err);
 });
 
-server.use('/', userRoutes, conversationRoutes);
+server.use('/', userRoutes, conversationRoutes, paymentAPI);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
