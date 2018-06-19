@@ -11,6 +11,10 @@
 }
 
 .participants-edit {
+	background: #dadfe8;
+	font-size: 27px;
+	margin: 10px 0px;
+	padding: 2px 5px;
 }
 
 .part-title {
@@ -19,11 +23,28 @@
 
 .part-edit-delete {
 	display: inline-block;
+	display: flex;
 	float: right;
+	margin-right: 20px;
+}
+.edit-icon i {
+	color: black;
+	margin-right: 10px;
+}
+
+.edit-icon i:hover{
+	color: gray;
+}
+.delete-icon i:hover{
+	color: gray;
 }
 
 .participants {
 	display: flex;
+	background: #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+	padding: 10px;
+	color: rgba(53, 53, 53, 0.911);
 }
 
 .participant {
@@ -33,10 +54,42 @@
 	margin: 5px;
 }
 
+.q-title {
+	background: #dadfe8;
+	font-size: 27px;
+	margin: 10px 0px;
+	padding: 2px 5px;
+}
+
 .question-box {
-	border: 1px solid gray;
-	font-size: 17px;
+	background: #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
 	padding: 10px;
+	color: rgba(53, 53, 53, 0.911);
+}
+.each-question {
+	font-size: 19px;
+	padding: 3px;
+}
+
+.schedule-title {
+	background: #dadfe8;
+	font-size: 27px;
+	margin: 10px 0px;
+	padding: 2px 5px;
+}
+.schedule-time {
+	background: #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+	padding: 10px;
+	color: rgba(53, 53, 53, 0.911);
+	font-size: 19px;
+}
+.res-title{
+	background: #dadfe8;
+	font-size: 27px;
+	margin: 10px 0px;
+	padding: 2px 5px;
 }
 
 .response-boxes {
@@ -44,9 +97,35 @@
 	flex-wrap: wrap;
 }
 
-.response {
-	border: 1px solid gray;
-	padding: 10px;
-	margin: 5px;
-}
 
+.response {
+	background: #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+	padding: 10px;
+	margin-right: 20px;
+	margin-bottom: 25px;
+	color: rgba(53, 53, 53, 0.911);
+}
+.res-profile {
+	display: flex;
+	border-bottom: 1px solid #dedede;
+	padding-bottom: 10px;
+}
+.res-avatar {
+	border: 1px solid gray;
+	margin-right: 10px;
+}
+.res-username {
+	font-weight: bold;
+}
+.q-a {
+	border-bottom: 1px solid #dedede;
+	padding: 10px 5px;
+}
+.res-question {
+	font-size: 19px;
+	color: black;
+}
+.res-answer {
+	font-size: 17px;
+}

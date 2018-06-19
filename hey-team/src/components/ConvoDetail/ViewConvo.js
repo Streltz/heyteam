@@ -29,15 +29,18 @@ class ViewConvo extends React.Component {
     console.log('single convo', convo);
     return (
       <div className='view-wrapper'>
-          <div className='button-container'>
-            {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
-            {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
-          </div>
           {!this.props.loading ? 
-            <div className="viewconvo">
+          <div className="viewconvo">
             <div className="participants-edit">
-              <h4 className="part-title">Participants</h4>
-              <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
+              <div className="part-title">Participants</div>
+              <div className="part-edit-delete">
+                <Link to="/dashboard/edit">
+                  <span className="edit-icon"><i className="material-icons">edit</i></span>
+                </Link>
+                <div className="delete-convo">
+                  <span className="delete-icon"><i className="material-icons">delete</i></span>
+                </div>
+              </div>
             </div>
                 <div className="participants">
                   {
@@ -49,21 +52,23 @@ class ViewConvo extends React.Component {
                   }
                 </div>
                 <br/>
-                <h4>Questions</h4>
+                <div className="q-title">Questions</div>
                 <div className="question-box">
                   {
-                    convo.questions.map(question => {
+                    convo.questions.map((question, i) => {
                       return (
-                        <div>{question}s</div>
+                        <div className="each-question" key={i}>
+                          {i+1}: {question}
+                        </div>
                       )
                     })
                   }
                 </div>
                 <br/>
-                <h4 className="schedule">Schedule</h4>
+                <div className="schedule-title">Schedule</div>
                 <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
                 <br/>
-                <h4>Responses</h4>
+                <div className="res-title">Responses</div>
                 <div className="response-boxes">
                   {
                     convo.responses.map(response => {
