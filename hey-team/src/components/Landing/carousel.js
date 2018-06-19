@@ -22,6 +22,7 @@ const items = [
   }
 ];
 
+
 const Carousel = (props) => <UncontrolledCarousel items={items} />;
 
 export default Carousel;
