@@ -5,7 +5,7 @@ export const LOGGED_OUT = 'LOGGED_OUT';
 export const FETCHED_SLACKUSERS = 'FETCHED_SLACKUSERS';
 export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
 
-const slackURL = 'https://slack.com/api/users.list?token=xoxp-154966377728-282878117506-383146809825-fff51d240128a7d40f5cc858e4fa8756';
+const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 export const signOut = (history) => {
   localStorage.removeItem('userName');
