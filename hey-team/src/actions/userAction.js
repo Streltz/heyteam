@@ -2,11 +2,14 @@ import axios from 'axios';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGGED_OUT = 'LOGGED_OUT';
+export const FETCHED_SLACKUSERS = 'FETCHED_SLACKUSERS';
+export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
+
+const slackURL = 'https://slack.com/api/users.list?token=xoxp-154966377728-282878117506-383146809825-fff51d240128a7d40f5cc858e4fa8756';
 
 export const signOut = (history) => {
   localStorage.removeItem('userName');
   localStorage.removeItem('token');
-  console.log('after signout', localStorage);
   history.push('/signin');
   return ({ type: LOGGED_OUT });
 }
@@ -55,4 +58,28 @@ export const signIn = (user, history) => {
       payload: 'Please enter email and password'
     })
   }
+}
+
+export const fetchSlackUsers = () => {
+  console.log('fetching slack users');
+  return (dispatch) => {
+    axios.get(`${slackURL}`)
+    .then(res => {
+      if(res.status === 200){
+        console.log(res.data);
+        dispatch({
+          type: FETCHED_SLACKUSERS,
+          payload: res.data.members
+        });
+      }
+    });
+  }
+}
+
+export const searchSlackUsers = (term) => {
+  console.log('search term', term);
+  return({
+    type: SEARCH_SLACKUSERS, 
+    payload: term
+  });
 }
