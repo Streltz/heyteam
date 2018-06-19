@@ -17,13 +17,13 @@ class Header extends React.Component {
       <div>
         <div className="headContain">
           <div className="logo-wrapper text-left">
-            <div class="Logo-1 headbar-logo">
+            <div className="Logo-1 headbar-logo">
               Hey-Bot
             </div>
             <div className="slack-logo">
             </div>
           </div>
-          <div class="signOut" onClick={() => { this.handleSignOut() }}><u>Sign Out</u></div>          
+          <div className="signOut" onClick={() => { this.handleSignOut() }}><u>Sign Out</u></div>          
         </div>
       </div>
     );
