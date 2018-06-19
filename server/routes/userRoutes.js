@@ -3,6 +3,7 @@ const User = require('../models/userModel.js');
 const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { secret } = require('../config');
 
 const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
@@ -11,7 +12,7 @@ const validateToken = (req, res, next) => {
       .status(422)
       .json({ error: 'User not authorized' });
   }
-  jwt.verify(token, 'TOKEN_SECRET' , (authError, decoded) => {
+  jwt.verify(token, secret , (authError, decoded) => {
     if (authError) {
       res
         .status(403)
@@ -64,7 +65,7 @@ userRouter.post('/login', function(req, res){
     			if(!valid){
     				res.json({success: false, message: 'Wrong email or password'});
     			}else{
-    				const token = jwt.sign(userObject, 'TOKEN_SECRET', { expiresIn: '1000h' });
+    				const token = jwt.sign(userObject, secret, { expiresIn: '1000h' });
         		   res.json({success: true, token: token, name: user.name });
         		}
 			});
