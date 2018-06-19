@@ -1,23 +1,15 @@
 import React from 'react';
+import {Card} from 'reactstrap';
+
 
 function Response(props) {
   return (
-    <div className='response'>
-    	<div>{props.response.username}</div>
-    	<div>{props.response.time}</div>
-    	<div>
-    		{
-    			props.questions.map((question, index) => {
-    				return (
-    					<div>
-    						<div className="question">{question}</div>
-    						<div className="answer">{props.response.answers[index]}</div>
-    					</div>
-    				)
-    			})
-    		}
-    	</div>
-    </div>
+    <tr>
+    	<td>{props.response.username}</td>
+    	<td>{props.response.time}</td>
+			<td>{props.questions[0]}</td>
+			<td>{props.response.answers[0]}</td>
+    </tr>
   );
 }
 
