@@ -263,7 +263,7 @@ class AddConvo extends Component {
             {
               fiveUsers.map((user, i)=>{
                 return (
-                  <div className="display-user" onClick={()=>{this.handleSelectUser(user)}} onMouseOver={()=>{this.setState({addIndex: i})}} onMouseOut={()=>{this.setState({addIndex: null})}}>
+                  <div className="display-user" key={i} onClick={()=>{this.handleSelectUser(user)}} onMouseOver={()=>{this.setState({addIndex: i})}} onMouseOut={()=>{this.setState({addIndex: null})}}>
                     <div className="display-name">{user.profile.display_name}<span><i className={this.state.addIndex === i ? "material-icons add-user" : "material-icons shownone"}>add_circle</i></span></div>
                   </div>
                 );
