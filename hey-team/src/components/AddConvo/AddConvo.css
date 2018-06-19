@@ -7,8 +7,8 @@
 	background: gray;
 }
 
-.days {
-	display: flex;
+.day {
+	display: inline-block;
 }
 
 .day {
@@ -26,4 +26,57 @@
 .select-zone {
 	display: inline-block;
 	margin: 2px;
+}
+.question {
+	font-size: 20px;
+	margin: 5px 0px;
+}
+.question-text{
+	padding: 2px 10px;
+	position: relative;
+	background: #c7cfdb;
+}
+.question-text:hover{
+	background: #a4adbc;
+}
+i.remove-question {
+	color: red;
+	font-size: 18px;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+}
+.display-users {
+	display: flex;
+}
+.display-user{
+	margin: 10px 5px;
+	padding: 5px;
+	background: #c7cfdb;
+	font-weight: bold;
+	position: relative;
+}
+.display-user:hover{
+	background: #a4adbc;
+}
+.display-name{
+	position: relative;
+}
+i.remove-user {
+	color: red;
+	font-size: 18px;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+}
+i.add-user {
+	color: green;
+	font-size: 18px;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+}
+
+i.shownone {
+	display: none;
 }

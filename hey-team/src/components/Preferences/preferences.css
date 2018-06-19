@@ -1,0 +1,17 @@
+#main-preferences
+{
+    background-color: rgb(229, 234, 241);
+    width: 665px;
+    text-align: center;
+    padding-top: 15px;
+    padding-left: 100px;
+    padding-right: 0px !important;
+}
+#card-pref
+{
+    padding-left: 25px;
+}
+.radio-label
+{    
+    font-size: 1.08em;
+}

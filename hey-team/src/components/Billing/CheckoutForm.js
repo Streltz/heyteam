@@ -4,7 +4,6 @@ PaymentRequestButtonElement, IbanElement, IdealBankElement} from 'react-stripe-e
 
 import { Card } from 'reactstrap';
 
-
 import './styles.css';
 
 const createOptions = (fontSize, padding) => {
@@ -44,10 +43,9 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-
       <main className="main-billing">
-        <Card className="edge-dashboard">
-          <div className="login card-dashboard">
+        <Card className="edge-card">
+          <div className="card-dashboard">
             <div class="logo text-left col-md-12">Billing</div>
             <br /><br />
 
