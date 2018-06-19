@@ -7,8 +7,8 @@
 	background: gray;
 }
 
-.days {
-	display: flex;
+.day {
+	display: inline-block;
 }
 
 .day {
@@ -27,6 +27,25 @@
 	display: inline-block;
 	margin: 2px;
 }
+.question {
+	font-size: 20px;
+	margin: 5px 0px;
+}
+.question-text{
+	padding: 2px 10px;
+	position: relative;
+	background: #c7cfdb;
+}
+.question-text:hover{
+	background: #a4adbc;
+}
+i.remove-question {
+	color: red;
+	font-size: 18px;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+}
 .display-users {
 	display: flex;
 }
@@ -39,7 +58,6 @@
 }
 .display-user:hover{
 	background: #a4adbc;
-	color: white;
 }
 .display-name{
 	position: relative;

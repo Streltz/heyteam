@@ -11,7 +11,7 @@ class AddConvo extends Component {
       title: '',
       schedule: [],
       currentQuestion: '',
-      questions: ['test question'],
+      questions: [],
       participants: [],
       search: '',
       redirect: false,
@@ -23,7 +23,8 @@ class AddConvo extends Component {
       selectedAmpm: 'AM',
       selectedUser: null,
       removeIndex: null,
-      addIndex: null
+      addIndex: null,
+      removeQuestion: null
   };
 
   componentDidMount(){
@@ -132,6 +133,15 @@ class AddConvo extends Component {
     this.setState({participants: filtered, removeIndex: null});
   }
 
+  handleRemoveQuestion = (question)=>{
+    const filtered = this.state.questions.filter(q=>{
+      if(q !== question){
+        return q;
+      }
+    });
+    this.setState({questions: filtered, removeQuestion: null});
+  }
+
   render() {
     const fiveUsers = [];
     if(this.props.user.slackUsersMutated.length > 0){
@@ -218,12 +228,19 @@ class AddConvo extends Component {
 
           <br/>
           <h3>Questions</h3>
-          {
-            this.state.questions.map((question, index) => {
-              return <div key={index}>{index+1}: {question}</div>
-            })
-          }
-
+          <div className="questions">
+            {
+              this.state.questions.map((question, index) => {
+                return (
+                  <div className="question" key={index}>
+                    <span className="question-text" onClick={()=>{this.handleRemoveQuestion(question)}} onMouseOver={()=>{this.setState({removeQuestion: index})}} onMouseOut={()=>{this.setState({removeQuestion: null})}}>{index+1}: {question}
+                    <i className={this.state.removeQuestion === index ? "material-icons remove-question" : "material-icons shownone"}>remove_circle</i>
+                    </span>
+                      
+                  </div>);
+              })
+            }
+          </div>
           <div className="input-group mb-3">
           <input className="form-control" type='text' onChange={this.onChangeQuestion} value={this.state.currentQuestion} placeholder="Type a question" />
           <button className="add-question btn btn-secondary" onClick={()=>{this.addQuestion()}}>+</button>
