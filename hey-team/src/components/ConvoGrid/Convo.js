@@ -19,8 +19,8 @@ class Convo extends React.Component {
           <div className="convo-content">            
             <div className="questions">
               {
-                this.props.convo.questions.map(question => {
-                  return <div className="question">{question}</div>
+                this.props.convo.questions.map((question, i) => {
+                  return <div key={i} className="question">{question}</div>
                 })
               }
             </div>

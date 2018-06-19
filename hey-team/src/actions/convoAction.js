@@ -1,11 +1,12 @@
 import axios from 'axios';
-
+const URL = 'http://localhost:5000';
 
 export const addConvo = (info, history) => {
+	console.log(info);
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios 
-		.post(`${URL}/convos/new`, info)
+		.post(`${URL}/conversation`, info)
 		.then(response => {
 			dispatch({ type: 'CONVO_ADDED', payload: response.data });
 				history.push('/');
