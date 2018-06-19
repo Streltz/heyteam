@@ -117,7 +117,8 @@ class AddConvo extends Component {
     addPart.push(user);
     this.setState({
       search: '',
-      participants: addPart
+      participants: addPart,
+      addIndex: null
     });
     this.props.searchSlackUsers('');
   }
@@ -128,14 +129,14 @@ class AddConvo extends Component {
         return part;
       }
     });
-    this.setState({participants: filtered});
+    this.setState({participants: filtered, removeIndex: null});
   }
 
   render() {
     const fiveUsers = [];
     if(this.props.user.slackUsersMutated.length > 0){
       for(let i = 0; i < 5; i++){
-        if(this.props.user.slackUsersMutated[i]){
+        if(this.props.user.slackUsersMutated[i] && !this.state.participants.includes(this.props.user.slackUsersMutated[i])){
           fiveUsers.push(this.props.user.slackUsersMutated[i]);
         }
       }
