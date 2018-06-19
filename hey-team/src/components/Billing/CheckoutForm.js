@@ -4,7 +4,6 @@ PaymentRequestButtonElement, IbanElement, IdealBankElement} from 'react-stripe-e
 
 import { Card } from 'reactstrap';
 
-
 import './styles.css';
 
 const createOptions = (fontSize, padding) => {

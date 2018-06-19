@@ -4,5 +4,5 @@ display: flex;
 
 html
 {
-    overflow-x: none !important;
+    overflow-x: hidden !important;
 }
