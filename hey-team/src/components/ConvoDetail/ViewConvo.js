@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
+import { Card } from 'reactstrap';
 
 class ViewConvo extends React.Component {
   state = {
@@ -28,60 +29,74 @@ class ViewConvo extends React.Component {
     });
     console.log('single convo', convo);
     return (
-      <div className='view-wrapper'>
-          <div className='button-container'>
-            {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
-            {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
-          </div>
-          {!this.props.loading ? 
-            <div className="viewconvo">
-            <div className="participants-edit">
-              <h4 className="part-title">Participants</h4>
-              <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
+      <main id="view-main">
+        <Card className="edge-card">
+          <div className='view-wrapper'>
+            <div className='button-container'>
+              {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
+              {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
             </div>
-                <div className="participants">
-                  {
-                    convo.participants.map(participant => {
-                      return (
-                        <div className="participant">img</div>
-                      )
-                    })
-                  }
+            {!this.props.loading ?
+              <div className="viewconvo">
+                <div className="participants-edit text-right">
+                  <div className="part-edit-delete">
+                    <Link className="dark-link" to="/dashboard/edit">Edit  </Link>
+                    Delete
+                  </div>
                 </div>
-                <br/>
-                <h4>Questions</h4>
-                <div className="question-box">
-                  {
-                    convo.questions.map(question => {
-                      return (
-                        <div>{question}s</div>
-                      )
-                    })
-                  }
+
+                <div className="content-container text-left">
+                  <div className="schedule sub-header">Schedule</div>
+                  <div className="schedule-time"> Mon - Fri at 10:00AM Pacific</div>
+                  <br />
+                  <div className="sub-header">Participants</div>
+                  <div className="participants">
+                    {
+                      convo.participants.map(participant => {
+                        /*return (
+                          
+                        )*/
+                      })
+                    }
+                  </div>
+                  <br />
+
+                  <br />
+                  <div className="sub-header">Responses</div>
+                  <br />
+                  <div className="table-responsive table-striped">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> Username </th>
+                          <th> DateTime </th>
+                          <th> Question </th>
+                          <th> Answer </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {
+                          convo.responses.map(response => {
+                            return (
+                              <Response questions={convo.questions} response={response} />
+                            )
+                          })
+                        }
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <br/>
-                <h4 className="schedule">Schedule</h4>
-                <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
-                <br/>
-                <h4>Responses</h4>
-                <div className="response-boxes">
-                  {
-                    convo.responses.map(response => {
-                      return (
-                        <Response questions={convo.questions} response={response}/>
-                      )
-                    })
-                  }
-                </div>
+              </div>
+              :
+              <div>
+                <Loading />
+              </div>}
+            <div>
+              {this.state.redirect ? <Redirect to='/404' /> : null}
+            </div>
           </div>
-          :
-          <div>
-            <Loading />
-          </div>}
-        <div>
-          {this.state.redirect ? <Redirect to='/404' /> : null }
-        </div>
-      </div>
+        </Card>
+      </main>
     )
   }
 }
@@ -92,4 +107,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { })(ViewConvo);
+export default connect(mapStateToProps, {})(ViewConvo);

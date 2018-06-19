@@ -9,7 +9,7 @@
     padding: 2px;
     margin-left: 300px;
 }
-.logo
+.slack-logo
 {
     fill: white !important;
     display: block;
@@ -30,12 +30,6 @@
     font-size: 2.2em !important;
 }
 
-.heyTeam 
-{
-    font-family: Courier Header;
-    font-size: 55px;
-    color: white;
-}
 
 .signOut {
     color: white;
