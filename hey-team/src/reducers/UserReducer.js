@@ -1,10 +1,12 @@
 
-import { SIGN_UP, LOGGED_IN, LOGGED_OUT } from '../actions/userAction';
+import { SIGN_UP, LOGGED_IN, LOGGED_OUT, FETCHED_SLACKUSERS, SEARCH_SLACKUSERS } from '../actions/userAction';
 // initial user state
 const userInit = {
 	logged_in: false,
 	userName: '',
-	token: ''
+	token: '',
+	slackUsersOrigin: [],
+	slackUsersMutated: []
 }
 // if user exists in local storage, assign username to user initial name
 console.log('locla', localStorage);
@@ -23,6 +25,17 @@ const UserReducer = (state = userInit, action) => {
 
 		case LOGGED_OUT:
 		return { ...state, logged_in: false, name: null}
+
+		case FETCHED_SLACKUSERS:
+		return { ...state, slackUsersOrigin: action.payload }
+
+		case SEARCH_SLACKUSERS:
+		if(action.payload === '') return { ...state, slackUsersMutated: [] };
+		const users = state.slackUsersOrigin;
+		const filtered = users.filter(user=>{
+			if(user.profile.display_name.toLowerCase().includes(action.payload.toLowerCase())) return user;
+		});
+		return { ...state, slackUsersMutated: filtered }
 
 		default:
 		return state;

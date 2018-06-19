@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import './AddConvo.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { addConvo } from '../../actions/convoAction';
+import { fetchSlackUsers, searchSlackUsers } from '../../actions/userAction';
 import { connect } from 'react-redux';
 
 class AddConvo extends Component {
@@ -11,7 +12,7 @@ class AddConvo extends Component {
       schedule: [],
       currentQuestion: '',
       questions: ['test question'],
-      participants: ['User1', 'User2'],
+      participants: [],
       search: '',
       redirect: false,
       timeDropdownOpen: false,
@@ -19,8 +20,16 @@ class AddConvo extends Component {
       ampmDropdownOpen: false,
       selectedTime: 'Select Time',
       selectedZone: 'Time Zone',
-      selectedAmpm: 'AM'
+      selectedAmpm: 'AM',
+      selectedUser: null,
+      removeIndex: null,
+      addIndex: null
   };
+
+  componentDidMount(){
+    // fetch all slack users
+    this.props.fetchSlackUsers();
+  }
 
   toggle = (type)=>{
     if(type === 'time'){
@@ -88,7 +97,7 @@ class AddConvo extends Component {
 
   searchUser = (e) => {
     this.setState({search: e.target.value});
-    //TODO use slack API to search for user on input change
+    this.props.searchSlackUsers(e.target.value);
   }
 
   handleTimeSelect = (data) => {
@@ -99,11 +108,39 @@ class AddConvo extends Component {
     this.setState({selectedZone: data});
   }
 
-    handleAmpmSelect = (data) => {
+  handleAmpmSelect = (data) => {
     this.setState({selectedAmpm: data});
   }
 
+  handleSelectUser = (user) => {
+    const addPart = this.state.participants;
+    addPart.push(user);
+    this.setState({
+      search: '',
+      participants: addPart
+    });
+    this.props.searchSlackUsers('');
+  }
+
+  handleRemoveUser = (user)=>{
+    const filtered = this.state.participants.filter(part=>{
+      if(part.profile.display_name !== user.profile.display_name){
+        return part;
+      }
+    });
+    this.setState({participants: filtered});
+  }
+
   render() {
+    const fiveUsers = [];
+    if(this.props.user.slackUsersMutated.length > 0){
+      for(let i = 0; i < 5; i++){
+        if(this.props.user.slackUsersMutated[i]){
+          fiveUsers.push(this.props.user.slackUsersMutated[i]);
+        }
+      }
+    }
+  
     const days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
     return(
 
@@ -192,8 +229,29 @@ class AddConvo extends Component {
           </div>
           
           <h3>Participants</h3>
+          <div className="display-users">
+            {
+              this.state.participants.map((user, i)=>{
+                return (
+                  <div className="display-user" onClick={()=>{this.handleRemoveUser(user)}} onMouseOver={()=>{this.setState({removeIndex: i})}} onMouseOut={()=>{this.setState({removeIndex: null})}}>
+                    <div className="display-name">{user.profile.display_name}<span><i className={this.state.removeIndex === i ? "material-icons remove-user" : "material-icons shownone"}>remove_circle</i></span></div>
+                  </div>
+                  );
+              })
+            }
+          </div>
           <input className="form-control" type="text" placeholder="search" onChange={this.searchUser} value={this.state.search} />
-
+          <div className="display-users">
+            {
+              fiveUsers.map((user, i)=>{
+                return (
+                  <div className="display-user" onClick={()=>{this.handleSelectUser(user)}} onMouseOver={()=>{this.setState({addIndex: i})}} onMouseOut={()=>{this.setState({addIndex: null})}}>
+                    <div className="display-name">{user.profile.display_name}<span><i className={this.state.addIndex === i ? "material-icons add-user" : "material-icons shownone"}>add_circle</i></span></div>
+                  </div>
+                );
+              })
+            }
+          </div>
           <br/>
           <button
             onClick={this.handleSubmit}
@@ -211,8 +269,9 @@ class AddConvo extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    convos: state.convos
+    convos: state.convos, 
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { addConvo })(AddConvo);
+export default connect(mapStateToProps, { addConvo, fetchSlackUsers, searchSlackUsers})(AddConvo);

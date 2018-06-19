@@ -27,3 +27,38 @@
 	display: inline-block;
 	margin: 2px;
 }
+.display-users {
+	display: flex;
+}
+.display-user{
+	margin: 10px 5px;
+	padding: 5px;
+	background: #c7cfdb;
+	font-weight: bold;
+	position: relative;
+}
+.display-user:hover{
+	background: #a4adbc;
+	color: white;
+}
+.display-name{
+	position: relative;
+}
+i.remove-user {
+	color: red;
+	font-size: 18px;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+}
+i.add-user {
+	color: green;
+	font-size: 18px;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+}
+
+i.shownone {
+	display: none;
+}
