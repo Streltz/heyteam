@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
+import { Card } from 'reactstrap';
 
 class ViewConvo extends React.Component {
   state = {
@@ -28,17 +29,19 @@ class ViewConvo extends React.Component {
     });
     console.log('single convo', convo);
     return (
-      <div className='view-wrapper'>
-          <div className='button-container'>
-            {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
-            {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
-          </div>
-          {!this.props.loading ? 
-            <div className="viewconvo">
-            <div className="participants-edit">
-              <h4 className="part-title">Participants</h4>
-              <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
+      <main id="view-main">
+        <Card className="edge-card-extended">
+          <div className='view-wrapper'>
+            <div className='button-container'>
+              {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
+              {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
             </div>
+            {!this.props.loading ?
+              <div className="viewconvo">
+                <div className="participants-edit">
+                  <h4 className="part-title">Participants</h4>
+                  <div className="part-edit-delete"><Link to="/dashboard/edit">Edit</Link> Delete</div>
+                </div>
                 <div className="participants">
                   {
                     convo.participants.map(participant => {
@@ -48,7 +51,7 @@ class ViewConvo extends React.Component {
                     })
                   }
                 </div>
-                <br/>
+                <br />
                 <h4>Questions</h4>
                 <div className="question-box">
                   {
@@ -59,29 +62,31 @@ class ViewConvo extends React.Component {
                     })
                   }
                 </div>
-                <br/>
+                <br />
                 <h4 className="schedule">Schedule</h4>
                 <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
-                <br/>
+                <br />
                 <h4>Responses</h4>
                 <div className="response-boxes">
                   {
                     convo.responses.map(response => {
                       return (
-                        <Response questions={convo.questions} response={response}/>
+                        <Response questions={convo.questions} response={response} />
                       )
                     })
                   }
                 </div>
+              </div>
+              :
+              <div>
+                <Loading />
+              </div>}
+            <div>
+              {this.state.redirect ? <Redirect to='/404' /> : null}
+            </div>
           </div>
-          :
-          <div>
-            <Loading />
-          </div>}
-        <div>
-          {this.state.redirect ? <Redirect to='/404' /> : null }
-        </div>
-      </div>
+        </Card>
+      </main>
     )
   }
 }
@@ -92,4 +97,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { })(ViewConvo);
+export default connect(mapStateToProps, {})(ViewConvo);

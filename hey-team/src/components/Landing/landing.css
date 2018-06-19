@@ -15,6 +15,9 @@ html
 .Carousel {
     height: 300px;
     width: 400px;
+    z-index: 99;
+    margin: auto;
+    margin-top: -5% !important;
 }
   
   /* Middle Body Container */
@@ -26,6 +29,7 @@ html
     background-color: rgb(57, 75, 89);
 
     text-align: center;
+    z-index: 1;
 }
 
 .nav-link-group

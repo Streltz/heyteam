@@ -20,7 +20,7 @@ class Header extends React.Component {
             <div class="Logo-1 headbar-logo">
               Hey-Bot
             </div>
-            <div className="logo">
+            <div className="slack-logo">
             </div>
           </div>
           <div class="signOut" onClick={() => { this.handleSignOut() }}><u>Sign Out</u></div>          
