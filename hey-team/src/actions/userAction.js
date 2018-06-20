@@ -7,6 +7,9 @@ export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
 
 const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
+// const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
+const ROOT_URL = 'https://mysterious-coast-15187.herokuapp.com'
+
 export const signOut = (history) => {
   localStorage.removeItem('userName');
   localStorage.removeItem('token');
@@ -15,9 +18,10 @@ export const signOut = (history) => {
 }
 
 export const signUp = (newUser, history) => {
+  console.log(ROOT_URL);
   if(newUser.name !== '' || newUser.email !== '' || newUser.password !== ''){
     return (dispatch) => {
-      axios.post('http://localhost:5000/signup', newUser)
+      axios.post(`${ROOT_URL}/signup`, newUser)
       .then(res => {
         if(res.status === 200){
           alert('You have signed up successfully, please log in.');
@@ -36,7 +40,7 @@ export const signUp = (newUser, history) => {
 export const signIn = (user, history) => {
   if(user.email !== '' || user.password !== ''){
     return (dispatch) => {
-      axios.post('http://localhost:5000/login', user)
+      axios.post(`${ROOT_URL}/login`, user)
       .then(res => {
         if(res.status === 200){
           // server returns a token
