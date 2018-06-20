@@ -6,7 +6,7 @@ const ConversationSchema = new mongoose.Schema({
 	title: {type: String, required: true},
 	schedule_days: {type: [Number]},
 	time: {type: mongoose.Schema.Types.Decimal128},
-	questions: [{type: mongoose.Schema.Types.Mixed}],
+	questions: {type: ObjectId, ref: 'Question'},
 	participant: {type: [String]},
 	reponses: [{type: ObjectId, ref: 'Response'}]
 });
