@@ -4,7 +4,9 @@ const conversationRouter = express.Router();
 const Conversation = require('../models/conversationModel');
 const Question = require('../models/questionModel');
 const jwt =  require('jsonwebtoken');
-const { secret } = require('../config');
+// const { secret } = require('../config');
+
+const secretEnv = process.env.SEC_KEY || secret;
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
@@ -15,7 +17,7 @@ const validateToken = (req, res, next) => {
   }
   // TODO:
   // change token secret to enviroment variable
-  jwt.verify(token, secret , (authError, decoded) => {
+  jwt.verify(token, secretEnv , (authError, decoded) => {
     if (authError) {
       res
         .status(403)

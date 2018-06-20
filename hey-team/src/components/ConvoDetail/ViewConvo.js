@@ -87,9 +87,8 @@ class ViewConvo extends React.Component {
             <div>
               {this.state.redirect ? <Redirect to='/404' /> : null}
             </div>
+            <Card/>
           </div>
-        </Card>
-      </main>
     )
   }
 }
