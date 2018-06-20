@@ -28,9 +28,6 @@ class Landing extends React.Component {
           </header>
 
           <section class="banner-section">
-            <div className = "Carousel">
-              <Carousel />
-            </div>
             <div class="col-md-12">
               <div class="col-md-6" id="description-section">
                 <div class="col-md-12 header-text">Conversation Manager within Slack</div>
@@ -39,8 +36,11 @@ class Landing extends React.Component {
                 <Link to="/billing">Buy Now</Link>
               </button>              
               </div>
-            </div>
+            </div>            
           </section>
+          <div className = "Carousel">
+            <Carousel />
+          </div>
         </main>
       );
     }

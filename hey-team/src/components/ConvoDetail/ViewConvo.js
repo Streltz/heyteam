@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
+import { Card } from 'reactstrap';
 
 class ViewConvo extends React.Component {
   state = {
@@ -78,15 +79,17 @@ class ViewConvo extends React.Component {
                     })
                   }
                 </div>
+              </div>
+              :
+              <div>
+                <Loading />
+              </div>}
+            <div>
+              {this.state.redirect ? <Redirect to='/404' /> : null}
+            </div>
           </div>
-          :
-          <div>
-            <Loading />
-          </div>}
-        <div>
-          {this.state.redirect ? <Redirect to='/404' /> : null }
-        </div>
-      </div>
+        </Card>
+      </main>
     )
   }
 }
@@ -97,4 +100,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { })(ViewConvo);
+export default connect(mapStateToProps, {})(ViewConvo);
