@@ -6,7 +6,7 @@ const Question = require('../models/questionModel');
 const jwt =  require('jsonwebtoken');
 // const { secret } = require('../config');
 
-const secretEnv = process.env.SEC_KEY || secret;
+const secretEnv = process.env.SEC_KEY || 'secret';
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
