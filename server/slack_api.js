@@ -1,6 +1,6 @@
 const { RTMClient, WebClient } = require('@slack/client');
 const mongoose = require('mongoose');
-const conversation_model = require('./models/conversationModel');
+const Conversation = require('./models/conversationModel');
 
 const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg'
 
@@ -14,18 +14,19 @@ rtm.start();
 
 
 setInterval(() => {
-    conversation_model.find({})
+    console.log('started interval: ');           
+    Conversation.find({})
         .then(conversations => {
-            let d = new Date();            
-            
-            if(conversations.time >= d.getHours() && conversations.question.sent == false)
+            let d = new Date();
+            console.log(conversations);
+            if(conversations.time >= d.getHours() && conversations.sent == false)
             {
                 Send(conversations.participants, conversations.question)
             }
         }).catch(err => {
             res.send(err);
         });
-}, 60000);
+}, 600);
 
 const Send = (participants, question) => {
 

@@ -2,7 +2,6 @@ const express = require('express');
 const Response = require('../models/conversationModel.js');
 const conversationRouter = express.Router();
 const Conversation = require('../models/conversationModel');
-const Question = require('../models/questionModel');
 const jwt =  require('jsonwebtoken');
 const { secret } = require('../config');
 
