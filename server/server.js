@@ -9,11 +9,17 @@ const paymentAPI = require('./routes/payment');
 
 const server = express();
 
-server.use(cors());
+server.use(cors({
+  origin: 'https://whispering-journey-17247.herokuapp.com',
+  credentials: true
+}));
+
 server.use(bodyParser.json());
 
+const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
+
 mongoose
-  .connect('mongodb://localhost:27017/heyteam')
+  .connect(mLab)
   .then(conn => {
     console.log('connected to mongo HeyTeam');
   })
