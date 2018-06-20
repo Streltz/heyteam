@@ -1,5 +1,5 @@
 ## Hey-Bot
-> Hey bot is an interactive slack bot built how help manage conversations with multiple users.
+> Hey bot is an interactive slack bot built to help manage conversations with multiple users.
 
 ### How to Start
 To start Hey-Bot first clone the repo and insall all dependices. 
