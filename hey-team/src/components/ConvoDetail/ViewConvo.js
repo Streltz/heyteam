@@ -20,12 +20,13 @@ class ViewConvo extends React.Component {
   }
 
   render() {
-    console.log('CONVOS', this.props.convos);
+    console.log('CONVOS view', this.props.convos);
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
     const id = this.props.match.params.id;
+    console.log('PARAM ID', id);
     const convo = this.props.convos.find(convo => {
-      return convo.id === id;
+      return convo._id === id;
     });
     console.log('single convo', convo);
     return (
@@ -102,6 +103,7 @@ class ViewConvo extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('CONVO VIEW STATE', state.convos);
   return {
     convos: state.convos
   }

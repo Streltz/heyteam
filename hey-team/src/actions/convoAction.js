@@ -9,6 +9,7 @@ export const addConvo = (info, history) => {
 		.post(`${URL}/conversation`, info, {headers: {token}})
 		.then(response => {
 			dispatch({ type: 'CONVO_ADDED', payload: response.data });
+			history.push('/dashboard');
 			})
 		.catch(err => {
 			dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
@@ -59,17 +60,14 @@ export const deleteConversation = info => {
 };
 
 export const getConvos = info => {
-	// return dispatch => {
-	// 	 dispatch({ type: 'LOADING_CONVO' });
-	// 	 axios
-	// 		 .get('http://localhost:5000/conversations')
-	// 		 .then(response => {
-	// 				 dispatch({ type: 'DELETED_CONVO', payload: response.data });
-	// 			})
-	// 	  .catch(err => {
-	// 				dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });
-	// 	});
- // 	};
+	return dispatch => {
+		 dispatch({ type: 'LOADING_CONVO' });
+		 axios
+			 .get('http://localhost:5000/conversations', {headers: {token}})
+			 .then(response => {
+					 dispatch({ type: 'FETCHED_CONVOS', payload: response.data });
+				})
+ 	};
  return { type: 'TEST', payload: null}
 };
 

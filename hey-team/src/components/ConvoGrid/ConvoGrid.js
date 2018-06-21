@@ -36,15 +36,13 @@ class ConvoGrid extends React.Component {
   }
 
   render() {
-    console.log('convos', this.props.convos);
-    
     return (
       <main id="convo-main">
         <div className="grid">
           {
             this.props.convos.map(convo => {
               return (
-                <Link key={convo.id} to={`dashboard/${convo.id}`}>
+                <Link key={convo._id} to={`dashboard/${convo._id}`}>
                   <Convo convo={convo} />
                 </Link>
               )
@@ -53,7 +51,7 @@ class ConvoGrid extends React.Component {
         </div>
         <Link to="/dashboard/add">
           <div className="fixed-bttm-right-btn circle-btn-blue">
-            <i class="fa fa-plus"></i>
+            <i className="fa fa-plus"></i>
           </div>
         </Link>
       </main>

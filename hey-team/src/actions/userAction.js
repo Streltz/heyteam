@@ -61,7 +61,6 @@ export const signIn = (user, history) => {
 }
 
 export const fetchSlackUsers = () => {
-  console.log('fetching slack users');
   return (dispatch) => {
     axios.get(`${slackURL}`)
     .then(res => {
@@ -77,7 +76,6 @@ export const fetchSlackUsers = () => {
 }
 
 export const searchSlackUsers = (term) => {
-  console.log('search term', term);
   return({
     type: SEARCH_SLACKUSERS, 
     payload: term

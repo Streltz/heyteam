@@ -64,10 +64,6 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     conversation.participants = participants; 
     // console.log('CONVERSATIOND DATA', conversation);
     conversation.save().then(savedConversaton => {
-      // TODO:
-      // set a timer or a scheduler to send out the questions to slack users
-      // set a listener to listen to responses from slack user
-      // save responses to db
       res.json(savedConversaton);
     })
     .catch(err => {
