@@ -1,30 +1,13 @@
-const initialConvo = [{
-    id: '01',
-    title: 'test title',
-    participants: ['SlackUser 1', 'SlackUser 2', 'SlackUser 3'],
-    question: 'Test question 2',
-    responses: [{
-        username: 'SlackUser 1',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm good", "Finished signup page", "Work on signin page"]
-    },{
-        username: 'SlackUser 2',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm Ok", "Worked on CSS", "Continue working on CSS"]
-    },{
-        username: 'SlackUser 3',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm Fine", "Worked on database", "Work on api routes"]
-    }]
-}]
-
-const ConvosReducer = (state = initialConvo, action) => {
+const ConvosReducer = (state = [], action) => {
     switch (action.type) {
         case 'LOADING_CONVOS':
             return { ...state, loading:true };
+
+        case 'FETCHED_CONVOS':
+            return action.payload;
         
-        case 'ADD_CONVO':
-            return { ...state, convos: state.convos.concat(action.payload)};
+        case 'CONVO_ADDED':
+            return [ ...state, action.payload ];
         
         case 'VIEW_CONVO':
             return { ...state, current: action.payload, loading: false};
