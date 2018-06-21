@@ -30,62 +30,55 @@ class ViewConvo extends React.Component {
     });
     console.log('single convo', convo);
     return (
-      <main id="view-main">
-        <Card className="edge-card">
-          <div className='view-wrapper'>
-            <div className='button-container'>
-              {/* <Link to={`/edit/${this.props.current._id}`} className='edit-button'>edit</Link> */}
-              {/* <Link to={`/delete/${this.props.current._id}`} className='delete-button'>delete</Link> */}
-            </div>
-            {!this.props.loading ?
-              <div className="viewconvo">
-                <div className="participants-edit text-right">
-                  <div className="part-edit-delete">
-                    <Link className="dark-link" to="/dashboard/edit">Edit  </Link>
-                    Delete
-                  </div>
+      <div className='view-wrapper'>
+          {!this.props.loading ? 
+          <div className="viewconvo">
+            <div className="participants-edit">
+              <div className="part-title">Participants</div>
+              <div className="part-edit-delete">
+                <Link to="/dashboard/edit">
+                  <span className="edit-icon"><i className="material-icons">edit</i></span>
+                </Link>
+                <div className="delete-convo">
+                  <span className="delete-icon"><i className="material-icons">delete</i></span>
                 </div>
-
-                <div className="content-container text-left">
-                  <div className="schedule sub-header">Schedule</div>
-                  <div className="schedule-time"> Mon - Fri at 10:00AM Pacific</div>
-                  <br />
-                  <div className="sub-header">Participants</div>
-                  <div className="participants">
-                    {
-                      convo.participants.map(participant => {
-                        /*return (
-                          
-                        )*/
-                      })
-                    }
-                  </div>
-                  <br />
-
-                  <br />
-                  <div className="sub-header">Responses</div>
-                  <br />
-                  <div className="table-responsive table-striped">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th> Username </th>
-                          <th> DateTime </th>
-                          <th> Question </th>
-                          <th> Answer </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {
-                          convo.responses.map(response => {
-                            return (
-                              <Response questions={convo.questions} response={response} />
-                            )
-                          })
-                        }
-                      </tbody>
-                    </table>
-                  </div>
+              </div>
+            </div>
+                <div className="participants">
+                  {
+                    convo.participants.map(participant => {
+                      return (
+                        <div className="participant">img</div>
+                      )
+                    })
+                  }
+                </div>
+                <br/>
+                <div className="q-title">Questions</div>
+                <div className="question-box">
+                  {
+                    convo.questions.map((question, i) => {
+                      return (
+                        <div className="each-question" key={i}>
+                          {i+1}: {question}
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+                <br/>
+                <div className="schedule-title">Schedule</div>
+                <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
+                <br/>
+                <div className="res-title">Responses</div>
+                <div className="response-boxes">
+                  {
+                    convo.responses.map(response => {
+                      return (
+                        <Response questions={convo.questions} response={response}/>
+                      )
+                    })
+                  }
                 </div>
               </div>
               :
@@ -95,9 +88,8 @@ class ViewConvo extends React.Component {
             <div>
               {this.state.redirect ? <Redirect to='/404' /> : null}
             </div>
+            <Card/>
           </div>
-        </Card>
-      </main>
     )
   }
 }

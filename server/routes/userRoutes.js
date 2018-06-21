@@ -3,7 +3,9 @@ const User = require('../models/userModel.js');
 const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { secret } = require('../config');
+// const { secret } = require('../config');
+
+const secretEnv = process.env.SEC_KEY || 'secret';
 
 const validateToken = (req, res, next) => {
   const token = req.headers.authorization;
@@ -12,7 +14,7 @@ const validateToken = (req, res, next) => {
       .status(422)
       .json({ error: 'User not authorized' });
   }
-  jwt.verify(token, secret , (authError, decoded) => {
+  jwt.verify(token, secretEnv, (authError, decoded) => {
     if (authError) {
       res
         .status(403)
@@ -38,8 +40,9 @@ userRouter.post('/signup', function(req, res){
 	const user = new User();
 	user.name = name;
 	user.email = email;
-
+	console.log(name, email, password);
 	bcrypt.hash(password, 11, (err, hash) => {
+		console.log(err);
 		if (err) throw err;
 		user.password = hash;
 		console.log(user);
@@ -65,7 +68,7 @@ userRouter.post('/login', function(req, res){
     			if(!valid){
     				res.json({success: false, message: 'Wrong email or password'});
     			}else{
-    				const token = jwt.sign(userObject, secret, { expiresIn: '1000h' });
+    				const token = jwt.sign(userObject, secretEnv, { expiresIn: '1000h' });
         		   res.json({success: true, token: token, name: user.name });
         		}
 			});
