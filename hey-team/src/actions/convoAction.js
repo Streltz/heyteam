@@ -1,15 +1,14 @@
 import axios from 'axios';
 const URL = 'http://localhost:5000';
+const token = localStorage.getItem('token');
 
 export const addConvo = (info, history) => {
-	console.log(info);
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios 
-		.post(`${URL}/conversation`, info)
+		.post(`${URL}/conversation`, info, {headers: {token}})
 		.then(response => {
 			dispatch({ type: 'CONVO_ADDED', payload: response.data });
-				history.push('/');
 			})
 		.catch(err => {
 			dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });

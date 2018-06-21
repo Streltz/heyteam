@@ -36,7 +36,7 @@ class ConvoGrid extends React.Component {
   }
 
   render() {
-    console.log(this.props.convos);
+    console.log('convos', this.props.convos);
     
     return (
       <main id="convo-main">

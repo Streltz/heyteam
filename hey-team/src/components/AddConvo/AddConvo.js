@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 class AddConvo extends Component {
   state = {
       title: '',
-      schedule: [],
+      schedule_days: [],
       currentQuestion: '',
-      questions: [],
+      question: '',
       participants: [],
       search: '',
       redirect: false,
@@ -58,7 +58,7 @@ class AddConvo extends Component {
   };
 
   onChangeQuestion = e => {
-      this.setState({ currentQuestion: e.target.value });
+      this.setState({ question: e.target.value });
   };
 
   addQuestion = () => {
@@ -73,25 +73,25 @@ class AddConvo extends Component {
       e.preventDefault();
       const convo = {};
       convo.title = this.state.title;
-      convo.schedule = this.state.schedule;
+      convo.schedule_days = this.state.schedule_days;
       convo.time = this.state.selectedTime;
       convo.timezone = this.state.selectedZone;
       convo.ampm = this.state.selectedAmpm;
-      convo.questions = this.state.questions;
+      convo.question = this.state.question;
       convo.participants = this.state.participants;
       this.props.addConvo(convo, this.props.history);
   }
 
   handleDaySelect = (data) => {
-    const schedule = this.state.schedule;
-    const index = this.state.schedule.indexOf(data);
+    const schedule = this.state.schedule_days;
+    const index = this.state.schedule_days.indexOf(data);
     if(index > -1){
       schedule.splice(index, 1);
     }else{
       schedule.push(data);
       schedule.sort();
     }
-    this.setState({schedule});
+    this.setState({schedule_days: schedule});
     console.log('schedule', this.state.schedule);
   }
 
@@ -171,7 +171,7 @@ class AddConvo extends Component {
 
             {
               days.map((day, index) => {
-                return <div key={day} className={this.state.schedule.includes(index) ? 'day btn btn-success' : 'day btn btn-secondary'} onClick={()=>{this.handleDaySelect(index)}}>{day}</div>
+                return <div key={day} className={this.state.schedule_days.includes(index) ? 'day btn btn-success' : 'day btn btn-secondary'} onClick={()=>{this.handleDaySelect(index)}}>{day}</div>
               })
             }
           </div>
@@ -228,22 +228,8 @@ class AddConvo extends Component {
 
           <br/>
           <h3>Questions</h3>
-          <div className="questions">
-            {
-              this.state.questions.map((question, index) => {
-                return (
-                  <div className="question" key={index}>
-                    <span className="question-text" onClick={()=>{this.handleRemoveQuestion(question)}} onMouseOver={()=>{this.setState({removeQuestion: index})}} onMouseOut={()=>{this.setState({removeQuestion: null})}}>{index+1}: {question}
-                    <i className={this.state.removeQuestion === index ? "material-icons remove-question" : "material-icons shownone"}>remove_circle</i>
-                    </span>
-                      
-                  </div>);
-              })
-            }
-          </div>
           <div className="input-group mb-3">
-          <input className="form-control" type='text' onChange={this.onChangeQuestion} value={this.state.currentQuestion} placeholder="Type a question" />
-          <button className="add-question btn btn-secondary" onClick={()=>{this.addQuestion()}}>+</button>
+          <input className="form-control" type='text' onChange={this.onChangeQuestion} value={this.state.question} placeholder="Type a question" />
           </div>
           
           <h3>Participants</h3>
@@ -251,7 +237,7 @@ class AddConvo extends Component {
             {
               this.state.participants.map((user, i)=>{
                 return (
-                  <div className="display-user" onClick={()=>{this.handleRemoveUser(user)}} onMouseOver={()=>{this.setState({removeIndex: i})}} onMouseOut={()=>{this.setState({removeIndex: null})}}>
+                  <div className="display-user" key={i} onClick={()=>{this.handleRemoveUser(user)}} onMouseOver={()=>{this.setState({removeIndex: i})}} onMouseOut={()=>{this.setState({removeIndex: null})}}>
                     <div className="display-name">{user.profile.display_name}<span><i className={this.state.removeIndex === i ? "material-icons remove-user" : "material-icons shownone"}>remove_circle</i></span></div>
                   </div>
                   );
