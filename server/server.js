@@ -9,10 +9,11 @@ const paymentAPI = require('./routes/payment');
 
 const server = express();
 
-server.use(cors({
-  origin: 'https://whispering-journey-17247.herokuapp.com',
-  credentials: true
-}));
+// server.use(cors({
+//   origin: 'https://whispering-journey-17247.herokuapp.com',
+//   credentials: true
+// }));
+server.use(cors());
 
 server.use(bodyParser.json());
 

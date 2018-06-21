@@ -26,12 +26,14 @@ const validateToken = (req, res, next) => {
     }
     // attach decoded user info to request object
     req.decoded = decoded;
+    console.log(decoded);
     next();
   });
 };
 
 conversationRouter.get('/conversations', validateToken, function(req, res){
 	const { userId } = req.decoded;
+  console.log('userid', userId);
 	Conversation.find({uid: userId})
   .then(conversations => {
 		res.json(conversations);
