@@ -1,6 +1,7 @@
 import axios from 'axios';
 const URL = 'http://localhost:5000';
 const token = localStorage.getItem('token');
+const SORTING = 'SORTING';
 
 //***
 // NOTE: When developing locally, change ROOT_URL to localhost.
@@ -78,6 +79,13 @@ export const getConvos = info => {
 				})
  	};
  return { type: 'TEST', payload: null}
+};
+
+export const sortConvos = tab => {
+	return ({
+		type: SORTING,
+		payload: tab
+	});
 };
 
 

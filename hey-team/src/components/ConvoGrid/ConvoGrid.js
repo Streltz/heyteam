@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { getConvos } from '../../actions/convoAction';
 import ViewConvo from '../ConvoDetail/ViewConvo';
+import ConvoHeader from './ConvoHeader';
 import Convo from './Convo';
 import { Link } from 'react-router-dom';
 import './styles.css';
@@ -38,6 +39,7 @@ class ConvoGrid extends React.Component {
   render() {
     return (
       <main id="convo-main">
+        <ConvoHeader />
         <div className="grid">
           {
             this.props.convos.map(convo => {
