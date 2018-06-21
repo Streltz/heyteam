@@ -8,6 +8,7 @@ const conversationRoutes = require('./routes/conversationRoutes');
 const paymentAPI = require('./routes/payment');
 
 const server = express();
+const slackAPI = require('./slack_api');
 
 // server.use(cors({
 //   origin: 'https://whispering-journey-17247.herokuapp.com',

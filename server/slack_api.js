@@ -13,20 +13,19 @@ const rtm = new RTMClient(token);
 rtm.start();
 
 
-setInterval(() => {
-    console.log('started interval: ');           
+setInterval(() => {           
     Conversation.find({})
         .then(conversations => {
             let d = new Date();
-            console.log(conversations);
+            // console.log(conversations.time)
             if(conversations.time >= d.getHours() && conversations.sent == false)
             {
                 Send(conversations.participants, conversations.question)
             }
         }).catch(err => {
-            res.send(err);
+            console.log(err);
         });
-}, 600);
+}, 60000);
 
 const Send = (participants, question) => {
 
@@ -50,3 +49,4 @@ const Send = (participants, question) => {
     });
 
 }
+
