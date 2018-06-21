@@ -60,10 +60,11 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     console.log('REQBODY', req.body);
     const { userId } = req.decoded;
     const { question, title, time, schedule_days, participants} = req.body;
+    console.log('req.body: ', req.body);
     const conversation = new Conversation();
      conversation.uid = userId;
     conversation.title = title;
-    // conversation.time = time;
+    conversation.time = time;
     conversation.schedule_days = schedule_days;
     conversation.question = question;
     conversation.participants = participants; 
