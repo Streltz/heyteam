@@ -18,11 +18,7 @@ class Convo extends React.Component {
           <CardTitle><div className="title">{this.props.convo.title}</div></CardTitle>
           <div className="convo-content">            
             <div className="questions">
-              {
-                this.props.convo.questions.map((question, i) => {
-                  return <div key={i} className="question">{question}</div>
-                })
-              }
+             {this.props.convo.question}
             </div>
           </div>
         </CardBody>

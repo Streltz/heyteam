@@ -7,6 +7,7 @@ const { secret } = require('../config');
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
+  console.log('TOKEN', token);
   if (!token) {
     res
       .status(422)
@@ -52,20 +53,16 @@ conversationRouter.get('/conversations/:id', validateToken, function(req, res){
 });
 
 conversationRouter.post('/conversation', validateToken, function(req, res){
-  const questionArray = [];
-  questions.forEach(question => {
-      questionArray.push({text: question});
-  });
-
-  Question.insertMany(questionArray).then(savedQuestions => {
-    const { questions, title, time, schedule} = req.body;
+    const { userId } = req.decoded;
+    const { question, title, time, schedule_days, participants} = req.body;
     const conversation = new Conversation();
-    conversation.uid = req.decoded.userId;
+     conversation.uid = userId;
     conversation.title = title;
-    converstaion.time = time;
-    conversation.schedule = schedule;
-    conversation.questions = savedQuestions;
-
+    // conversation.time = time;
+    conversation.schedule_days = schedule_days;
+    conversation.question = question;
+    conversation.participants = participants; 
+    // console.log('CONVERSATIOND DATA', conversation);
     conversation.save().then(savedConversaton => {
       // TODO:
       // set a timer or a scheduler to send out the questions to slack users
@@ -76,7 +73,6 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     .catch(err => {
       res.send(err);
     });
-  });
 });
 
 conversationRouter.delete('/conversations/:id', validateToken, function(req, res){

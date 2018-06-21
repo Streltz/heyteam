@@ -2,29 +2,7 @@ const initialConvo = [{
     id: '01',
     title: 'test title',
     participants: ['SlackUser 1', 'SlackUser 2', 'SlackUser 3'],
-    questions: {
-        text: 'Test question 2',
-        sent: false,
-        responded: false
-    },
-    responses: [{
-        username: 'SlackUser 1',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm good", "Finished signup page", "Work on signin page"]
-    },{
-        username: 'SlackUser 2',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm Ok", "Worked on CSS", "Continue working on CSS"]
-    },{
-        username: 'SlackUser 3',
-        time: '10:07AM - 03-12-2018',
-        answers: ["I'm Fine", "Worked on database", "Work on api routes"]
-    }],
-},{
-    id: '02',
-    title: 'test title',
-    participants: ['SlackUser 1', 'SlackUser 2', 'SlackUser 3'],
-    questions: ['How are you?', 'What did you do yesterday?', 'What will you do today?'],
+    question: 'Test question 2',
     responses: [{
         username: 'SlackUser 1',
         time: '10:07AM - 03-12-2018',
