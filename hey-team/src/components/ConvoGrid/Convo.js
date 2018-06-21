@@ -12,17 +12,14 @@ class Convo extends React.Component {
 
 
   render() {
+    console.log('CONVO prpos', this.props.convo);
     return (
       <Card className="edge-convo">
         <CardBody>
           <CardTitle><div className="title">{this.props.convo.title}</div></CardTitle>
           <div className="convo-content">            
-            <div className="questions">
-              {
-                this.props.convo.questions.map((question, i) => {
-                  return <div key={i} className="question">{question}</div>
-                })
-              }
+            <div className="question">
+             {this.props.convo.question}
             </div>
           </div>
         </CardBody>

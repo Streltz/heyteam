@@ -4,11 +4,12 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const ConversationSchema = new mongoose.Schema({
 	uid: {type: ObjectId, ref: 'User'},
 	title: {type: String, required: true},
-	schedule_days: {type: [Number]},
+	schedule_days: [{type: Number}],
 	time: {type: mongoose.Schema.Types.Decimal128},
-	questions: [{type: mongoose.Schema.Types.Mixed}],
-	participant: {type: [String]},
-	reponses: [{type: ObjectId, ref: 'Response'}]
+ 	question: {type: String},
+ 	participants: [{type: mongoose.Schema.Types.Mixed}],
+	responses: [{type: ObjectId, ref: 'Response'}],
+	sent: {type: Boolean, default: false}
 });
 
 const ConversationModel = mongoose.model('Conversation', ConversationSchema);

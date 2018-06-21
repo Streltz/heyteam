@@ -7,6 +7,7 @@ import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
+import { getConvos } from '../../actions/convoAction';
 
 class ViewConvo extends React.Component {
   state = {
@@ -14,20 +15,17 @@ class ViewConvo extends React.Component {
   };
 
   componentDidMount() {
-    // if (this.props.match.params.id === undefined) {
-    //   this.setState({ redirect: true });
-    // }
+    this.props.getConvos();
   }
 
   render() {
-    console.log('CONVOS', this.props.convos);
+    if(this.props.convos.length < 1) return null;
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
     const id = this.props.match.params.id;
     const convo = this.props.convos.find(convo => {
-      return convo.id === id;
+      return convo._id === id;
     });
-    console.log('single convo', convo);
     return (
       <div className='view-wrapper'>
           {!this.props.loading ? 
@@ -55,15 +53,7 @@ class ViewConvo extends React.Component {
                 <br/>
                 <div className="q-title">Questions</div>
                 <div className="question-box">
-                  {
-                    convo.questions.map((question, i) => {
-                      return (
-                        <div className="each-question" key={i}>
-                          {i+1}: {question}
-                        </div>
-                      )
-                    })
-                  }
+                  {convo.question}
                 </div>
                 <br/>
                 <div className="schedule-title">Schedule</div>
@@ -71,12 +61,11 @@ class ViewConvo extends React.Component {
                 <br/>
                 <div className="res-title">Responses</div>
                 <div className="response-boxes">
-                  {
-                    convo.responses.map(response => {
+                  { convo.responses.length > 0 ? convo.responses.map(response => {
                       return (
                         <Response questions={convo.questions} response={response}/>
                       )
-                    })
+                    }) : 'No responses yet'
                   }
                 </div>
               </div>
@@ -94,9 +83,10 @@ class ViewConvo extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('CONVO VIEW STATE', state.convos);
   return {
     convos: state.convos
   }
 }
 
-export default connect(mapStateToProps, {})(ViewConvo);
+export default connect(mapStateToProps, {getConvos})(ViewConvo);

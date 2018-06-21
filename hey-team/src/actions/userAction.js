@@ -7,8 +7,14 @@ export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
 
 const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
+//***
+// NOTE: When developing locally, change ROOT_URL to localhost.
+// When deploying, change ROOT_URL to heroku URL.
+// Need to find a way to automatically set to the right URL depending on the enviroment
+// SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
+//***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = 'https://mysterious-coast-15187.herokuapp.com'
+const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
 
 export const signOut = (history) => {
   localStorage.removeItem('userName');
@@ -18,7 +24,6 @@ export const signOut = (history) => {
 }
 
 export const signUp = (newUser, history) => {
-  console.log(ROOT_URL);
   if(newUser.name !== '' || newUser.email !== '' || newUser.password !== ''){
     return (dispatch) => {
       axios.post(`${ROOT_URL}/signup`, newUser)
@@ -65,7 +70,6 @@ export const signIn = (user, history) => {
 }
 
 export const fetchSlackUsers = () => {
-  console.log('fetching slack users');
   return (dispatch) => {
     axios.get(`${slackURL}`)
     .then(res => {
@@ -81,7 +85,6 @@ export const fetchSlackUsers = () => {
 }
 
 export const searchSlackUsers = (term) => {
-  console.log('search term', term);
   return({
     type: SEARCH_SLACKUSERS, 
     payload: term
