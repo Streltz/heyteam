@@ -42,7 +42,7 @@ class ConvoGrid extends React.Component {
         <ConvoHeader />
         <div className="grid">
           {
-            this.props.convos.map(convo => {
+            this.props.convos.convos.map(convo => {
               return (
                 <Link key={convo._id} to={`dashboard/${convo._id}`}>
                   <Convo convo={convo} />

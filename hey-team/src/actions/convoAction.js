@@ -1,7 +1,8 @@
 import axios from 'axios';
 const URL = 'http://localhost:5000';
 const token = localStorage.getItem('token');
-const SORTING = 'SORTING';
+export const SORTING = 'SORTING';
+console.log(token);
 
 //***
 // NOTE: When developing locally, change ROOT_URL to localhost.
@@ -11,20 +12,32 @@ const SORTING = 'SORTING';
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
 const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
-
+const slackURL = 'https://slack.com/api/im.open?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 export const addConvo = (info, history) => {
 	return dispatch => {
-		dispatch({ type: 'LOADING_CONVOS' });
+	   const promises = []; 
+
+		info.participants.map(part=>{
+			const promise = axios.post(`${slackURL}&user=${part.id}`);
+		   promises.push(promise);
+		});
+
+		Promise.all(promises).then(function(values) {
+		   info.participants.forEach((p, i)=>{
+		   p.channelId = values[i].data.channel.id;
+		});
+
 		axios 
 		.post(`${ROOT_URL}/conversation`, info, {headers: {token}})
 		.then(response => {
-			dispatch({ type: 'CONVO_ADDED', payload: response.data });
-			history.push('/dashboard');
-			})
+		dispatch({ type: 'CONVO_ADDED', payload: response.data });
+		history.push('/dashboard');
+		})
 		.catch(err => {
-			dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
+		dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
 		});
-  };
+	  });
+   };
 };
 
 export const editConversation = (id, history) => {

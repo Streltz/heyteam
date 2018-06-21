@@ -57,6 +57,7 @@ conversationRouter.get('/conversations/:id', validateToken, function(req, res){
 });
 
 conversationRouter.post('/conversation', validateToken, function(req, res){
+    console.log('REQBODY', req.body);
     const { userId } = req.decoded;
     const { question, title, time, schedule_days, participants} = req.body;
     const conversation = new Conversation();

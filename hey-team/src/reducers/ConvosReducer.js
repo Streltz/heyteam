@@ -14,7 +14,11 @@ const ConvosReducer = (state = initState, action) => {
             return {...state, originalConvos: action.payload, convos: action.payload};
         
         case 'CONVO_ADDED':
-            return {...state, [...originalConvos, action.payload], [...convos, action.payload]};
+            const copyOriginal = state.originalConvos;
+            const copyConvos = state.convos;
+            copyOriginal.push(action.payload);
+            copyConvos.push(action.payload);
+            return {...state, originalConvos: copyOriginal, convos: copyConvos};
 
         case 'EDIT_CONVO':
             // return {
@@ -26,7 +30,7 @@ const ConvosReducer = (state = initState, action) => {
             //     return convo;
             // }),
             // loading: false
-        };
+        // }
         case SORTING:
             if(action.payload === "All"){
                 const sorted = state.originalConvos;
