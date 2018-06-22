@@ -22,7 +22,11 @@ setInterval(() => {
                 const hour = now.getHours();
                 const day = now.getDay();
                 console.log('TIME', hour, day);
-                if(hour === conversation.time && conversation.schedule_days.includes(day) && !conversation.sent && conversation.daySent !== day && conversation.active === true){
+                if(hour === conversation.time 
+                    && conversation.schedule_days.includes(day) 
+                    && !conversation.sent 
+                    && conversation.daySent !== day 
+                    && conversation.active === true){
                     console.log('PASS IF STATEMENT');
                     //edit the daySent to day
                     conversation.daySent = day;
