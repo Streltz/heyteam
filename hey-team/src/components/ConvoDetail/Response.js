@@ -13,16 +13,6 @@ function Response(props) {
     	  </div>
       </div>
       <div className="qs-as">
-    		{
-    			props.questions.map((question, index) => {
-    				return (
-    					<div className="q-a">
-    						<div className="res-question">Q: {question}</div>
-    						<div className="res-answer">A: {props.response.text}</div>
-    					</div>
-    				)
-    			})
-    		}
     	</div>
     </div>
   );

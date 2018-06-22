@@ -17,12 +17,12 @@ setInterval(() => {
     console.log('CYCLE...');        
     Conversation.find({})
         .then(conversations => {
-            console.log('CONVO DB', conversations);
+            // console.log('CONVO DB', conversations);
             conversations.forEach(conversation=>{
                const now = new Date();
                 const hour = now.getHours();
                 const day = now.getDay();
-                console.log('TIME', hour, day);
+                // console.log('TIME', hour, day);
                 if(hour === conversation.time 
                     && conversation.schedule_days.includes(day) 
                     && !conversation.sent 
@@ -51,13 +51,40 @@ setInterval(() => {
 rtm.on('message', (event) => {
     console.log('user: ',event.user);
     console.log('message: ',event.text);
-    })
+    
+    Conversation.find({})
+    .then(conversations => {
+        let userConvos =[];
+            conversations.forEach(convo => {
+                convo.participants.forEach(user => {
+                    if (user.id === event.user && convo.dateSent) {
+                        userConvos.push(convo);
+                    }
+                });
+            });
+            // console.log('userConvos: ', userConvos);
+            const user = userConvos[0].participants.find(user => {
+                console.log('user.id : ',user.id, 'event.user: ', event.user) 
+                return user.id === event.user;
+            });
+            console.log('user: ', user);
+            const latestConvo = userConvos[userConvos.length - 1];
+        
+            const newRes = new Response();
+            newRes.username = user.name;
+            newRes.conversation = latestConvo._id;
+            newRes.question = latestConvo.question;
+            newRes.text = event.text;
+            // newRes.date_submitted = Date.now();
+            newRes.save().then(res => {
+                latestConvo.responses.push(res._id)
+                latestConvo.save();
+            });
+            });
+
+});
     // Todo after lunch:
     //Find conversation by participants.findBy(user => user.id)
-    // Conversation.find({})
-    //     .then(conversations => {
-
-    //     })
 
 
     // Conversation.participants.forEach(user => {
