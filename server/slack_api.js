@@ -35,7 +35,6 @@ setInterval(() => {
                         conversation.dateSent = Date.now();
                         conversation.save();
                         conversation.participants.forEach(user=>{
-                            unrespondedUsers.push(user);
                             rtm.sendMessage(conversation.question, user.channelId).then(res=>{
                                 console.log('Sent and Res', res);
                             });
