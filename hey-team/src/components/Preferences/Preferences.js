@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'reactstrap';
 
-import './preferences.css';
+import './styles.css';
 
 class Preferences extends React.Component {
 
@@ -20,10 +20,11 @@ class Preferences extends React.Component {
   render() {
     return (
       <main id="main-preferences">
-        <Card className="edge-card text-left col-md-12">
-          <div id="card-pref">
+        <Card className="edge-card">
+          <div id="card-pref" className="text-left">
             <div className="logo">Preferences</div>
             <br /><br />
+            
             <div classname="sub-header">Email Summary</div>
             <form class="form-group">
               <div className="radio-container col-md-12">
