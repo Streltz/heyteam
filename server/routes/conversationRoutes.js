@@ -56,13 +56,25 @@ conversationRouter.get('/conversations/:id', validateToken, function(req, res){
 	});
 });
 
+const convertTime = (time, ampm, zone)=>{
+  let hour = null;
+  let timeArray = time.split(':')[0];
+  if(ampm === 'AM'){
+    hour = timeArray[0];
+  }else if(ampm === 'PM'){
+    hour = Number(timeArray[0]) + 12;
+  }
+  return hour;
+}
+
 conversationRouter.post('/conversation', validateToken, function(req, res){
+    console.log('REQBODY', req.body);
     const { userId } = req.decoded;
-    const { question, title, time, schedule_days, participants} = req.body;
+    const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
     const conversation = new Conversation();
      conversation.uid = userId;
     conversation.title = title;
-    // conversation.time = time;
+    conversation.time = convertTime(time, ampm, timezone);
     conversation.schedule_days = schedule_days;
     conversation.question = question;
     conversation.participants = participants; 

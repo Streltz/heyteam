@@ -5,11 +5,12 @@ const ConversationSchema = new mongoose.Schema({
 	uid: {type: ObjectId, ref: 'User'},
 	title: {type: String, required: true},
 	schedule_days: [{type: Number}],
-	time: {type: mongoose.Schema.Types.Decimal128},
+	time: {type: Number},
  	question: {type: String},
  	participants: [{type: mongoose.Schema.Types.Mixed}],
 	responses: [{type: ObjectId, ref: 'Response'}],
-	sent: {type: Boolean, default: false}
+	sent: {type: Boolean, default: false},
+	created_on: {type: Number, default: Date.now()}
 });
 
 const ConversationModel = mongoose.model('Conversation', ConversationSchema);

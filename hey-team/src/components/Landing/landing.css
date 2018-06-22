@@ -12,24 +12,48 @@ html
     background-color: rgb(229, 234, 241);
 }
 
-.Carousel {
-    height: 300px;
-    width: 400px;
-    z-index: 99;
-    margin: auto;
-    margin-top: -5% !important;
-}
-  
+.section-body
+{
+    margin-top: 43%;
+    margin-left: 18%;
+    margin-right: 18%;
+    font-size: 1.4em;  
+}  
+
   /* Middle Body Container */
+#banner
+{
+    height: 400px;
+    overflow: hidden;
+    z-index: 1;
+}
+#nav-header
+{
+    z-index: 2;
+    position: relative;
+}
+
 .banner-section {
-    margin-top: -220px;
+    height: 80% !important;
+    width: 100%;
     padding-top: 200px;
+
+    padding-bottom: 200px;
     height: 700px;
     color: #fff;
-    background-color: rgb(57, 75, 89);
+    background-image: linear-gradient(rgb(57, 75, 89), rgb(33, 77, 110));
 
     text-align: center;
     z-index: 1;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    transform: skewY(-6deg);
+    transform-origin: top left;
 }
 
 .nav-link-group
@@ -43,10 +67,14 @@ html
     float:right;
 
 }
+header{
+    position: relative;
+}
 
 #description-section
 {
     margin-top: 7%;
+    transform: skewY(6deg) !important;
     margin-left: 26%;
 }
 
