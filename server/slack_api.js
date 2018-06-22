@@ -13,16 +13,15 @@ const rtm = new RTMClient(token);
 rtm.start();
 
 let daySent = null;
-setInterval(() => {  
-    console.log('attempt to send question');         
+setInterval(() => { 
+    console.log('CYCLE...');        
     Conversation.find({})
         .then(conversations => {
             conversations.forEach(conversation=>{
- 
                const now = new Date();
                 const hour = now.getHours();
                 const day = now.getDay();
-                if(hour >= conversation.time && conversation.schedule_days.includes(day) && !conversation.sent && daySent !== day){
+                if(hour === conversation.time && conversation.schedule_days.includes(day) && !conversation.sent && daySent !== day){
                     daySent = day;
                     conversation.participants.forEach(user=>{
                         rtm.sendMessage(conversation.question, user.channelId).then(res=>{
@@ -35,5 +34,5 @@ setInterval(() => {
         }).catch(err => {
             console.log(err);
         });
-}, 10000);
+}, 5000);
 
