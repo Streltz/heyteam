@@ -13,9 +13,6 @@ const rtm = new RTMClient(token);
 // Start the connection to the platform
 rtm.start();
 
-let unrespondedUsers = [];
-let lastConvo;
-
 setInterval(() => { 
     console.log('CYCLE...');        
     Conversation.find({})
@@ -53,28 +50,17 @@ setInterval(() => {
 
 
 rtm.on('message', (event) => {
-    console.log(event.user);
-    console.log(event.text);
-
-    const response = new Response();
-    const userFind = unrespondedUsers.find(function(user){
-        return user.id == event.user;
+    console.log('user: ',event.user);
+    console.log('message: ',event.text);
     })
     // Todo after lunch:
     //Find conversation by participants.findBy(user => user.id)
-    Conversation.find({})
-        .then(conversations => {
+    // Conversation.find({})
+    //     .then(conversations => {
 
-        })
-    response.username = userFind.name;
-    response.conversation = lastConvo;
-    respone.question = lastConvo.question;
-    response.text = event.text;
-    response.date_submitted = new Date();
+    //     })
 
-    unrespondedUsers = unrespondedUsers.filter(x => event.user == x.id);
 
     // Conversation.participants.forEach(user => {
     //     if (user == event.channel) update_resp(event.text);
     // });
-});
