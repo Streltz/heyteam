@@ -11,9 +11,10 @@
 }
 .slack-logo
 {
+    background: url(../assets/slack-1.svg);
+    
     fill: white !important;
     display: block;
-    background: url(../assets/slack-1.svg);
     background-size: 30px 30px;
     background-repeat: no-repeat;
     width: 30px;

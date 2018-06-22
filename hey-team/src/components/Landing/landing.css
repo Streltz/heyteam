@@ -19,19 +19,35 @@ html
     margin: auto;
     margin-top: -5% !important;
 }
-  
+.section-body
+{
+    margin-top: 5px;
+    margin-left: 18%;
+    margin-right: 18%;
+    font-size: 1.4em;  
+}  
+
   /* Middle Body Container */
 .banner-section {
+    height: 80% !important;
     margin-top: -220px;
     padding-top: 200px;
+
+    padding-bottom: 200px;
     height: 700px;
     color: #fff;
-    background-color: rgb(57, 75, 89);
+    background-image: linear-gradient(rgb(57, 75, 89), rgb(33, 77, 110));
 
     text-align: center;
     z-index: 1;
 }
-
+svg {
+    position: absolute;
+    bottom: -100px;
+    width: 100%;
+    height: 10vw;
+    /* set height to pixels if you want angle to change with screen width */
+  }
 .nav-link-group
 {
     text-decoration: none;

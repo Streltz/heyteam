@@ -9,46 +9,48 @@ import Carousel from './carousel';
 import './landing.css'
 
 class Landing extends React.Component {
-    state = {
-    }
-  
-    render() {
-      return (
-        <main class="landing-main">          
-          <header>
-            <div class="col-md-12">            
-              <div class="Logo-1 col-md-3">
-                Hey-Bot
-              </div>
-              <div class="nav-link-group col-md-9">
-                <Link to="/signup">Sign Up   </Link>
-                <Link to="/signin">   Sign In</Link>
-              </div>
-            </div>                         
-          </header>
+  state = {
+  }
 
-          <section class="banner-section">
-            <div class="col-md-12">
-              <div class="col-md-6" id="description-section">
-                <div class="col-md-12 header-text">Conversation Manager within Slack</div>
-                <div class="col-md-12 desc-text">Build and manage private conversations</div>
+  render() {
+    return (
+      <main class="landing-main">
+        <header>
+          <div class="col-md-12">
+            <div class="Logo-1 col-md-3">
+              Hey-Bot
+              </div>
+            <div class="nav-link-group col-md-9">
+              <Link to="/signup">Sign Up   </Link>
+              <Link to="/signin">   Sign In</Link>
+            </div>
+          </div>
+        </header>
+
+        <header class="banner-section">
+          <div class="col-md-12">
+            <div class="col-md-6" id="description-section">
+              <div class="col-md-12 header-text">Conversation Manager within Slack</div>
+              <div class="col-md-12 desc-text">Build and manage private conversations</div>
               <button id="buy-now" class="btn-blue col-md-6">
                 <Link to="/billing">Buy Now</Link>
-              </button>              
-              </div>
-            </div>            
-          </section>
-          <div className = "Carousel">
-            <Carousel />
+              </button>
+            </div>
           </div>
-        </main>
-      );
-    }
+          <div className="col-md-12">
+          </div>
+        </header>
+
+        <section className="section-body">
+        </section>
+      </main>
+    );
   }
-  
-const mapStateToProps = (state) => {
-    return {
-    } 
 }
 
-export default connect(mapStateToProps, {  })(Landing);
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, {})(Landing);
