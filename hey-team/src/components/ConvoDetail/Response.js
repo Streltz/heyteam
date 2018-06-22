@@ -18,7 +18,7 @@ function Response(props) {
     				return (
     					<div className="q-a">
     						<div className="res-question">Q: {question}</div>
-    						<div className="res-answer">A: {props.response.answers[index]}</div>
+    						<div className="res-answer">A: {props.response.text}</div>
     					</div>
     				)
     			})

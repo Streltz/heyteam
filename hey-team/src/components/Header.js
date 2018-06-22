@@ -23,7 +23,9 @@ class Header extends React.Component {
             <div className="slack-logo">
             </div>
           </div>
-          <div className="signOut" onClick={() => { this.handleSignOut() }}><u>Sign Out</u></div>          
+          <div id="signout-container">
+            <span className="signOut" onClick={() => { this.handleSignOut() }}>Sign Out</span>          
+          </div>
         </div>
       </div>
     );
