@@ -26,7 +26,8 @@ class AddConvo extends Component {
   render() {
     return(
       <div className="form-group">
-        <h3> Add a New Conversation </h3>
+        
+        <h3>Add a New Conversation </h3>
         <form onSubmit={e => e.preventDefault()}>
           <input 
               onChange={this.handleInput}
