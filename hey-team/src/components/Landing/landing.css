@@ -114,12 +114,21 @@ header{
 }
 .btn-blue
 {
+    cursor: pointer;
     background: #368bec none repeat scroll 0 0;
     border: medium none;
     border-radius: 6px;
     box-shadow: 0 5px 0 #07439e;
     color: #fff;
+
     height: 40px;
+    width: 52% !important;
+}
+.btn-blue:hover
+{
+    height: 43px;
+    width: 54% !important;
+    widows: auto;
 }
 
 a:link {
@@ -133,7 +142,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: white;
+    color: white !important;
     text-decoration: none;
 }
 
