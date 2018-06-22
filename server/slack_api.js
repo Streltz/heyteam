@@ -1,6 +1,7 @@
 const { RTMClient, WebClient } = require('@slack/client');
 const mongoose = require('mongoose');
 const Conversation = require('./models/conversationModel');
+const Response = require('./models/responseModel');
 console.log('SLACK API');
 const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg'
 
@@ -11,6 +12,9 @@ const rtm = new RTMClient(token);
 
 // Start the connection to the platform
 rtm.start();
+
+let unrespondedUsers = [];
+let lastConvo;
 
 setInterval(() => { 
     console.log('CYCLE...');        
@@ -27,16 +31,19 @@ setInterval(() => {
                     && !conversation.sent 
                     && conversation.daySent !== day 
                     && conversation.active === true){
-                    console.log('PASS IF STATEMENT');
-                    //edit the daySent to day
-                    conversation.daySent = day;
-                    conversation.save();
-                    conversation.participants.forEach(user=>{
-                        rtm.sendMessage(conversation.question, user.channelId).then(res=>{
-                            console.log('Sent and Res', res);
-                        });
-                    }); 
-                } 
+                        console.log('PASS IF STATEMENT');
+                        lastQuestion = conversation._id;
+                        //edit the daySent to day
+                        conversation.daySent = day;
+                        conversation.dateSent = Date.now();
+                        conversation.save();
+                        conversation.participants.forEach(user=>{
+                            unrespondedUsers.push(user);
+                            rtm.sendMessage(conversation.question, user.channelId).then(res=>{
+                                console.log('Sent and Res', res);
+                            });
+                        }); 
+                    }
             });
            
         }).catch(err => {
@@ -44,3 +51,30 @@ setInterval(() => {
         });
 }, 5000);
 
+
+rtm.on('message', (event) => {
+    console.log(event.user);
+    console.log(event.text);
+
+    const response = new Response();
+    const userFind = unrespondedUsers.find(function(user){
+        return user.id == event.user;
+    })
+    // Todo after lunch:
+    //Find conversation by participants.findBy(user => user.id)
+    Conversation.find({})
+        .then(conversations => {
+
+        })
+    response.username = userFind.name;
+    response.conversation = lastConvo;
+    respone.question = lastConvo.question;
+    response.text = event.text;
+    response.date_submitted = new Date();
+
+    unrespondedUsers = unrespondedUsers.filter(x => event.user == x.id);
+
+    // Conversation.participants.forEach(user => {
+    //     if (user == event.channel) update_resp(event.text);
+    // });
+});
