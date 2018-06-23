@@ -32,7 +32,8 @@ const validateToken = (req, res, next) => {
 };
 
 conversationRouter.get('/conversations', validateToken, function(req, res){
-	const { userId } = req.decoded;
+	console.log('USER ID GET CONVO', req.decoded);
+  const { userId } = req.decoded;
   console.log('DECODED', req.decoded);
 	Conversation.find({uid: userId})
   .then(conversations => {

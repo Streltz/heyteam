@@ -1,8 +1,6 @@
 import axios from 'axios';
 const URL = 'http://localhost:5000';
-const token = localStorage.getItem('token');
 export const SORTING = 'SORTING';
-console.log(token);
 
 //***
 // NOTE: When developing locally, change ROOT_URL to localhost.
@@ -28,7 +26,7 @@ export const addConvo = (info, history) => {
 		});
 
 		axios 
-		.post(`${ROOT_URL}/conversation`, info, {headers: {token}})
+		.post(`${ROOT_URL}/conversation`, info, {headers: {token: localStorage.getItem('token')}})
 		.then(response => {
 		dispatch({ type: 'CONVO_ADDED', payload: response.data });
 		history.push('/dashboard');
@@ -83,10 +81,11 @@ export const deleteConversation = info => {
 };
 
 export const getConvos = info => {
+
 	return dispatch => {
 		 dispatch({ type: 'LOADING_CONVO' });
 		 axios
-			 .get(`${ROOT_URL}/conversations`, {headers: {token}})
+			 .get(`${ROOT_URL}/conversations`, {headers: {token: localStorage.getItem('token')}})
 			 .then(response => {
 					 dispatch({ type: 'FETCHED_CONVOS', payload: response.data });
 				})

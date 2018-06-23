@@ -6,10 +6,10 @@ const userInit = {
 	userName: '',
 	token: '',
 	slackUsersOrigin: [],
-	slackUsersMutated: []
+	slackUsersMutated: [],
+	formError: ''
 }
 // if user exists in local storage, assign username to user initial name
-console.log('REDUCER LOCALSTORAGE', localStorage);
 const userName = localStorage.getItem('userName');
 const token = localStorage.getItem('token');
 if(userName && token){
@@ -28,8 +28,17 @@ const UserReducer = (state = userInit, action) => {
 		case LOGGED_OUT:
 		return { ...state, logged_in: false, name: null}
 
+		case LOGGED_OUT:
+		return { ...state, logged_in: false, name: null}
+
+		case 'CLEAR_FORM_ERROR':
+		return { ...state, formError: ''}
+
 		case FETCHED_SLACKUSERS:
 		return { ...state, slackUsersOrigin: action.payload }
+
+		case 'SIGNIN_ERROR':
+		return { ...state, formError: action.payload}
 
 		case SEARCH_SLACKUSERS:
 		if(action.payload === '') return { ...state, slackUsersMutated: [] };

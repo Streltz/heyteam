@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../../actions/userAction';
+import { signIn, clearFormError } from '../../actions/userAction';
 import { Link } from 'react-router-dom';
 import { Card} from 'reactstrap';
 
@@ -10,6 +10,10 @@ class Signin extends React.Component {
   state = {
     email: '',
     password: ''
+  }
+
+  componentWillMount(){
+    this.props.clearFormError();
   }
 
   handleSignIn = () => {
@@ -32,7 +36,7 @@ class Signin extends React.Component {
             <div class="text-left col-md-12 heading"> Sign In </div>
             <div class="text-left card-descriptor col-md-12">with your Hey-Bot Account</div>
             <br />
-
+            <div className="form-error">{this.props.user.formError}</div>
             <input class="col-md-10 form-control" name="email" value={this.state.email}
               placeholder="Email" onChange={this.handleOnChange} /><br />
             
@@ -58,4 +62,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { signIn })(Signin);
+export default connect(mapStateToProps, { signIn, clearFormError })(Signin);

@@ -13,8 +13,7 @@ const rtm = new RTMClient(token);
 // Start the connection to the platform
 rtm.start();
 
-setInterval(() => { 
-    console.log('CYCLE...');        
+setInterval(() => {        
     Conversation.find({})
         .then(conversations => {
             // console.log('CONVO DB', conversations);
