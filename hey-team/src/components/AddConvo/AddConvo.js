@@ -160,7 +160,7 @@ class AddConvo extends Component {
       <main id="main-addconvo">
         <Card className="edge-card">
           <div className="card-dashoard">
-            <div class="sub-header text-left col-md-12"> Add a New Conversation </div>
+            <div className="sub-header text-left col-md-12"> Add a New Conversation </div>
 
             <form onSubmit={e => e.preventDefault()}>
               <input
@@ -172,7 +172,7 @@ class AddConvo extends Component {
                 placeholder="Enter Name for this conversation"
               />
               <br />
-              <div class="sub-header text-left col-md-12">Schedule</div>
+              <div className="sub-header text-left col-md-12">Schedule</div>
               <div className="days">
 
                 {
@@ -233,12 +233,12 @@ class AddConvo extends Component {
               </div>
 
               <br />
-              <div class="sub-header text-left col-md-12">Question</div>
+              <div className="sub-header text-left col-md-12">Question</div>
               <div className="input-group mb-3">
                 <input className="form-control" type='text' onChange={this.onChangeQuestion} value={this.state.question} placeholder="Type a question" />
               </div>
               <br />
-              <div class="sub-header text-left col-md-12">Participants</div>
+              <div className="sub-header text-left col-md-12">Participants</div>
               <div className="display-users">
                 {
                   this.state.participants.map((user, i) => {

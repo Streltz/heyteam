@@ -56,6 +56,7 @@ userRouter.post('/login', function(req, res){
 	const { email, password } = req.body;
 	User.findOne({ email }).then(user => {
 		if(!user){
+			console.log('USER NOT FOUND');
 			res.json({success: false, message: 'Wrong email or password'});
 		}
 		if(user){
@@ -66,6 +67,7 @@ userRouter.post('/login', function(req, res){
 			}
 			bcrypt.compare(password, user.password, function(err, valid) {
     			if(!valid){
+    				console.log('LOGIN FAIL: WRONG EMAIL OR PASSWORD');
     				res.json({success: false, message: 'Wrong email or password'});
     			}else{
     				const token = jwt.sign(userObject, secretEnv, { expiresIn: '1000h' });

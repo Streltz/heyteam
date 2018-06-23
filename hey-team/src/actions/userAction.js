@@ -47,6 +47,7 @@ export const signIn = (user, history) => {
     return (dispatch) => {
       axios.post(`${ROOT_URL}/login`, user)
       .then(res => {
+        console.log(res);
         if(res.status === 200){
           // server returns a token
           const token = res.data.token;

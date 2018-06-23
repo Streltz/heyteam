@@ -9,13 +9,15 @@ const userInit = {
 	slackUsersMutated: []
 }
 // if user exists in local storage, assign username to user initial name
-console.log('locla', localStorage);
+console.log('REDUCER LOCALSTORAGE', localStorage);
 const userName = localStorage.getItem('userName');
 const token = localStorage.getItem('token');
 if(userName && token){
 	userInit.logged_in = true;
 	userInit.userName = userName;
 	userInit.token = token;
+}else{
+	
 }
 
 const UserReducer = (state = userInit, action) => {

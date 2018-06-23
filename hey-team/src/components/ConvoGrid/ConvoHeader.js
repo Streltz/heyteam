@@ -23,7 +23,7 @@ class ConvoHeader extends React.Component {
       <div className="convo-header">
         {
           this.state.tabs.map(tab=>{
-            return <div className={this.state.active === tab ? "sort active" : "sort"} onClick={()=>{this.handleClickTab(tab)}}>{tab}</div>
+            return <div key={tab} className={this.state.active === tab ? "sort active" : "sort"} onClick={()=>{this.handleClickTab(tab)}}>{tab}</div>
           })
         }
       </div>
