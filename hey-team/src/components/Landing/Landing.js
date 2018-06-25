@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 //import { addConvo } from '../actions';
 
 // import Loading from './Loading';
-import Carousel from './carousel';
 
 import './landing.css'
 
@@ -14,25 +13,25 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <main class="landing-main">
+      <main className="landing-main">
         <header id="nav-header">
-          <div class="col-md-12">
-            <div class="Logo-1 col-md-3">
+          <div className="col-md-12">
+            <div className="Logo-1 col-md-3">
               Hey-Bot
               </div>
-            <div class="nav-link-group col-md-9">
+            <div className="nav-link-group col-md-9">
               <Link to="/signup">Sign Up   </Link>
               <Link to="/signin">   Sign In</Link>
             </div>
           </div>
         </header>
 
-        <header id="banner" class="banner-section">
-          <div class="col-md-12">
-            <div class="col-md-6" id="description-section">
-              <div class="col-md-12 header-text">Conversation Manager within Slack</div>
-              <div class="col-md-12 desc-text">Build and manage private conversations</div>
-              <button id="buy-now" class="btn-blue col-md-10">
+        <header id="banner" className="banner-section">
+          <div className="col-md-12">
+            <div className="col-md-6" id="description-section">
+              <div className="col-md-12 header-text">Conversation Manager within Slack</div>
+              <div className="col-md-12 desc-text">Build and manage private conversations</div>
+              <button id="buy-now" className="btn-blue col-md-10">
                 <Link to="/billing">Buy Now</Link>
               </button>
             </div>
