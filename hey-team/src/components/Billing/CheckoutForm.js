@@ -46,7 +46,7 @@ class CheckoutForm extends React.Component {
       <main className="main-billing">
         <Card className="edge-card">
           <div className="card-dashboard">
-            <div class="logo text-left col-md-12">Billing</div>
+            <div className="logo text-left col-md-12">Billing</div>
             <br /><br />
 
             {/* <label>

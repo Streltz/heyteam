@@ -83,11 +83,17 @@ header{
     color: white;
 }
 
+.right-label
+{
+    margin-left: 15px
+}
+
 .Logo-1
 {
     color: white;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
+    line-height: 1.3333;
     font-size: 45px;
     padding: 0px;
 
