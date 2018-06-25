@@ -3,25 +3,37 @@
     text-align: center;    
     padding-top: 210px;
     padding-left: 15%;
-    padding-right: 15%;
-    padding-bottom: 30%;
+
+    padding-bottom: 20%;
+    background-color: white;
+    /* background: linear-gradient(to bottom, rgb(29, 117, 199), rgb(43, 62, 73)) */
 }
-.app
+
+
+#signin-form > input
 {
-    background-color: white !important;
+    margin-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
-.card-dull
-{
+
+.card-dull  
+{     
     box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
     padding: 30px;  
-    height: 450px;
+    padding-top: 45px !important;
+    height: 460px;
 }
 
 .blue-link
 {
     color: rgb(17, 151, 212) !important;
 }
-
+.blue-link:hover
+{
+    color: rgba(44, 129, 207, 0.938) !important;
+}
 .light-blue-btn
 {
     background: #3786e0 none repeat scroll 0 0;
@@ -30,7 +42,7 @@
     box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
     color: #fff;
     height: 40px;
-    width: 80px;
+    width: 90px;
 }
 .light-blue-btn:hover
 {
@@ -44,12 +56,35 @@
     font-weight: 700;
     font-size: 2em;
     padding: 0px;
+
+    line-height: 1.3333;
 }
+.logo-blue
+{
+    color:rgba(2, 7, 17, 0.815);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    padding: 0px;
+
+    line-height: 1.3333;
+}
+
+#create-account
+{
+    margin-left: -25px;
+}
+
 .heading
 {   
-    font-weight: 520;
-    font-size: 1.2em;
-    padding: 0px;
+    font-family: 'Google Sans',arial,sans-serif;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .form-error {
@@ -97,5 +132,15 @@
     html
     {
         background-color: white;
+    }
+    .light-blue-btn
+    {
+        width: 200px;
+    }
+    
+    #create-account
+    {
+        margin-top: 20px;
+        margin-left: 0px !important;
     }
 }
