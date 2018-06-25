@@ -90,7 +90,13 @@ export const getConvos = info => {
 					 dispatch({ type: 'FETCHED_CONVOS', payload: response.data });
 				})
  	};
- return { type: 'TEST', payload: null}
+};
+
+export const newResponse = id => {
+	return({
+		type: 'NEW_RESPONSE',
+		payload: id
+	});
 };
 
 export const sortConvos = tab => {

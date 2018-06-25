@@ -2,21 +2,150 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const { RTMClient, WebClient } = require('@slack/client');
+
+const Conversation = require('./models/conversationModel');
+const Response = require('./models/responseModel');
+
+const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 const userRoutes = require('./routes/userRoutes');
 const conversationRoutes = require('./routes/conversationRoutes');
 const paymentAPI = require('./routes/payment');
+const app = express();
+const server = require('http').createServer(app);  
 
-const server = express();
-const slackAPI = require('./slack_api');
+// const slackAPI = require('./slack_api');
+
+var io = require('socket.io')(server);
+
+io.on('connection', function(client){
+	console.log('connected to socket');
+  // client.emit('update', 'hello from server');
+
+  
+
+
+//***********************
+
+
+function getTime(){
+  const time = new Date().toString().split(' ');
+  console.log('TIME TO STRING', time);
+const hour = time[4].split(':');
+const modTime = `${time[0]} ${time[1]} ${time[2]} - ${hour[0]}:${hour[1]}${hour[0] > 11 ? 'PM' : 'AM'}`;
+return modTime;
+}
+
+
+if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
+
+// Initialize an RTM API client
+const rtm = new RTMClient(token);
+
+// Start the connection to the platform
+rtm.start();
+
+setInterval(() => {        
+    Conversation.find({})
+        .then(conversations => {
+            // console.log('CONVO DB', conversations);
+            conversations.forEach(conversation=>{
+               const now = new Date();
+                const hour = now.getHours();
+                const day = now.getDay();
+                // console.log('TIME', hour, day);
+                if(hour === conversation.time 
+                    && conversation.schedule_days.includes(day) 
+                    && !conversation.sent 
+                    && conversation.daySent !== day 
+                    && conversation.active === true){
+                        console.log('PASS IF STATEMENT');
+                        lastQuestion = conversation._id;
+                        //edit the daySent to day
+                        conversation.daySent = day;
+                        conversation.dateSent = Date.now();
+                        conversation.save();
+                        conversation.participants.forEach(user=>{
+                            rtm.sendMessage(conversation.question, user.channelId).then(res=>{
+                                console.log('Sent and Res', res);
+                            });
+                        }); 
+                    }
+            });
+           
+        }).catch(err => {
+            console.log(err);
+        });
+}, 5000);
+
+
+rtm.on('message', (event) => {
+  console.log('user: ',event.user);
+  console.log('message: ',event.text);
+
+  Conversation.find({}).then(conversations => {
+    let userConvos =[];
+    conversations.forEach(convo => {
+      convo.participants.forEach(user => {
+        if (user.id === event.user && convo.dateSent) {
+          userConvos.push(convo);
+        }
+      });
+    });
+
+    const user = userConvos[0].participants.find(user => {
+      return user.id === event.user;
+    });
+
+    const latestConvo = userConvos[userConvos.length - 1];
+
+    Response.find({conversation: latestConvo._id, username: user.name}).then(res => {
+      console.log('RES FIND', res.length);
+      if(res.length > 0){
+        res[0].texts.push({text: event.text, time: getTime()});
+        res[0].save().then(res=>{
+        	latestConvo.newMessage = true;
+        	latestConvo.save().then(res=>{
+        		 client.emit('new response', res._id);
+        	});
+        });
+      }else{
+        const newRes = new Response();
+        newRes.username = user.name;
+        newRes.user_image = user.profile.image_32;
+        newRes.conversation = latestConvo._id;
+        newRes.question = latestConvo.question;
+        newRes.texts = [{text: event.text, time: getTime()}];
+        newRes.date_submitted = Date.now();
+        newRes.save().then(res => {
+          latestConvo.responses.push(res._id);
+          latestConvo.newMessage = true;
+          latestConvo.save().then(res=>{
+        		 client.emit('new response', res._id);
+        	});
+        });
+      }
+    })     
+  });
+});
+
+//***********************
+
+
+
+  // client.on('disconnect', function(){});
+});
+
+
 
 // server.use(cors({
 //   origin: 'https://whispering-journey-17247.herokuapp.com',
 //   credentials: true
 // }));
-server.use(cors());
+app.use(cors());
 
-server.use(bodyParser.json());
+app.use(bodyParser.json());
 
 const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
 
@@ -29,7 +158,7 @@ mongoose
     console.log('error connect to mongo', err);
 });
 
-server.use('/', userRoutes, conversationRoutes, paymentAPI);
+app.use('/', userRoutes, conversationRoutes);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
