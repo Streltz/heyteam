@@ -64,7 +64,10 @@ const convertTime = (time, ampm, zone)=>{
   if(ampm === 'AM'){
     hour = newTime;
   }else if(ampm === 'PM'){
-    hour = Number(timeArray[0]) + 12;
+    if(newTime === '12'){
+      newTime = '0';
+    }
+    hour = Number(newTime) + 12;
   }
   return hour;
 }
