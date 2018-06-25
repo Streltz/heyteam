@@ -23,11 +23,10 @@ class ViewConvo extends React.Component {
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
     const id = this.props.match.params.id;
-    console.log('id: ', id);
-    console.log('this.props.convos: ', this.props.convos);
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });
+    console.log('THE SINGLE CONVO', convo);
     return (
       <div className='view-wrapper'>
           {!this.props.loading ? 
@@ -36,7 +35,7 @@ class ViewConvo extends React.Component {
               <div className="part-title">Participants</div>
               <div className="part-edit-delete">
                 <Link to="/dashboard/edit">
-                  <span className="edit-icon"><i className="material-icons">edit</i></span>
+                  {convo.responses.length > 0 ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
                 </Link>
                 <div className="delete-convo">
                   <span className="delete-icon"><i className="material-icons">delete</i></span>
@@ -46,8 +45,13 @@ class ViewConvo extends React.Component {
                 <div className="participants">
                   {
                     convo.participants.map(participant => {
+                      const img = participant.profile.image_32;
+                      const name = participant.profile.display_name;
                       return (
-                        <div className="participant">img</div>
+                        <div className="participant">
+                        <div className="image"><img src={`${img}`} /></div>
+                        <div className="display-name">{name}</div>
+                        </div>
                       )
                     })
                   }
@@ -65,7 +69,7 @@ class ViewConvo extends React.Component {
                 <div className="response-boxes">
                   { convo.responses.length > 0 ? convo.responses.map(response => {
                       return (
-                        <Response questions={convo.questions} response={response}/>
+                        <Response question={convo.question} response={response}/>
                       )
                     }) : 'No responses yet'
                   }
@@ -85,7 +89,6 @@ class ViewConvo extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('CONVO VIEW STATE', state.convos);
   return {
     convos: state.convos
   }

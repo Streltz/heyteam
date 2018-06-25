@@ -36,11 +36,11 @@ conversationRouter.get('/conversations', validateToken, function(req, res){
   const { userId } = req.decoded;
   console.log('DECODED', req.decoded);
 	Conversation.find({uid: userId})
-  .then(conversations => {
+  .populate('responses')
+  .exec((err, conversations) => {
+    if(err) console.log(err);
     console.log('CONVOS FROM DB', conversations);
 		res.json(conversations);
-	}).catch(err => {
-		res.send(err);
 	});
 });
 
@@ -60,9 +60,9 @@ conversationRouter.get('/conversations/:id', validateToken, function(req, res){
 
 const convertTime = (time, ampm, zone)=>{
   let hour = null;
-  let timeArray = time.split(':')[0];
+  let newTime = time.split(':')[0];
   if(ampm === 'AM'){
-    hour = timeArray[0];
+    hour = newTime;
   }else if(ampm === 'PM'){
     hour = Number(timeArray[0]) + 12;
   }

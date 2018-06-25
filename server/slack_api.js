@@ -61,20 +61,19 @@ rtm.on('message', (event) => {
                     }
                 });
             });
-            // console.log('userConvos: ', userConvos);
+
             const user = userConvos[0].participants.find(user => {
-                console.log('user.id : ',user.id, 'event.user: ', event.user) 
                 return user.id === event.user;
             });
-            console.log('user: ', user);
             const latestConvo = userConvos[userConvos.length - 1];
         
             const newRes = new Response();
             newRes.username = user.name;
+            newRes.user_image = user.profile.image_32;
             newRes.conversation = latestConvo._id;
             newRes.question = latestConvo.question;
             newRes.text = event.text;
-            // newRes.date_submitted = Date.now();
+            newRes.date_submitted = new Date();
             newRes.save().then(res => {
                 latestConvo.responses.push(res._id)
                 latestConvo.save();
