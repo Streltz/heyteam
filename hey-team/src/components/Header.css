@@ -33,11 +33,11 @@
 
 #signout-container
 {
-    padding-top: 10px !important;
+    padding-top: 15px !important;
 }
 
 .signOut {
-    margin-right: -30%;
+    margin-right: -30%;    
     color: white;
     cursor: pointer;
 }
