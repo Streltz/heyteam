@@ -41,7 +41,7 @@ html
     padding-bottom: 200px;
     height: 700px;
     color: #fff;
-    background-image: linear-gradient(rgb(57, 75, 89), rgb(33, 77, 110));
+    background-image: linear-gradient(rgb(35, 73, 95), rgb(33, 77, 110));
 
     text-align: center;
     z-index: 1;
@@ -114,12 +114,21 @@ header{
 }
 .btn-blue
 {
+    cursor: pointer;
     background: #368bec none repeat scroll 0 0;
     border: medium none;
     border-radius: 6px;
     box-shadow: 0 5px 0 #07439e;
     color: #fff;
+
     height: 40px;
+    width: 52% !important;
+}
+.btn-blue:hover
+{
+    height: 43px;
+    width: 54% !important;
+    widows: auto;
 }
 
 a:link {
@@ -133,11 +142,62 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: white;
+    color: white !important;
     text-decoration: none;
 }
 
 /* selected link */
 a:active {
     color: white;
+}
+
+/* Pay No Attention to Below */
+@media screen and (max-width: 1700px) and (min-width: 1560px)
+{
+    .section-body
+    {
+        margin-top: 50%;
+    }
+}
+@media screen and (max-width: 1560px) and (min-width: 1340px)
+{
+    .section-body
+    {
+        margin-top: 55%;
+    }
+}
+@media screen and (max-width: 1340px) and (min-width: 1250px)
+{
+    .section-body
+    {
+        margin-top: 60%;
+    }
+}
+@media screen and (max-width: 1250px) and (min-width: 1110px)
+{
+    .section-body
+    {
+        margin-top: 65%;
+    }
+}
+@media screen and (max-width: 1110px) and (min-width: 975px)
+{
+    .section-body
+    {
+        margin-top: 75%;
+    }
+}
+@media screen and (max-width: 975px) and (min-width: 860px)
+{
+    .section-body
+    {
+        margin-top: 85%;
+    }
+}
+@media screen and (max-width: 860px) 
+{
+    .section-body
+    {
+        margin-top: 95%;
+    }
 }
