@@ -154,7 +154,7 @@ class AddConvo extends Component {
       }
     }
 
-    const days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
     return (
 
       <main id="main-addconvo">

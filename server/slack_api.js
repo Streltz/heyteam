@@ -73,7 +73,7 @@ rtm.on('message', (event) => {
             newRes.conversation = latestConvo._id;
             newRes.question = latestConvo.question;
             newRes.text = event.text;
-            // newRes.date_submitted = Date.now();
+            newRes.date_submitted = new Date();
             newRes.save().then(res => {
                 latestConvo.responses.push(res._id)
                 latestConvo.save();

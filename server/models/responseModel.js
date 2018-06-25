@@ -7,7 +7,7 @@ const ResponseSchema = new mongoose.Schema({
 	conversation: {type: ObjectId, ref: 'Conversation'},
 	question: {type: String},
 	text: {type: String},
-	// date_submitted: {Type: String},
+	date_submitted: {type: mongoose.Schema.Types.Mixed}
 });
 
 const ResponseModel = mongoose.model('Response', ResponseSchema);
