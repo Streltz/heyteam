@@ -52,6 +52,12 @@
     padding: 0px;
 }
 
+.form-error {
+    text-align: left;
+    height: 25px;
+    color: red;
+}
+
 @media screen and (min-width: 1630px){
     .main-login {
         padding-left: 37% !important;

@@ -62,6 +62,7 @@ class ConvoGrid extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('STATE CONVO', state.convos);
   return {
     convos: state.convos
   }

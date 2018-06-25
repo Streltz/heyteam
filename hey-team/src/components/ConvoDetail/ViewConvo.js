@@ -19,10 +19,12 @@ class ViewConvo extends React.Component {
   }
 
   render() {
-    if(this.props.convos.length < 1) return null;
+    if(this.props.convos.convos.length < 1) return null;
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
     const id = this.props.match.params.id;
+    console.log('id: ', id);
+    console.log('this.props.convos: ', this.props.convos);
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });

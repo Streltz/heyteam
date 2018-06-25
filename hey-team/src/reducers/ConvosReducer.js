@@ -12,6 +12,9 @@ const ConvosReducer = (state = initState, action) => {
 
         case 'FETCHED_CONVOS':
             return {...state, originalConvos: action.payload, convos: action.payload};
+
+        case 'LOGGED_OUT':
+            return {...state, originalConvos: [], convos: []};
         
         case 'CONVO_ADDED':
             const copyOriginal = state.originalConvos;
