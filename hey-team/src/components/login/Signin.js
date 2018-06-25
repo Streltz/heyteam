@@ -51,8 +51,7 @@ class Signin extends React.Component {
               <div class="col-md-12">
                 <button class="signin light-blue-btn" onClick={() => { this.handleSignIn() }}>Sign in</button><br />
               </div>
-
-              <Link to="/signup" class="blue-link">Don't have an account?</Link>
+              <Link to="/signup" class="blue-link spaced">Don't have an account?</Link>
             </form>
           </div>
         </Card>

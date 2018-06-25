@@ -21,7 +21,10 @@
 {
     color: rgb(17, 151, 212) !important;
 }
-
+.blue-link:hover
+{
+    color: rgba(44, 129, 207, 0.938) !important;
+}
 .light-blue-btn
 {
     background: #3786e0 none repeat scroll 0 0;
