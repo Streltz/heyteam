@@ -6,7 +6,7 @@ const ResponseSchema = new mongoose.Schema({
 	user_image: {type: String},
 	conversation: {type: ObjectId, ref: 'Conversation'},
 	question: {type: String},
-	text: {type: String},
+	texts: [{type: mongoose.Schema.Types.Mixed}],
 	date_submitted: {type: mongoose.Schema.Types.Mixed}
 });
 

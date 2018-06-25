@@ -2,8 +2,8 @@ import React from 'react';
 import {Card} from 'reactstrap';
 
 
+
 function Response(props) {
-  console.log('TIME', props.response.date_submitted);
   const img = props.response.user_image;
 
   let time = props.response.date_submitted.toString().split('.')[0];
@@ -17,10 +17,15 @@ function Response(props) {
       	  <div className="res-username">{props.response.username}</div>
     	  </div>
       </div>
-      <div className="res-content">
-        <div className="res-time">{newTime}</div>
-        <div className="res-answer">{props.response.text}</div>
-      </div>
+      {
+        props.response.texts.map(text => {
+          return (<div className="res-content">
+        <div className="res-time">{text.time}</div>
+        <div className="res-answer">{text.text}</div>
+      </div>);
+        })
+      }
+      
       <div className="qs-as">
     	</div>
     </div>

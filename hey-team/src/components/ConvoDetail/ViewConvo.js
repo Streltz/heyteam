@@ -9,6 +9,15 @@ import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
 import { getConvos } from '../../actions/convoAction';
 
+function groupUser(res){
+  // const group = [];
+  // res.responses.forEach(response => {
+  //   if(group.length < 1){
+  //     group.push();
+  //   }
+  // });
+}
+
 class ViewConvo extends React.Component {
   state = {
     redirect: false,
@@ -27,6 +36,7 @@ class ViewConvo extends React.Component {
       return convo._id === id;
     });
     console.log('THE SINGLE CONVO', convo);
+    groupUser(convo);
     return (
       <div className='view-wrapper'>
           {!this.props.loading ? 
