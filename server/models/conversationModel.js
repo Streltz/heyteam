@@ -18,3 +18,7 @@ const ConversationSchema = new mongoose.Schema({
 const ConversationModel = mongoose.model('Conversation', ConversationSchema);
 
 module.exports = ConversationModel;
+
+[{'username': 'lo', 'text': 'hello', 'time': '10' }, {'username': 'lo', 'text': 'hi', 'time': '11'}]
+
+{'username': 'lo', texts: [{'time': '10', text: 'hello'}, {'time': '11', text: 'hi'}]}

@@ -15,6 +15,17 @@
   text-decoration: none !important;
 
   padding-top: 6px;
+  display: flex;
+}
+.sidebar-content i {
+  font-size: 30px;
+   padding-top: 5px;
+   padding-right: 5px;
+}
+
+.sidebar-tab {
+  font-size: 25px;
+  padding-bottom: -10px;
 }
 .sidebar-content:hover, .sidebar-content:visited, .sidebar-content:active 
 {

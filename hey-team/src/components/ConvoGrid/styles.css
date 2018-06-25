@@ -37,8 +37,15 @@
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);
 	margin-right: 20px;
 	margin-bottom: 25px;
-
 	color: rgba(53, 53, 53, 0.911);
+	max-width: 500px;
+	min-width: 200px;
+}
+.edge-convo .title {
+	margin: 10px;
+	font-size: 22px;
+	font-weight: bold;
+	border-bottom: 1px solid #dedede;
 }
 
 .edit-delete {
@@ -51,14 +58,10 @@
 
 .convo-content {
 	text-align: left;
-	margin: 20px;
+	font-size: 22px;
+	margin: 0px 15px 20px 15px;
 }
 
-.title {
-	font-size: 25px;
-	font-weight: bold;
-	margin-bottom: 15px;
-}
 
 .convo-content .question{
 	text-align: left;
@@ -75,6 +78,16 @@
     bottom: 100px;
     right: 10%;
     margin-left: -104.5px; 
+}
+.convo-status {
+	background: #f2f2f2;
+	color: #969696;
+	height: 30px;
+}
+.convo-status .responded {
+	display: inline-block;
+	float: right;
+	margin: 5px 5px -5px 0px;
 }
 .circle-btn-blue
 {

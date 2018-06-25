@@ -15,19 +15,19 @@ class SideBar extends React.Component {
         <div className="LeftColumnPanel text-left">
 					<Link to="/dashboard">
 					  <div className="sidebar-content">
-              <i className="material-icons">supervisor_account</i> Conversations 
-             </div>
+              <i className="material-icons">supervisor_account</i><div class="sidebar-tab">Conversations</div>
+            </div>
 					</Link>
 
 					<Link to="/dashboard/preferences">
             <div className="sidebar-content"> 
-              <i className="material-icons">settings</i> Preferences 
+              <i className="material-icons">settings</i><div class="sidebar-tab">Preferences</div>
             </div>
 					</Link>	
 					
           <Link to="/dashboard/billing">
             <div className="sidebar-content">
-              <i className="fa fa-cc-stripe"></i> Billing
+              <i className="fa fa-cc-stripe"></i><div class="sidebar-tab">Billing</div>
             </div>
           </Link>
 				</div>		
