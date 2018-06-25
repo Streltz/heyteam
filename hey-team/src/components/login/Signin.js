@@ -36,8 +36,8 @@ class Signin extends React.Component {
       <main className="main-login">
         <Card className="edge-dull">
           <div className="login card-dull">
-            <form onSubmit={(e) => {this.handleSignIn(e)}}>
-              <div class="logo text-left col-md-12">Hey-Bot</div>
+            <form id="signin-form" onSubmit={(e) => {this.handleSignIn(e)}}>
+              <div class="logo-blue text-left col-md-12">Hey-Bot</div>
               <div class="text-left col-md-12 heading"> Sign In </div>
               <div class="text-left card-descriptor col-md-12">with your Hey-Bot Account</div>
               <br />
@@ -47,11 +47,11 @@ class Signin extends React.Component {
 
               <input class="col-md-10 form-control" name="password" type="password" value={this.state.value}
                 placeholder="Password" onChange={this.handleOnChange} /><br />
-
-              <div class="col-md-12">
+              <br />
+              <div class="col-md-12">                              
                 <button class="signin light-blue-btn" onClick={() => { this.handleSignIn() }}>Sign in</button><br />
+                <Link to="/signup" class="blue-link spaced">Don't have an account?</Link>
               </div>
-              <Link to="/signup" class="blue-link spaced">Don't have an account?</Link>
             </form>
           </div>
         </Card>
