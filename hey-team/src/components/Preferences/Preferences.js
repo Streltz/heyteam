@@ -23,10 +23,10 @@ class Preferences extends React.Component {
         <Card className="edge-card">
           <div id="card-pref" className="text-left">
             <div className="logo">Preferences</div>
-            <br /><br />
+            <br />
             
-            <div classname="sub-header">Email Summary</div>
-            <form class="form-group">
+            <h2 className="detail-header">Email Summary</h2>
+            <form className="form-group">
               <div className="radio-container col-md-12">
                 <div className="radio">
                   <input type="radio" onChange={this.handleOptionChange} value="On" checked={this.state.selectedOption === 'On'} />
