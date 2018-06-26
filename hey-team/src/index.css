@@ -1,4 +1,22 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+:root
+{
+    --main-dark: #24292e;
+    --main-dark-light: rgba(58, 58, 58, 0.815);
+
+    --main-color-light: #6DAEDB;
+    --main-color-dark: #173753;
+    
+    --alt-color-light: #19647E;
+    --alt-color-dark: #1B4353;
+
+    --alt-alt-blue: rgb(17, 151, 212);
+    --alt-alt-blue-light: rgba(44, 129, 207, 0.938);
+
+    --main-background: #F9F4F6;
+}
 
 body {
   margin: 0;
@@ -6,6 +24,84 @@ body {
   font-family: sans-serif;
 }
 
+/* Errors */
+.form-error {
+  text-align: left;
+  height: 25px;
+  color: red;
+}
+
+
+/* Heading */
+.heading
+{   
+    font-family: 'Google Sans',arial,sans-serif;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* Links */
 a:link:hover{
   text-decoration: none;  
+}
+
+.blue-link
+{
+    color: var(--alt-alt-blue) !important;
+}
+.blue-link:hover
+{
+    color: var(--alt-alt-blue-light) !important;
+}
+
+/* Logo */
+.black-light
+{
+    color: var(--main-dark-light);
+}
+
+.black-dark
+{
+    color: var(--main-dark);
+}
+
+.logo
+{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  padding: 0px;
+
+  line-height: 1.3333;
+}
+
+/* Buttons */
+.light-blue-btn
+{
+    background: #3786e0 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+    color: #fff;
+    height: 40px;
+    width: 90px;
+}
+.light-blue-btn:hover
+{
+    background: #549ff5 none repeat scroll 0 0;
+}
+
+
+/* Cards */
+.card-dull  
+{     
+    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+    padding: 30px;  
+    padding-top: 45px !important;
+    height: 460px;
 }
