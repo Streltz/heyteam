@@ -10,6 +10,7 @@
 
 #signin-form > input
 {
+    overflow: hidden;
     margin-left: 10px;
     border-top: none;
     border-left: none;

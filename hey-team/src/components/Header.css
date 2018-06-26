@@ -1,5 +1,5 @@
 .headContain {
-    background-color: #24292e;   
+    background-color: var(--main-dark);   
     height: 56px; 
 }
 
@@ -13,7 +13,7 @@
 {
     background: url(../assets/slack-1.svg);
     
-    fill: white !important;
+    fill: var(--main-white) !important;
     display: block;
     background-size: 30px 30px;
     background-repeat: no-repeat;
@@ -21,7 +21,7 @@
     height: 30px;
     size: 100%;
     
-    margin-top: 12px;
+    margin-top: -34px;
 }
 
 .headbar-logo
@@ -38,7 +38,7 @@
 
 .signOut {
     margin-right: -30%;    
-    color: white;
+    color: var(--main-white);
     cursor: pointer;
 }
 
