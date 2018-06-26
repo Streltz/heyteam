@@ -29,7 +29,7 @@ class Landing extends React.Component {
         <header id="banner" className="banner-section">
           <div className="col-md-12">
             <div className="col-md-6" id="description-section">
-              <div className="col-md-12 header-text">Conversation Manager within Slack</div>
+              <div className="col-md-12 header-text">Slack Conversation Manager</div>
               <div className="col-md-12 desc-text">Build and manage private conversations</div>
               <button id="buy-now" className="btn-blue col-md-10">
                 <Link to="/billing">Buy Now</Link>
