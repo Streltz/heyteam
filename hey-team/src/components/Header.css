@@ -1,14 +1,16 @@
 .headContain {
-    background-color: var(--main-dark);   
+    background-color: var(--main-color-dark);   
     height: 56px; 
 }
 
-.logo-wrapper {
+.logo-wrapper 
+{
     float: left;
     height: 25px;
     padding: 2px;
     margin-left: 325px;
 }
+
 .slack-logo
 {
     background: url(../assets/slack-1.svg);
@@ -36,12 +38,14 @@
     padding-top: 15px !important;
 }
 
-.signOut {
+.signOut 
+{
     margin-right: -30%;    
     color: var(--main-white);
     cursor: pointer;
 }
 
-u, ins {
+u, ins 
+{
     text-decoration: none;
 }
