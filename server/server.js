@@ -93,15 +93,15 @@ rtm.on('message', (event) => {
 
     const latestConvo = userConvos[userConvos.length - 1];
 
-    Response.find({conversation: latestConvo._id, username: user.name}).then(res => {
-      console.log('RES FIND', res.length);
-      if(res.length > 0){
-        res[0].texts.push({text: event.text, time: getTime()});
-        res[0].save().then(res=>{
+    Response.findOne({conversation: latestConvo._id, username: user.name}).then(res => {
+      console.log('RES FINDONE', res);
+      if(res){
+        res.texts.push({text: event.text, time: getTime()});
+        res.save().then(res=>{
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
-        		console.log('XSAVEDX');
+        		console.log('SAVED RESPONSE');
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
