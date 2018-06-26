@@ -24,8 +24,8 @@ socket.on('connect', (data)=>{
 class App extends Component {
 
   componentDidMount(){
-    socket.on('new response', (id)=>{
-      this.props.newResponse(id);
+    socket.on('new response', (convo)=>{
+      this.props.newResponse(convo);
     });
   } 
 

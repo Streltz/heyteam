@@ -92,10 +92,10 @@ export const getConvos = info => {
  	};
 };
 
-export const newResponse = id => {
+export const newResponse = convo => {
 	return({
 		type: 'NEW_RESPONSE',
-		payload: id
+		payload: convo
 	});
 };
 

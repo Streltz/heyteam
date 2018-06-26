@@ -105,9 +105,14 @@ rtm.on('message', (event) => {
       if(res.length > 0){
         res[0].texts.push({text: event.text, time: getTime()});
         res[0].save().then(res=>{
-        	latestConvo.newMessage = true;
-        	latestConvo.save().then(res=>{
-        		 client.emit('new response', res._id);
+        	latestConvo.newMessages += 1;
+        	latestConvo.save()
+        	.then(saved=>{
+        		//TODO: find a way to save and populate all in one query intead of using another findById
+        		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
+        			if(err) console.log(err);
+        			client.emit('new response', populated);
+        		});
         	});
         });
       }else{
@@ -117,12 +122,17 @@ rtm.on('message', (event) => {
         newRes.conversation = latestConvo._id;
         newRes.question = latestConvo.question;
         newRes.texts = [{text: event.text, time: getTime()}];
-        newRes.date_submitted = Date.now();
+        newRes.date_submitted = new Date();
         newRes.save().then(res => {
           latestConvo.responses.push(res._id);
-          latestConvo.newMessage = true;
-          latestConvo.save().then(res=>{
-        		 client.emit('new response', res._id);
+          latestConvo.newMessages += 1;
+          latestConvo.save()
+          .then(saved=>{
+        		//TODO: find a way to save and populate all in one query intead of using another findById
+        		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
+        			if(err) console.log(err);
+        			client.emit('new response', populated);
+        		});
         	});
         });
       }

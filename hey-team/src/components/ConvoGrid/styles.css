@@ -83,11 +83,25 @@
 	background: #f2f2f2;
 	color: #969696;
 	height: 30px;
+	position: relative;
 }
 .convo-status .responded {
 	display: inline-block;
 	float: right;
 	margin: 5px 5px -5px 0px;
+}
+.convo-status .new-messages {
+	position: absolute;
+	right: 0px;
+	border: 1px solid red;
+	width: 15px;
+	height: 15px;
+	font-size: 10px;
+	font-weight: bold;
+	background: red;
+	color: white;
+	border-radius: 50%;
+	margin: 2px 2px 0px 0px;
 }
 .circle-btn-blue
 {

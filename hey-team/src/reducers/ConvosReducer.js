@@ -23,6 +23,17 @@ const ConvosReducer = (state = initState, action) => {
             copyConvos.push(action.payload);
             return {...state, originalConvos: copyOriginal, convos: copyConvos};
 
+        case 'NEW_RESPONSE':
+            const convosCopy = state.convos.map(convo=>{
+                if(convo._id === action.payload._id){
+                    return action.payload;
+                }else{
+                    return convo;
+                }
+            });
+
+             return {...state, convos: convosCopy};
+
         case 'EDIT_CONVO':
             // return {
             //     ...state,
