@@ -12,10 +12,21 @@
     --alt-color-light: #19647E;
     --alt-color-dark: #1B4353;
 
-    --alt-alt-blue: rgb(17, 151, 212);
-    --alt-alt-blue-light: rgba(44, 129, 207, 0.938);
+    --alt-link-blue: rgb(17, 151, 212);
+    --alt-link-blue-light: rgba(44, 129, 207, 0.938);
 
-    --main-background: #F9F4F6;
+    --btn-blue: #368bec;
+    --btn-blue-hover: #3b87df;
+    --btn-blue-dark: #07439e;
+
+    --main-background: #F9F4F6;   
+    --main-white: #fff; 
+}
+
+html
+{
+  background-color: var(--main-background);
+  overflow: auto;
 }
 
 body {
@@ -48,6 +59,16 @@ body {
 /* Links */
 a:link:hover{
   text-decoration: none;  
+  color: var(--main-white) !important;
+}
+a:link {
+  color: var(--main-white);
+}
+a:visited {
+  color: var(--main-white);
+}
+a:active {
+  color: var(--main-white);
 }
 
 .blue-link
@@ -69,6 +90,10 @@ a:link:hover{
 {
     color: var(--main-dark);
 }
+.white
+{
+  color: var(--main-white);
+}
 
 .logo
 {
@@ -80,10 +105,20 @@ a:link:hover{
   line-height: 1.3333;
 }
 
+.logo-large
+{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  line-height: 1.3333;
+  font-size: 45px;
+  padding: 0px;
+
+}
+
 /* Buttons */
 .light-blue-btn
 {
-    background: #3786e0 none repeat scroll 0 0;
+    background: var(--btn-blue) none repeat scroll 0 0;
     border: medium none;
     border-radius: 2px;
     box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
@@ -93,7 +128,7 @@ a:link:hover{
 }
 .light-blue-btn:hover
 {
-    background: #549ff5 none repeat scroll 0 0;
+    background: var(--btn-blue-hover) none repeat scroll 0 0;
 }
 
 

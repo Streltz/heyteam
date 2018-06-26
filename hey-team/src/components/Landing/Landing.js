@@ -13,10 +13,10 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <main className="landing-main">
+      <main id="landing-main">
         <header id="nav-header">
           <div className="col-md-12">
-            <div className="Logo-1 col-md-3">
+            <div className="logo-large white float-left col-md-3">
               Hey-Bot
               </div>
             <div className="nav-link-group col-md-9">
