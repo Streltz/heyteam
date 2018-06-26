@@ -14,9 +14,7 @@ const conversationRoutes = require('./routes/conversationRoutes');
 const paymentAPI = require('./routes/payment');
 const app = express();
 const server = require('http').createServer(app);  
-
 // const slackAPI = require('./slack_api');
-
 var io = require('socket.io')(server);
 
 
@@ -103,7 +101,7 @@ rtm.on('message', (event) => {
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
-        		console.log('SAVEEXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+        		console.log('XSAVEDX');
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
@@ -137,13 +135,8 @@ rtm.on('message', (event) => {
 });
 
 //***********************
-
-
-
-  // client.on('disconnect', function(){});
+// client.on('disconnect', function(){});
 });
-
-
 
 // server.use(cors({
 //   origin: 'https://whispering-journey-17247.herokuapp.com',
