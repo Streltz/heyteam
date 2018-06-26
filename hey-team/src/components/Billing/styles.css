@@ -1,11 +1,17 @@
+form {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 3px;
+}
+
 .FullPage
 {
-    background-color: rgb(229, 234, 241);
+    background-color: var(--alt-background);
 }
 
 .main-billing
 {
-    background-color: rgb(229, 234, 241);
+    background-color: var(--alt-background);
     width: 665px;
     text-align: center;
     padding-top: 15px;
@@ -49,8 +55,3 @@
     margin-top: 220px;
 }
 
-form {
-    margin-bottom: 40px;
-    padding-bottom: 40px;
-    border-bottom: 3px;
-}
