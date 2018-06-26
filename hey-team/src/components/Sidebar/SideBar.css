@@ -1,5 +1,6 @@
 
 .LeftColumnPanel {
+  
   width: 200px;
   height: 100%;
   background-color: rgb(229, 234, 241);
@@ -11,13 +12,14 @@
 
 .sidebar-content
 {
-  color: #32325d !important;
-  text-decoration: none !important;
-
+  color: #32325d ;
+  text-decoration: none;
+  
   padding-top: 6px;
   display: flex;
 }
 .sidebar-content i {
+  
   font-size: 30px;
    padding-top: 5px;
    padding-right: 5px;
