@@ -61,6 +61,7 @@ i.remove-question {
 }
 .display-users {
 	display: flex;
+	flex-wrap: wrap;
 }
 .display-user{
 	margin: 10px 5px;
