@@ -1,5 +1,6 @@
 
-.LeftColumnPanel {
+#LeftColumnPanel {
+ 
   
   width: 200px;
   height: 100%;
@@ -10,8 +11,22 @@
   font-weight: 300;
 }
 
+#robot {
+  display: block;
+  width: 300px;
+  height: 300px;
+  background-image: url('https://openclipart.org/download/289983/1510165051.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  
+  top: 400px;
+  left: 0;
+  background-size: 300px 300px;
+}
+
 .sidebar-content
 {
+  
   color: #32325d ;
   text-decoration: none;
   
@@ -26,6 +41,7 @@
 }
 
 .sidebar-tab {
+  
   font-size: 25px;
   padding-bottom: -10px;
 }
