@@ -39,7 +39,7 @@ setInterval(() => {
                         lastQuestion = conversation._id;
                         //edit the daySent to day
                         conversation.daySent = day;
-                        conversation.dateSent = Date.now();
+                        conversation.dateSent = getTime();
                         conversation.save();
                         conversation.participants.forEach(user=>{
                             rtm.sendMessage(conversation.question, user.channelId).then(res=>{
@@ -87,7 +87,7 @@ rtm.on('message', (event) => {
         newRes.conversation = latestConvo._id;
         newRes.question = latestConvo.question;
         newRes.texts = [{text: event.text, time: getTime()}];
-        newRes.date_submitted = Date.now();
+        newRes.date_submitted = new Date();
         newRes.save().then(res => {
           latestConvo.responses.push(res._id)
           latestConvo.save();

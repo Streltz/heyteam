@@ -67,13 +67,13 @@ class ViewConvo extends React.Component {
                   }
                 </div>
                 <br/>
-                <div className="q-title">Questions</div>
+                <div className="q-title">Question</div>
                 <div className="question-box">
                   {convo.question}
                 </div>
                 <br/>
                 <div className="schedule-title">Schedule</div>
-                <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
+                <div className="schedule-time">{convo.dateSent}</div>
                 <br/>
                 <div className="unres-title">Unresponded</div>
                 <div className="unresponded-boxes">
