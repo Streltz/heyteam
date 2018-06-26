@@ -34,12 +34,13 @@
 }
 .edge-convo
 {
+
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);
 	margin-right: 20px;
 	margin-bottom: 25px;
-	color: var(--main-dark-light);
-	max-width: 500px;
-	min-width: 200px;
+	color: var(--main-dark);
+	height: 200px;
+	width: 215px;
 }
 .edge-convo .title {
 	margin: 10px;
@@ -58,8 +59,9 @@
 
 .convo-content {
 	text-align: left;
-	font-size: 22px;
-	margin: 0px 15px 20px 15px;
+	font-size: 20px;
+	margin: 0px 15px 76px 15px;
+	color: var(--main-dark-light) !important;
 }
 
 
@@ -72,33 +74,15 @@
 	padding-top: 50px;
 }
 
-.fixed-bttm-right-btn
-{
-	position: fixed;
-    bottom: 100px;
-    right: 10%;
-    margin-left: -104.5px; 
-}
+
 .convo-status {
 	background: var(--main-background);
 	color: var(--hover-light);
-	height: 30px;
+	height: 40px;
 }
 .convo-status .responded {
 	display: inline-block;
 	float: right;
 	margin: 5px 5px -5px 0px;
 }
-.circle-btn-blue
-{
-	background-color: var(--btn-blue);
-	color: white;	
-	font-size: 20px;
-	cursor: pointer;
-	border: none;
-	height: 75px;
-	width: 75px;
-	border-radius: 100%;
-	padding-top: 25px;
-	box-shadow: 0 5px 5px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-}
+
