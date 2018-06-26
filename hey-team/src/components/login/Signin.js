@@ -32,14 +32,14 @@ class Signin extends React.Component {
 
   render() {
     return (
-      <main className="main-login">
+      <main id="main-login">
         <Card className="edge-dull">
           <div className="login card-dull">
             <form id="signin-form" onSubmit={(e) => { this.handleSignIn(e) }}>
-              <div class="logo-blue text-left col-md-12">Hey-Bot</div>
+              <div class="logo black-dark text-left col-md-12">Hey-Bot</div>
               <div class="text-left col-md-12 heading"> Sign In </div>
               <div class="text-left card-descriptor col-md-12">with your Hey-Bot Account</div>
-              <div className="form-error">{this.props.user.formError}</div>
+              <div className="form-error"></div>
               <input className="col-md-10 form-control" name="email" value={this.state.email}
                 placeholder="Email" onChange={this.handleOnChange} /><br />
 
