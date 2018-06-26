@@ -21,9 +21,8 @@ var io = require('socket.io')(server);
 
 function getTime(){
   const time = new Date().toString().split(' ');
-  console.log('TIME TO STRING', time);
-const hour = time[4].split(':');
-const modTime = `${time[0]} ${time[1]} ${time[2]} - ${hour[0]}:${hour[1]}${hour[0] > 11 ? 'PM' : 'AM'}`;
+	const hour = time[4].split(':');
+	const modTime = `${time[0]} ${time[1]} ${time[2]} - ${hour[0]}:${hour[1]}${hour[0] > 11 ? 'PM' : 'AM'}`;
 return modTime;
 }
 
@@ -122,6 +121,7 @@ rtm.on('message', (event) => {
           latestConvo.newMessages += 1;
           latestConvo.save()
           .then(saved=>{
+          	co
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);

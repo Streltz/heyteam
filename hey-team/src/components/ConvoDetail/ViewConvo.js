@@ -9,15 +9,6 @@ import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
 import { getConvos, editConversation } from '../../actions/convoAction';
 
-function groupUser(res){
-  // const group = [];
-  // res.responses.forEach(response => {
-  //   if(group.length < 1){
-  //     group.push();
-  //   }
-  // });
-}
-
 class ViewConvo extends React.Component {
   state = {
     redirect: false,
@@ -37,8 +28,15 @@ class ViewConvo extends React.Component {
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });
-    console.log('THE SINGLE CONVO', convo);
-    groupUser(convo);
+
+    const userNames = convo.responses.map(res=>{
+      return res.username;
+    });
+
+    const unresponded = convo.participants.filter(user=>{
+      return !userNames.includes(user.name);
+    });
+
     return (
       <div className='view-wrapper'>
           {!this.props.loading ? 
@@ -77,6 +75,19 @@ class ViewConvo extends React.Component {
                 <div className="schedule-title">Schedule</div>
                 <div className="schedule-time">Mon - Fri at 10:00AM Pacific</div>
                 <br/>
+                <div className="unres-title">Unresponded</div>
+                <div className="unresponded-boxes">
+                  {
+                      unresponded.map(participant=>{
+                        const img = participant.profile.image_32;
+                        const name = participant.profile.display_name;
+                        return (<div className="participant">
+                        <div className="image"><img src={`${img}`} /></div>
+                        <div className="display-name">{name}</div>
+                        </div>)
+                      })
+                  }
+                </div>
                 <div className="res-title">Responses</div>
                 <div className="response-boxes">
                   { convo.responses.length > 0 ? convo.responses.map(response => {
