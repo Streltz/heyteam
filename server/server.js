@@ -73,8 +73,7 @@ io.on('connection', function(client){
 
 // Initialize an RTM API client
 rtm.on('message', (event) => {
-  console.log('user:xxxxxxxxxxxxxxxxxxx ');
-  console.log('message:xxxxxxxxxxxxxxxxxxxxx ',);
+  console.log('************SLACK REPLY************');
 
   Conversation.find({}).then(conversations => {
     let userConvos =[];
@@ -121,7 +120,6 @@ rtm.on('message', (event) => {
           latestConvo.newMessages += 1;
           latestConvo.save()
           .then(saved=>{
-          	co
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
