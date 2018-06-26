@@ -32,7 +32,17 @@ const ConvosReducer = (state = initState, action) => {
                 }
             });
 
-             return {...state, convos: convosCopy};
+        return {...state, convos: convosCopy};
+
+        case 'RESET_NEW_MESSAGE':
+            const cpyConvos = state.convos;
+            cpyConvos.forEach(convo=>{
+                if(convo._id === action.payload){
+                    convo.newMessages = 0;
+                }
+            });
+
+        return {...state, convos: cpyConvos};
 
         case 'EDIT_CONVO':
             // return {

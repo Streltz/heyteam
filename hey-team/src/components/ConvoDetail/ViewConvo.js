@@ -7,7 +7,7 @@ import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
-import { getConvos } from '../../actions/convoAction';
+import { getConvos, editConversation } from '../../actions/convoAction';
 
 function groupUser(res){
   // const group = [];
@@ -25,6 +25,8 @@ class ViewConvo extends React.Component {
 
   componentDidMount() {
     this.props.getConvos();
+    const convoId = this.props.match.params.id;
+    this.props.editConversation(convoId, 'resetNewMessage');
   }
 
   render() {
@@ -104,4 +106,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getConvos})(ViewConvo);
+export default connect(mapStateToProps, {getConvos, editConversation})(ViewConvo);

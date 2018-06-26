@@ -38,13 +38,13 @@ export const addConvo = (info, history) => {
    };
 };
 
-export const editConversation = (id, history) => {
+export const editConversation = (id, type, history) => {
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios
-			.put(`${ROOT_URL}/conversation/${id}`)
+			.put(`${ROOT_URL}/conversations/${id}`, {type}, {headers: {token: localStorage.getItem('token')}})
 			.then(response => {
-					dispatch({ type: 'CONVO_EDITED', payload: response.data });
+					dispatch({ type: 'RESET_NEW_MESSAGE', payload: response });
 				})
 		  .catch(err => {
 					// disptch({ type: 'ERROR_EDITING_CONVO', payload: err });

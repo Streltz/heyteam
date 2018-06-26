@@ -19,14 +19,6 @@ const server = require('http').createServer(app);
 
 var io = require('socket.io')(server);
 
-io.on('connection', function(client){
-	console.log('connected to socket');
-  // client.emit('update', 'hello from server');
-
-  
-
-
-//***********************
 
 
 function getTime(){
@@ -40,49 +32,52 @@ return modTime;
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 
-// Initialize an RTM API client
+/////////////////////////////////////////////
 const rtm = new RTMClient(token);
-
 // Start the connection to the platform
 rtm.start();
 
 setInterval(() => {        
-    Conversation.find({})
-        .then(conversations => {
-            // console.log('CONVO DB', conversations);
-            conversations.forEach(conversation=>{
-               const now = new Date();
-                const hour = now.getHours();
-                const day = now.getDay();
-                // console.log('TIME', hour, day);
-                if(hour === conversation.time 
-                    && conversation.schedule_days.includes(day) 
-                    && !conversation.sent 
-                    && conversation.daySent !== day 
-                    && conversation.active === true){
-                        console.log('PASS IF STATEMENT');
-                        lastQuestion = conversation._id;
-                        //edit the daySent to day
-                        conversation.daySent = day;
-                        conversation.dateSent = Date.now();
-                        conversation.save();
-                        conversation.participants.forEach(user=>{
-                            rtm.sendMessage(conversation.question, user.channelId).then(res=>{
-                                console.log('Sent and Res', res);
-                            });
-                        }); 
-                    }
-            });
-           
-        }).catch(err => {
-            console.log(err);
-        });
+	Conversation.find({}).then(conversations => {
+  	// console.log('CONVO DB', conversations);
+  	conversations.forEach(conversation=>{
+    	const now = new Date();
+      const hour = now.getHours();
+      const day = now.getDay();
+      // console.log('TIME', hour, day);
+      if(hour === conversation.time 
+        && conversation.schedule_days.includes(day) 
+        && !conversation.sent 
+        && conversation.daySent !== day 
+        && conversation.active === true){
+        console.log('PASS IF STATEMENT');
+        lastQuestion = conversation._id;
+        //edit the daySent to day
+        conversation.daySent = day;
+        conversation.dateSent = Date.now();
+        conversation.save();
+        conversation.participants.forEach(user=>{
+          rtm.sendMessage(conversation.question, user.channelId).then(res=>{
+          	console.log('Sent and Res', res);
+          });
+        }); 
+     	}
+    });
+  }).catch(err => {
+    console.log(err);
+  });
 }, 5000);
+/////////////////////////////////////
 
 
+io.on('connection', function(client){
+	console.log('connected to socket');
+//***********************
+
+// Initialize an RTM API client
 rtm.on('message', (event) => {
-  console.log('user: ',event.user);
-  console.log('message: ',event.text);
+  console.log('user:xxxxxxxxxxxxxxxxxxx ');
+  console.log('message:xxxxxxxxxxxxxxxxxxxxx ',);
 
   Conversation.find({}).then(conversations => {
     let userConvos =[];
@@ -108,6 +103,7 @@ rtm.on('message', (event) => {
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
+        		console.log('SAVEEXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
