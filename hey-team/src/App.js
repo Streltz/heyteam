@@ -28,7 +28,7 @@ class App extends Component {
       console.log('sock new res', convo);
       this.props.newResponse(convo);
     });
-  } 
+  }
 
   render() {
     return (
