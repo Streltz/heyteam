@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import './styles.css';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { addConvo } from '../../actions/convoAction';
+
 import { fetchSlackUsers, searchSlackUsers } from '../../actions/userAction';
 import { connect } from 'react-redux';
 
-import { Card } from 'reactstrap';
+import { Card, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import './styles.css';
 
 class AddConvo extends Component {
   state = {
