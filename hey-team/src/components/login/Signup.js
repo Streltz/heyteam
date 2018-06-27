@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signUp} from '../../actions/userAction';
+import { signUp, clearFormError} from '../../actions/userAction';
 import { Link } from 'react-router-dom';
 import { Card} from 'reactstrap';
 
@@ -12,6 +12,11 @@ class SignUp extends React.Component {
     email: '',
     password: ''
   }
+
+  componentWillMount(){
+    this.props.clearFormError();
+  }
+
   handleSignUp = () => {
       this.props.signUp(this.state, this.props.history); 
   }
@@ -59,4 +64,4 @@ const mapStateToProps = (state) => {
   } 
 }
 
-export default connect(mapStateToProps, {signUp})(SignUp);
+export default connect(mapStateToProps, {signUp, clearFormError})(SignUp);

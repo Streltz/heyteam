@@ -47,8 +47,9 @@ export const signIn = (user, history) => {
     return (dispatch) => {
       axios.post(`${ROOT_URL}/login`, user)
       .then(res => {
-        if(res.status === 200){
-          // server returns a token
+        if(!res.data.success){
+          dispatch({type: 'SIGNIN_ERROR', payload: res.data.message});
+        }else{
           const token = res.data.token;
           const userName = res.data.username;
           localStorage.setItem('token', token);
@@ -57,8 +58,8 @@ export const signIn = (user, history) => {
             type: LOGGED_IN,
             payload: res.data.username
           });
-          history.push('/dashboard');       
-        }
+          history.push('/dashboard'); 
+        }      
       });
     }
   }else{
@@ -88,5 +89,11 @@ export const searchSlackUsers = (term) => {
   return({
     type: SEARCH_SLACKUSERS, 
     payload: term
+  });
+}
+
+export const clearFormError = (term) => {
+  return({
+    type: 'CLEAR_FORM_ERROR'
   });
 }

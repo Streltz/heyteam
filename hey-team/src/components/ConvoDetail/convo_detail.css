@@ -1,17 +1,18 @@
-.view-wrapper {
+#viewconvo-main {
+	padding-left: 100px !important;
 	height: 100%;
 	text-align: left;
 	padding: 20px;
-	color: black;
+	color: var(--main-dark);
+	width: 50vw;
 }
 
 .participants-edit {
-	background: #dadfe8;
+	background: var(--hover-light);
 	font-size: 27px;
 	margin: 10px 0px;
 	padding: 2px 5px;
-	color: rgb(65, 65, 65);
-
+	color: var(--main-dark);
 }
 
 .part-title {
@@ -25,111 +26,102 @@
 	margin-right: 20px;
 }
 .edit-icon i {
-	color: black;
+	color: var(--main-dark);
 	margin-right: 10px;
 }
 
 .edit-icon i:hover{
-	color: gray;
+	cursor: pointer;
+	color: var(--alt-color-light);
 }
 .delete-icon i:hover{
-	color: gray;
-
+	cursor: pointer;
+	color: var(--alt-color-light);
 }
 
 .participants {
-	display: flex;
-	background: #FFFFFF;
+	background: var(--main-white);
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
 	padding: 10px;
-	color: rgba(53, 53, 53, 0.911);
+	color: var(--main-dark);
+	display: flex;
+	font-weight: bold;
 }
 
 .participant {
-	width: 50px;
-	height: 50px;
-	margin: 5px;
+	margin: 0px 10px;
 }
 
 .q-title {
-	background: #dadfe8;
+	background: var(--hover-light);
 	font-size: 27px;
 	margin: 10px 0px;
 	padding: 2px 5px;
 }
 
 .question-box {
-	background: #FFFFFF;
+	background: var(--main-white);
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-	font-size: 17px;
+	font-size: 22px;
 	padding: 10px;
 	color: rgba(53, 53, 53, 0.911);
 }
-.each-question {
-	font-size: 19px;
-	padding: 3px;
-}
 
 .schedule-title {
-	background: #dadfe8;
+	background: var(--hover-light);
 	font-size: 27px;
 	margin: 10px 0px;
 	padding: 2px 5px;
 }
 .schedule-time {
-	background: #FFFFFF;
+	background: var(--main-white);
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
 	padding: 10px;
 	color: rgba(53, 53, 53, 0.911);
-	font-size: 19px;
+	font-size: 22px;
 }
 .res-title{
-	background: #dadfe8;
+	background: var(--hover-light);
 	font-size: 27px;
 	margin: 10px 0px;
 	padding: 2px 5px;
 }
 
-.response-boxes {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-
 .response {
-	background: #FFFFFF;
+	background: var(--main-white);
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
 	padding: 10px;
-	margin-right: 20px;
 	margin-bottom: 25px;
 	color: rgba(53, 53, 53, 0.911);
 }
 .res-profile {
 	display: flex;
-	border-bottom: 1px solid #dedede;
 	padding-bottom: 10px;
 }
 .res-avatar {
-	border: 1px solid gray;
+	border: 1px solid var(--main-dark-light);
 	margin-right: 10px;
 }
 .res-username {
 	font-weight: bold;
 }
+.res-content {
+	border-top: 1px solid var(--hover-light);
+}
 .q-a {
-	border-bottom: 1px solid #dedede;
+	border-bottom: 1px solid var(--hover-light);
 	padding: 10px 5px;
 }
 .res-question {
 	font-size: 19px;
-	color: black;
+	color: var(--main-dark);
 }
 .res-answer {
-	font-size: 17px;
+	font-size: 22px;
 }
 #view-main
 {
-	background-color: rgb(229, 234, 241);
+	background-color: var(--main-background);
     text-align: center;
     padding-top: 15px;
     padding-left: 100px;
@@ -137,11 +129,11 @@
 }
 .dark-link
 {
-	color: rgb(65, 65, 65) !important;
+	color: var(--main-dark-link) !important;
 }
 .sub-header
 {
-	color:rgba(58, 58, 58, 0.815);
+	color: var(--main-dark-link);
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 1.8em;

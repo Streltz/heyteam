@@ -1,6 +1,6 @@
 #main-preferences
 {
-    background-color: rgb(229, 234, 241);
+    background-color: var(--alt-background);
     width: 665px;
     text-align: center;
     padding-top: 15px;
@@ -14,4 +14,19 @@
 .radio-label
 {    
     font-size: 1.08em;
+}
+.radio-label
+{
+    padding-left: 10px;
+    color: var(--main-dark-light);
+    font-size: 1.2em;
+}
+
+.detail-header
+{
+    color: var(--main-dark-light);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    padding: 0px;
 }

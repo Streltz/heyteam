@@ -15,14 +15,13 @@ class Convo extends React.Component {
     console.log('CONVO prpos', this.props.convo);
     return (
       <Card className="edge-convo">
-        <CardBody>
-          <CardTitle><div className="title">{this.props.convo.title}</div></CardTitle>
+          <div className="title">{this.props.convo.title}</div>
           <div className="convo-content">            
-            <div className="question">
              {this.props.convo.question}
-            </div>
           </div>
-        </CardBody>
+          <div className="convo-status">
+            <div className="responded">{this.props.convo.responses.length > 0 ? <i className="material-icons">message</i> : null}</div>
+          </div>
       </Card>
     )
   }
