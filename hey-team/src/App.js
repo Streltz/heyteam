@@ -18,13 +18,14 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000');
 
 socket.on('connect', (data)=>{
-  console.log(data);
+  console.log('connect', data);
 });
 
 class App extends Component {
 
   componentDidMount(){
     socket.on('new response', (convo)=>{
+      console.log('sock new res', convo);
       this.props.newResponse(convo);
     });
   } 
