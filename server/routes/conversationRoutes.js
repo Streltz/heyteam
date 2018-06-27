@@ -9,7 +9,6 @@ const secretEnv = process.env.SEC_KEY || 'secret';
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
-  console.log('TOKEN', token);
   if (!token) {
     res
       .status(422)
@@ -26,20 +25,16 @@ const validateToken = (req, res, next) => {
     }
     // attach decoded user info to request object
     req.decoded = decoded;
-    console.log(decoded);
     next();
   });
 };
 
 conversationRouter.get('/conversations', validateToken, function(req, res){
-	console.log('USER ID GET CONVO', req.decoded);
   const { userId } = req.decoded;
-  console.log('DECODED', req.decoded);
 	Conversation.find({uid: userId})
   .populate('responses')
   .exec((err, conversations) => {
     if(err) console.log(err);
-    console.log('CONVOS FROM DB', conversations);
 		res.json(conversations);
 	});
 });
@@ -73,7 +68,6 @@ const convertTime = (time, ampm, zone)=>{
 }
 
 conversationRouter.post('/conversation', validateToken, function(req, res){
-    console.log('REQBODY', req.body);
     const { userId } = req.decoded;
     const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
     const conversation = new Conversation();
@@ -90,6 +84,21 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     .catch(err => {
       res.send(err);
     });
+});
+
+conversationRouter.put('/conversations/:id', validateToken, function(req, res){
+  console.log('REQ PARAMS', req.params);
+  const {id} = req.params;
+  Conversation.findById(id)
+  .then(convo => {
+    convo.newMessages = 0;
+    convo.save().then(updated=>{
+      res.json(updated._id);
+    });
+  })
+  .catch(err => {
+    res.send(err);
+  });
 });
 
 conversationRouter.delete('/conversations/:id', validateToken, function(req, res){

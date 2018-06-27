@@ -51,7 +51,7 @@ export const signIn = (user, history) => {
           dispatch({type: 'SIGNIN_ERROR', payload: res.data.message});
         }else{
           const token = res.data.token;
-          const userName = res.data.username;
+          const userName = res.data.name;
           localStorage.setItem('token', token);
           localStorage.setItem('userName', userName);
           dispatch({

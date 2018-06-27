@@ -4,6 +4,7 @@ import {Card} from 'reactstrap';
 
 
 function Response(props) {
+  console.log('Response PRPS', props);
   const img = props.response.user_image;
 
   let time = props.response.date_submitted.toString().split('.')[0];

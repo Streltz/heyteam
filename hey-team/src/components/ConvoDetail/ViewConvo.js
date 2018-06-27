@@ -7,16 +7,7 @@ import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
-import { getConvos } from '../../actions/convoAction';
-
-function groupUser(res){
-  // const group = [];
-  // res.responses.forEach(response => {
-  //   if(group.length < 1){
-  //     group.push();
-  //   }
-  // });
-}
+import { getConvos, editConversation } from '../../actions/convoAction';
 
 class ViewConvo extends React.Component {
   state = {
@@ -25,6 +16,8 @@ class ViewConvo extends React.Component {
 
   componentDidMount() {
     this.props.getConvos();
+    const convoId = this.props.match.params.id;
+    this.props.editConversation(convoId, 'resetNewMessage');
   }
 
   render() {
@@ -35,8 +28,15 @@ class ViewConvo extends React.Component {
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });
-    console.log('THE SINGLE CONVO', convo);
-    groupUser(convo);
+
+    const userNames = convo.responses.map(res=>{
+      return res.username;
+    });
+
+    const unresponded = convo.participants.filter(user=>{
+      return !userNames.includes(user.name);
+    });
+
     return (
       <main id='viewconvo-main'>
           {!this.props.loading ? 
@@ -78,6 +78,19 @@ class ViewConvo extends React.Component {
                 <div className="schedule-title">Schedule</div>
                 <div className="schedule-time">{convo.dateSent}</div>
                 <br/>
+                <div className="unres-title">Unresponded</div>
+                <div className="unresponded-boxes">
+                  {
+                      unresponded.map(participant=>{
+                        const img = participant.profile.image_32;
+                        const name = participant.profile.display_name;
+                        return (<div className="participant">
+                        <div className="image"><img src={`${img}`} /></div>
+                        <div className="display-name">{name}</div>
+                        </div>)
+                      })
+                  }
+                </div>
                 <div className="res-title">Responses</div>
                 <div className="response-boxes">
                   { convo.responses.length > 0 ? convo.responses.map(response => {
@@ -107,4 +120,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getConvos})(ViewConvo);
+export default connect(mapStateToProps, {getConvos, editConversation})(ViewConvo);

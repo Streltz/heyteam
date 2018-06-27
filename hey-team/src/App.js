@@ -11,10 +11,25 @@ import Signin from './components/login/Signin';
 import Signup from './components/login/Signup';
 import Billing from './components/Billing/Billing';
 import RequireAuth from './components/HOC/RequireAuth';
+import { newResponse } from './actions/convoAction';
+import { connect } from 'react-redux';
 
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000');
 
+socket.on('connect', (data)=>{
+  console.log('connect', data);
+});
 
 class App extends Component {
+
+  componentDidMount(){
+    socket.on('new response', (convo)=>{
+      console.log('sock new res', convo);
+      this.props.newResponse(convo);
+    });
+  } 
+
   render() {
     return (
       <div className="App">
@@ -32,4 +47,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, { newResponse })(App);
