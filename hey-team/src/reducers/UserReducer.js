@@ -11,6 +11,7 @@ const userInit = {
 }
 // if user exists in local storage, assign username to user initial name
 const userName = localStorage.getItem('userName');
+console.log('USERNAME', userName);
 const token = localStorage.getItem('token');
 if(userName && token){
 	userInit.logged_in = true;

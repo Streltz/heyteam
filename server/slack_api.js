@@ -2,11 +2,11 @@ const { RTMClient, WebClient } = require('@slack/client');
 const mongoose = require('mongoose');
 const Conversation = require('./models/conversationModel');
 const Response = require('./models/responseModel');
-console.log('SLACK API');
 const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 function getTime(){
   const time = new Date().toString().split(' ');
+  console.log('TIME TO STRING', time);
 const hour = time[4].split(':');
 const modTime = `${time[0]} ${time[1]} ${time[2]} - ${hour[0]}:${hour[1]}${hour[0] > 11 ? 'PM' : 'AM'}`;
 return modTime;
@@ -58,7 +58,7 @@ setInterval(() => {
 rtm.on('message', (event) => {
   console.log('user: ',event.user);
   console.log('message: ',event.text);
-    
+
   Conversation.find({}).then(conversations => {
     let userConvos =[];
     conversations.forEach(convo => {
@@ -95,6 +95,12 @@ rtm.on('message', (event) => {
       }
     })     
   });
+
+
+
+
+
+  
 });
     // Todo after lunch:
     //Find conversation by participants.findBy(user => user.id)
