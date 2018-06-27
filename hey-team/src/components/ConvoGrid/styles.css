@@ -10,6 +10,10 @@
 	background: var(--main-color-dark);
 	color: var(--main-white);
 }
+.active:hover
+{
+	background: var(--main-color-light) !important;
+}
 
 .convo-header .sort {
 	padding: 10px;
@@ -97,20 +101,8 @@
 	font-size: 10px;
 	font-weight: bold;
 	background: red;
-	color: white;
+	color: var(--main-white);
 	border-radius: 50%;
 	margin: 2px 2px 0px 0px;
 }
-.circle-btn-blue
-{
-	background-color: #0a6bc0;
-	color: white;	
-	font-size: 20px;
-	cursor: pointer;
-	border: none;
-	height: 70px;
-	width: 70px;
-	border-radius: 100%;
-	padding-top: 20px;
-	box-shadow: 0 5px 5px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-}
+
