@@ -42,16 +42,27 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <section id="section-create" className="section-content text-right">        
+        <section id="section-create" className="section-content text-right">
           <div className="section-heading">
             Create
           </div>
           <div className="section-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
-          </div>        
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          </div>
         </section>
 
         <section id="section-product" className="section-content">
+          <div className="section-heading">
+            Product
+          </div>
+          <div className="section-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          </div>
+          <div>
+            {
+              // Video goes here.
+            }
+          </div>
         </section>
       </main>
     );

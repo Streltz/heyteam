@@ -22,55 +22,6 @@ html
     position: relative;
 }
 
-/* Section Content */
-.section-content
-{
-    margin-top: 20%;        
-}
-
-.section-heading
-{
-    margin-top: 430px;
-    font-weight: 400;
-    font-size: 1.7em;
-    margin-bottom: 40px;
-    color: var(--main-dark-light);
-}
-.section-body
-{
-    margin-left: 15%;
-    font-size: 1.2em;
-    line-height: 1.9em;
-    letter-spacing: .03em;
-    color: var(--main-text-light);
-}
-
-/* Create Section */
-#section-create > .section-body, .section-heading 
-{
-    margin-right: 50%;    
-    transform: skewY(9deg);
-}
-#section-create
-{
-    height: 80% !important;
-    width: 100%;
-
-    height: 900px;
-    background-color: var(--main-white);
-
-    text-align: center;
-    z-index: 0;
-
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-
-    transform: skewY(-9deg);
-    transform-origin: top left;
-}
 
 /* Middle Body Container */
 #banner
@@ -149,6 +100,95 @@ html
     font-weight: 300;
 }
 
+
+/* Section Content */
+.section-content
+{
+    margin-top: 20%;        
+}
+
+.section-heading
+{
+    font-size: 1.7em;
+    margin-bottom: 40px;
+    color: var(--main-dark-light);
+}
+.section-body
+{
+    font-size: 1.2em;
+    line-height: 1.9em;
+    letter-spacing: .03em;
+    color: var(--main-text-light);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/*      Sections        */
+
+/* Product Section */
+#section-product > .section-body, #section-product > .section-heading
+{
+    margin-top: 13%;
+    margin-right: 18%;
+    margin-left: 15%;
+}
+#section-product
+{
+    margin-top: 45%;
+    height: 80% !important;
+    width: 100%;
+
+    background-color: rgb(247, 249, 252);
+
+    text-align: center;
+    z-index: -1;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+#section-product >  .section-heading
+{
+    transform: skewY(0deg);
+    margin-top: 15%;
+    margin-bottom: -12%;
+}
+
+/* Create Section */
+#section-create > .section-body, #section-create > .section-heading 
+{
+    margin-right: 50%;    
+    transform: skewY(9deg);
+}
+#section-create > .section-heading
+{
+    margin-top: 410px;
+    font-weight: 400;
+}
+#section-create > .section-body
+{
+    margin-left: 15%;
+}
+#section-create
+{
+    height: 80% !important;
+    width: 100%;
+
+    background-color: var(--main-white);
+
+    text-align: center;
+    z-index: 0;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    transform: skewY(-9deg);
+    transform-origin: top left;
+}
 
 /* Pay No Attention to Below */
 @media screen and (max-width: 1700px) and (min-width: 1560px)
