@@ -9,9 +9,25 @@
 }
 #card-pref
 {
+
     padding-left: 25px;
 }
 .radio-label
 {    
     font-size: 1.08em;
+}
+.radio-label
+{
+    padding-left: 10px;
+    color:rgba(58, 58, 58, 0.815);
+    font-size: 1.2em;
+}
+
+.detail-header
+{
+    color:rgba(58, 58, 58, 0.815);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    padding: 0px;
 }

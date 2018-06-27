@@ -4,14 +4,16 @@
     padding-top: 210px;
     padding-left: 15%;
 
-    padding-bottom: 20%;
-    background-color: white;
-    /* background: linear-gradient(to bottom, rgb(29, 117, 199), rgb(43, 62, 73)) */
+    padding-bottom: 15%;
+    
+    background-image: radial-gradient(center center, circle cover, rgb(29, 117, 199), rgb(48, 72, 87)); 
+    /* background: linear-gradient(45deg, rgb(29, 117, 199), rgb(43, 62, 73)) */
 }
 
 
 #signin-form > input
 {
+    overflow: hidden;
     margin-left: 10px;
     border-top: none;
     border-left: none;
