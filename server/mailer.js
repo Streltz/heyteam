@@ -8,9 +8,9 @@ function groupEmail(array){
     const mail = {};
     array.forEach(convo => {
       if(!mail[convo.email]){
-        mail[convo.email] = { conversations: [{question: convo.question, responses: []}]}
+        mail[convo.email] = { conversations: [{question: convo.question, responses: convo.responses}]}
       }else{
-        mail[convo.email].conversations.push({question: convo.question, responses: []});
+        mail[convo.email].conversations.push({question: convo.question, responses: convo.responses});
       }
     });
     return mail;
@@ -43,11 +43,11 @@ function groupEmail(array){
             }
         })
         const mailReady = groupEmail(emailList);
-        const placeHolder = 'hello world'
         console.log('mailList: ', emailList);
-        console.log('mailReady: ', mailReady);
+        console.log('mailReady CONVO XXXXXXXXXXX: ', mailReady);
         
-        // for (key in mailReady) {
+        for (key in mailReady) {
+            console.log('MAILREADY', mailReady[key]);
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -55,11 +55,37 @@ function groupEmail(array){
                   pass: '!heyteam!5'
                 }
               })
+            // <div wrapper>
+                // <div convo>
+                //     <div question>question</div>
+                //     <div response>response</div>
+                //     <div response>response</div>
+                // <div>
+            // < wrapper>
+            let convos = ''
+            mailReady[key].conversations.forEach(convo=>{
+ 
+                const question = `<div>${convo.question}</div>`
+                let resp = '';
+                convo.responses.forEach(res=>{
+                    res.texts.forEach(obj=>{
+                        resp += `
+                        <div>${obj.text} ${obj.time}</div>`;
+                    });
+                });
+                convo = `
+                <div>
+                    ${question}
+                    ${resp}
+                </div>`
+                convos += convo;
+            });
+
             const mailOptions = {
                 from: botEmail,
-                to: 'teamsky916@gmail.com',
+                to: botEmail,
                 subject: `Hey-Bot Digest`,
-                text: placeHolder
+                html: convos
               }
               transporter.sendMail(mailOptions, function(err, res) {
                 if (err) {
@@ -69,6 +95,6 @@ function groupEmail(array){
                 }
             })
             
-        // }
+         }
     })
-// }, 10000)
+//}, 10000)

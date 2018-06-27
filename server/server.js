@@ -91,10 +91,8 @@ setInterval(() => {
 
 let socketClients = [];
 io.on('connection', function(client){
-<<<<<<< HEAD
   console.log('connected to socket');
   console.log('client ID: ', client.id);
-=======
 	console.log('new client connected');
 	socketClients.push(client);
 	client.emit('who connect');
@@ -102,13 +100,11 @@ io.on('connection', function(client){
 		usersConnected.push(username);
 		idConnected.push(client.id);
 	});
-//***********************
+
 	client.on('disconnect', function(){
 		console.log('client disconnect', client.id);
 	});
 });
->>>>>>> f50637ddea9f1bb34963bbcbdf8dfc147c9228c3
-//***********************
 
 // Initialize an RTM API client
 rtm.on('message', (event) => {
