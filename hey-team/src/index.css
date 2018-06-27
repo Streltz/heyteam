@@ -29,7 +29,7 @@
 html
 {
   background-color: var(--alt-background);
-  overflow: auto;
+  overflow-y: hidden;
 }
 
 body {
