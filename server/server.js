@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { RTMClient, WebClient } = require('@slack/client');
+const mailer = require('./mailer');
 
 const Conversation = require('./models/conversationModel');
 const Response = require('./models/responseModel');
@@ -68,7 +69,8 @@ setInterval(() => {
 
 
 io.on('connection', function(client){
-	console.log('connected to socket');
+  console.log('connected to socket');
+  console.log('client ID: ', client.id);
 //***********************
 
 // Initialize an RTM API client
