@@ -13,10 +13,10 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <main className="landing-main">
+      <main id="landing-main">
         <header id="nav-header">
           <div className="col-md-12">
-            <div className="Logo-1 col-md-3">
+            <div className="logo-large white float-left col-md-3">
               Hey-Bot
               </div>
             <div className="nav-link-group col-md-9">
@@ -29,8 +29,10 @@ class Landing extends React.Component {
         <header id="banner" className="banner-section">
           <div className="col-md-12">
             <div className="col-md-6" id="description-section">
-              <div className="col-md-12 header-text">Conversation Manager within Slack</div>
-              <div className="col-md-12 desc-text">Build and manage private conversations</div>
+              <div className="col-md-12 header-text">Slack Conversation Manager</div>
+              <div className="col-md-12 desc-text">
+                Hey-Bot is the best platform to build and manage private Slack conversations.
+              </div>
               <button id="buy-now" className="btn-blue col-md-10">
                 <Link to="/billing">Buy Now</Link>
               </button>
@@ -40,10 +42,27 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <section className="section-body">
-        {
-          // Content Goes in here!
-        }
+        <section id="section-create" className="section-content text-right">
+          <div className="section-heading">
+            Create
+          </div>
+          <div className="section-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          </div>
+        </section>
+
+        <section id="section-product" className="section-content">
+          <div className="section-heading">
+            Product
+          </div>
+          <div className="section-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          </div>
+          <div>
+            {
+              // Video goes here.
+            }
+          </div>
         </section>
       </main>
     );

@@ -93,6 +93,7 @@ export const getConvos = info => {
 };
 
 export const newResponse = convo => {
+	console.log('action new resp', convo);
 	return({
 		type: 'NEW_RESPONSE',
 		payload: convo

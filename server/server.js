@@ -30,6 +30,27 @@ return modTime;
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 
+// server.use(cors({
+//   origin: 'https://whispering-journey-17247.herokuapp.com',
+//   credentials: true
+// }));
+app.use(cors());
+
+app.use(bodyParser.json());
+
+const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
+
+mongoose
+  .connect(mLab)
+  .then(conn => {
+    console.log('connected to mongo HeyTeam');
+  })
+  .catch(err => {
+    console.log('error connect to mongo', err);
+});
+
+app.use('/', userRoutes, conversationRoutes);
+
 /////////////////////////////////////////////
 const rtm = new RTMClient(token);
 // Start the connection to the platform
@@ -68,14 +89,30 @@ setInterval(() => {
 /////////////////////////////////////
 
 
+let socketClients = [];
 io.on('connection', function(client){
+<<<<<<< HEAD
   console.log('connected to socket');
   console.log('client ID: ', client.id);
+=======
+	console.log('new client connected');
+	socketClients.push(client);
+	client.emit('who connect');
+	client.on('user connect', function(username){
+		usersConnected.push(username);
+		idConnected.push(client.id);
+	});
+//***********************
+	client.on('disconnect', function(){
+		console.log('client disconnect', client.id);
+	});
+});
+>>>>>>> f50637ddea9f1bb34963bbcbdf8dfc147c9228c3
 //***********************
 
 // Initialize an RTM API client
 rtm.on('message', (event) => {
-  console.log('************SLACK REPLY************');
+  console.log('*****SLACK REPLY****', event.text);
 
   Conversation.find({}).then(conversations => {
     let userConvos =[];
@@ -105,7 +142,9 @@ rtm.on('message', (event) => {
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
-        			client.emit('new response', populated);
+        			socketClients.forEach(client=>{
+        				client.emit('new response', populated);
+        			});
         		});
         	});
         });
@@ -125,7 +164,9 @@ rtm.on('message', (event) => {
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
-        			client.emit('new response', populated);
+        			socketClients.forEach(client=>{
+        				client.emit('new response', populated);
+        			});
         		});
         	});
         });
@@ -134,30 +175,6 @@ rtm.on('message', (event) => {
   });
 });
 
-//***********************
-// client.on('disconnect', function(){});
-});
-
-// server.use(cors({
-//   origin: 'https://whispering-journey-17247.herokuapp.com',
-//   credentials: true
-// }));
-app.use(cors());
-
-app.use(bodyParser.json());
-
-const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
-
-mongoose
-  .connect(mLab)
-  .then(conn => {
-    console.log('connected to mongo HeyTeam');
-  })
-  .catch(err => {
-    console.log('error connect to mongo', err);
-});
-
-app.use('/', userRoutes, conversationRoutes);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {

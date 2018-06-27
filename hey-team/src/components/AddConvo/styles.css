@@ -1,6 +1,6 @@
 #main-addconvo
 {
-	background-color: rgb(229, 234, 241);
+	background-color: var(--alt-background);
     width: 665px;
     text-align: center;
     padding-top: 15px;
@@ -8,16 +8,8 @@
     padding-right: 0px !important;
 }
 
-.edge-card
-{
-	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-    padding: 30px;  
-    height: auto;
-    align-content: center;
-}
-
 .day-selected {
-	background: gray;
+	background: var(--hover-light);
 }
 
 .day {
@@ -47,10 +39,10 @@
 .question-text{
 	padding: 2px 10px;
 	position: relative;
-	background: #c7cfdb;
+	background: var(--main-background);
 }
 .question-text:hover{
-	background: #a4adbc;
+	background: var(--hover-light);
 }
 i.remove-question {
 	color: red;
@@ -61,16 +53,17 @@ i.remove-question {
 }
 .display-users {
 	display: flex;
+	flex-wrap: wrap;
 }
 .display-user{
 	margin: 10px 5px;
 	padding: 5px;
-	background: #c7cfdb;
+	background: var(--hover-light);
 	font-weight: bold;
 	position: relative;
 }
 .display-user:hover{
-	background: #a4adbc;
+	background: var(--main-background);
 }
 .display-name{
 	position: relative;
@@ -83,7 +76,7 @@ i.remove-user {
 	right: -12px;
 }
 i.add-user {
-	color: green;
+	color: var(--main-color-light);
 	font-size: 18px;
 	position: absolute;
 	top: -12px;

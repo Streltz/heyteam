@@ -1,4 +1,37 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+:root
+{
+  --main-white: #fff; 
+  --main-dark: #24292e;  
+  --main-dark-light: rgba(58, 58, 58, 0.815);
+  --main-text-light: rgba(112, 112, 112, 0.815);
+
+  --main-color-light: #6DAEDB;
+  --main-color-dark: #0f2436;
+  
+  --alt-color-light: #19647E;
+  --alt-color-dark: #1B4353;
+
+  --link-blue: rgb(28, 161, 223);
+  --link-blue-hover: rgba(44, 129, 207, 0.938);
+
+  --btn-blue: #3280d8;
+  --btn-blue-hover: #3b87df;
+  --btn-blue-dark: #07439e;
+
+  --hover-light: #bbc5d8;
+
+  --main-background: #F9F4F6;   
+  --alt-background: rgb(229, 234, 241);
+}
+
+html
+{
+  background-color: var(--alt-background);
+  overflow-y: hidden;
+}
 
 body {
   margin: 0;
@@ -6,6 +39,157 @@ body {
   font-family: sans-serif;
 }
 
+/* Errors */
+.form-error {
+  text-align: left;
+  height: 25px;
+  color: red;
+}
+
+
+/* Heading */
+.heading
+{   
+    font-family: 'Google Sans',arial,sans-serif;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* Links */
 a:link:hover{
   text-decoration: none;  
+  color: var(--main-white) !important;
+}
+a:link {
+  color: var(--main-white);
+}
+a:visited {
+  color: var(--main-white);
+}
+a:active {
+  color: var(--main-white);
+}
+
+.blue-link
+{
+    color: var(--link-blue) !important;
+}
+.blue-link:hover
+{
+    color: var(--link-blue-hover) !important;
+}
+
+/* Logo */
+.black-light
+{
+    color: var(--main-dark-light);
+}
+
+.black-dark
+{
+    color: var(--main-dark);
+}
+.white
+{
+  color: var(--main-white);
+}
+
+.logo
+{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  padding: 0px;
+
+  line-height: 1.3333;
+}
+
+.logo-large
+{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  line-height: 1.3333;
+  font-size: 45px;
+  padding: 0px;
+
+}
+
+/* Buttons */
+.light-blue-btn
+{
+  cursor: pointer;
+  background: var(--btn-blue) none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+  color: var(--main-white);
+  height: 40px;
+  width: 90px;
+}
+.light-blue-btn:hover
+{
+    background: var(--btn-blue-hover) none repeat scroll 0 0;
+}
+.fixed-bttm-right-btn
+{
+	position: fixed;
+  bottom: 100px;
+  right: 10%;
+  margin-left: -104.5px; 
+}
+.circle-btn-blue
+{
+	background-color: var(--btn-blue);
+	color: var(--main-white);	
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	height: 75px;
+	width: 75px;
+	border-radius: 100%;
+	padding-top: 25px;
+	box-shadow: 0 5px 5px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+}
+.btn-blue
+{
+  cursor: pointer;
+  background: var(--btn-blue) none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 6px;
+  box-shadow: 0 5px 0 var(--btn-blue-dark);
+  color: var(--main-white);
+  height: 40px;
+  width: 52% !important;
+}
+.btn-blue:hover
+{
+  height: 43px;
+  width: 54% !important;
+  widows: auto;
+}
+.btn-blue > a:hover
+{
+  color: var(--main-white);
+}
+
+
+/* Cards */
+.card-dull  
+{     
+    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+    padding: 30px;  
+    padding-top: 45px !important;
+    height: 460px;
+}
+.edge-card
+{
+	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+    padding: 30px;  
+    height: auto;
+    align-content: center;
 }
