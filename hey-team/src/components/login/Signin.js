@@ -4,7 +4,32 @@ import { signIn, clearFormError } from '../../actions/userAction';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
 
+import Loading from '../Loading';
+
 import './styles.css';
+
+
+// function ButtonClicked()
+// {
+//    document.getElementById("col-md-6 float-right").style.display = "none"; // to undisplay
+//    document.getElementById("buttonreplacement").style.display = ""; // to display
+//    return true;
+// }
+// var FirstLoading = true;
+// function RestoreSubmitButton()
+// {
+//    if( FirstLoading )
+//    {
+//       FirstLoading = false;
+//       return;
+//    }
+//    document.getElementById("col-md-6 float-right").style.display = ""; // to display
+//    document.getElementById("Loading").style.display = "none"; // to undisplay
+// }
+// // To disable restoring submit button, disable or delete next line.
+// document.onfocus = RestoreSubmitButton;
+
+
 
 class Signin extends React.Component {
   state = {
@@ -48,11 +73,11 @@ class Signin extends React.Component {
               <br />
               <div className="col-md-12">
                 <span className="col-md-6 float-right">
-                  <button className="signin light-blue-btn" onClick={() => { this.handleSignIn() }}>
+                {this.props.loading ? <Loading /> : <button className="signin light-blue-btn" onClick={() => { this.handleSignIn() }}>
                     Sign in
-                  </button>
+                  </button>}
+                    </span>
                   <br />
-                </span>
                 <span id="create-account" className="col-md-6 float-left">
                   <Link to="/signup" className="blue-link spaced">
                     Create account
@@ -70,8 +95,9 @@ class Signin extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
-  }
+    user: state.user,
+    loading: state.user.loading,
+  };
 }
 
 export default connect(mapStateToProps, { signIn, clearFormError })(Signin);
