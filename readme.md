@@ -2,7 +2,7 @@
 > Hey bot is an interactive slack bot built to help manage conversations with multiple users.
 
 ### How to Start
-To start Hey-Bot first clone the repo and insall all dependices. 
+To start Hey-Bot first clone the repo and install all dependices. 
 ``` npm i ``` 
 Mongo is also required, which you can grab on their site and follow the instructions for you system.
 After the dependicies are all installed, start both the back-end server and the react app. 

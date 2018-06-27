@@ -1,32 +1,32 @@
 
 .LeftColumnPanel {
-  width: 200px;
+  width: 230px;
   height: 100%;
   background-color: rgb(229, 234, 241);
   padding-top: 20px;
-  padding-left: 40px;
-  font-size: 1.2em;
+  padding-left: 40px;  
   font-weight: 300;
 }
 
+.tab-label
+{
+  font-size: 1.5em;
+  padding-left: 10px;
+
+}
 .sidebar-content
 {
   color: #32325d !important;
   text-decoration: none !important;
-
-  padding-top: 6px;
   display: flex;
+  padding-top: 6px;
 }
-.sidebar-content i {
-  font-size: 30px;
-   padding-top: 5px;
-   padding-right: 5px;
+.sidebar-content > i
+{
+  font-size: 1.5em;
+  padding-top: 8px;
 }
 
-.sidebar-tab {
-  font-size: 25px;
-  padding-bottom: -10px;
-}
 .sidebar-content:hover, .sidebar-content:visited, .sidebar-content:active 
 {
   text-decoration: none !important;

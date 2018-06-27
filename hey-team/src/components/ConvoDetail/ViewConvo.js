@@ -38,11 +38,14 @@ class ViewConvo extends React.Component {
     });
 
     return (
-      <div className='view-wrapper'>
+      <main id='viewconvo-main'>
           {!this.props.loading ? 
           <div className="viewconvo">
             <div className="participants-edit">
-              <div className="part-title">Participants</div>
+              <div className="part-title">
+                Participants
+              </div>
+
               <div className="part-edit-delete">
                 <Link to="/dashboard/edit">
                   {convo.responses.length > 0 ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
@@ -106,7 +109,7 @@ class ViewConvo extends React.Component {
               {this.state.redirect ? <Redirect to='/404' /> : null}
             </div>
             <Card/>
-          </div>
+          </main>
     )
   }
 }

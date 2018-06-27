@@ -13,10 +13,10 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <main className="landing-main">
+      <main id="landing-main">
         <header id="nav-header">
           <div className="col-md-12">
-            <div className="Logo-1 col-md-3">
+            <div className="logo-large white float-left col-md-3">
               Hey-Bot
               </div>
             <div className="nav-link-group col-md-9">
@@ -29,7 +29,7 @@ class Landing extends React.Component {
         <header id="banner" className="banner-section">
           <div className="col-md-12">
             <div className="col-md-6" id="description-section">
-              <div className="col-md-12 header-text">Conversation Manager within Slack</div>
+              <div className="col-md-12 header-text">Slack Conversation Manager</div>
               <div className="col-md-12 desc-text">Build and manage private conversations</div>
               <button id="buy-now" className="btn-blue col-md-10">
                 <Link to="/billing">Buy Now</Link>
