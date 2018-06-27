@@ -62,7 +62,7 @@
     }
     html
     {
-        background-color: white;
+        background-color: var(--main-white);
     }
     .light-blue-btn
     {
