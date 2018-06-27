@@ -1,14 +1,14 @@
 /*HEADER*/
 .convo-header {
 	text-align: left;
-	background: #dadfe8;
 	display: flex;
 	font-size: 20px;
 	margin-bottom: 15px;
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);
 }
 .active {
-	background: #c2c6ce;
+	background: var(--main-color-dark);
+	color: var(--main-white);
 }
 
 .convo-header .sort {
@@ -16,11 +16,11 @@
 }
 
 .convo-header .sort:hover {
-	background: #c2c6ce;
+	background: var(--hover-light);
 	cursor: pointer;
 }
 
-/*MAIN GRID*/
+/* MAIN GRID */
 #convo-main
 {
 	padding-top: 15px;
@@ -34,18 +34,19 @@
 }
 .edge-convo
 {
+
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);
 	margin-right: 20px;
 	margin-bottom: 25px;
-	color: rgba(53, 53, 53, 0.911);
-	max-width: 500px;
-	min-width: 200px;
+	color: var(--main-dark);
+	height: 200px;
+	width: 215px;
 }
 .edge-convo .title {
 	margin: 10px;
 	font-size: 22px;
 	font-weight: bold;
-	border-bottom: 1px solid #dedede;
+	border-bottom: 1px solid var(--hover-light);
 }
 
 .edit-delete {
@@ -58,8 +59,9 @@
 
 .convo-content {
 	text-align: left;
-	font-size: 22px;
-	margin: 0px 15px 20px 15px;
+	font-size: 20px;
+	margin: 0px 15px 76px 15px;
+	color: var(--main-dark-light) !important;
 }
 
 
@@ -72,33 +74,15 @@
 	padding-top: 50px;
 }
 
-.fixed-bttm-right-btn
-{
-	position: fixed;
-    bottom: 100px;
-    right: 10%;
-    margin-left: -104.5px; 
-}
+
 .convo-status {
-	background: #f2f2f2;
-	color: #969696;
-	height: 30px;
+	background: var(--main-background);
+	color: var(--hover-light);
+	height: 40px;
 }
 .convo-status .responded {
 	display: inline-block;
 	float: right;
 	margin: 5px 5px -5px 0px;
 }
-.circle-btn-blue
-{
-	background-color: #0a6bc0;
-	color: white;	
-	font-size: 20px;
-	cursor: pointer;
-	border: none;
-	height: 70px;
-	width: 70px;
-	border-radius: 100%;
-	padding-top: 20px;
-	box-shadow: 0 5px 5px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-}
+

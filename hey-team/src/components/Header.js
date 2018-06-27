@@ -17,7 +17,7 @@ class Header extends React.Component {
       <div>
         <div className="headContain">
           <div className="logo-wrapper text-left">
-            <div className="Logo-1 headbar-logo">
+            <div className="logo-large white headbar-logo">
               Hey-Bot
             </div>
             <div className="slack-logo">

@@ -1,124 +1,53 @@
-.main-login
+#main-login
 {
     text-align: center;    
     padding-top: 210px;
     padding-left: 15%;
 
     padding-bottom: 15%;
-    
     background-image: radial-gradient(center center, circle cover, rgb(29, 117, 199), rgb(48, 72, 87)); 
-    /* background: linear-gradient(45deg, rgb(29, 117, 199), rgb(43, 62, 73)) */
 }
-
 
 #signin-form > input
 {
     overflow: hidden;
     margin-left: 10px;
+    
     border-top: none;
     border-left: none;
     border-right: none;
 }
 
-.card-dull  
-{     
-    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-    padding: 30px;  
-    padding-top: 45px !important;
-    height: 460px;
-}
-
-.blue-link
-{
-    color: rgb(17, 151, 212) !important;
-}
-.blue-link:hover
-{
-    color: rgba(44, 129, 207, 0.938) !important;
-}
-.light-blue-btn
-{
-    background: #3786e0 none repeat scroll 0 0;
-    border: medium none;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-    color: #fff;
-    height: 40px;
-    width: 90px;
-}
-.light-blue-btn:hover
-{
-    background: #549ff5 none repeat scroll 0 0;
-}
-
-.logo
-{
-    color:rgba(58, 58, 58, 0.815);
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    font-size: 2em;
-    padding: 0px;
-
-    line-height: 1.3333;
-}
-.logo-blue
-{
-    color:rgba(2, 7, 17, 0.815);
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    font-size: 2em;
-    padding: 0px;
-
-    line-height: 1.3333;
-}
-
 #create-account
 {
-    margin-left: -25px;
-}
-
-.heading
-{   
-    font-family: 'Google Sans',arial,sans-serif;
-    padding-bottom: 0;
-    padding-top: 16px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.3333;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.form-error {
-    text-align: left;
-    height: 25px;
-    color: red;
+    margin-top: 8px;
+    margin-left: -40px;
 }
 
 @media screen and (min-width: 1630px){
-    .main-login {
+    #main-login {
         padding-left: 37% !important;
         padding-right: 37% !important;
     }
 }
 
 @media screen and (max-width: 1630px) and (min-width: 1000px) {
-    .main-login {
+    #main-login {
         padding-left: 34%;
         padding-right: 34%;
     }
 }
 
 @media screen and (max-width: 1000px) and (min-width: 650px){
-    .main-login {
+    #main-login {
         padding-left: 28%;
         padding-right: 28%;
     }
 }
 
-/* Mobile */
+/* Login Mobile Styling */
 @media screen and (max-width: 650px){
-    .main-login
+    #main-login
     {
         padding: 0px;        
     } 

@@ -1,15 +1,28 @@
-
-html
+header
 {
-    background-color: rgb(229, 234, 241);
-    overflow: auto;
+    position: relative;
 }
 
-.landing-main
+#landing-main
 {
     padding-top: 50px;
-    overflow-x: hidden ;
-    background-color: rgb(229, 234, 241);
+    overflow-x: hidden;
+    background-color: var(--alt-background);
+}
+
+/* NavBar */
+#nav-header
+{
+    z-index: 2;
+    position: relative;
+}
+
+/* Middle Body Container */
+#banner
+{
+    height: 400px;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .section-body
@@ -20,19 +33,6 @@ html
     font-size: 1.4em;  
 }  
 
-  /* Middle Body Container */
-#banner
-{
-    height: 400px;
-    overflow: hidden;
-    z-index: 1;
-}
-#nav-header
-{
-    z-index: 2;
-    position: relative;
-}
-
 .banner-section {
     height: 80% !important;
     width: 100%;
@@ -40,8 +40,8 @@ html
 
     padding-bottom: 200px;
     height: 700px;
-    color: #fff;
-    background-image: linear-gradient(rgb(35, 73, 95), rgb(33, 77, 110));
+    color: var(--main-white);
+    background-image: linear-gradient(var(--alt-color-light), var(--main-color-light));
 
     text-align: center;
     z-index: 1;
@@ -61,14 +61,11 @@ html
     text-decoration: none;
     list-style: none;
 
-    color: white;
+    color: var(--main-white);
     padding: 0px;
     margin-right: -32%;
     float:right;
 
-}
-header{
-    position: relative;
 }
 
 #description-section
@@ -80,7 +77,7 @@ header{
 
 .nav-link-group:link
 {
-    color: white;
+    color: var(--main-white);
 }
 
 .right-label
@@ -88,22 +85,10 @@ header{
     margin-left: 15px
 }
 
-.Logo-1
-{
-    color: white;
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    line-height: 1.3333;
-    font-size: 45px;
-    padding: 0px;
-
-    float: left;
-}
-
 #buy-now
 {
     margin-top: 30px;
-    color: white;
+    color: var(--main-white);
 }
 
 .header-text
@@ -121,11 +106,11 @@ header{
 .btn-blue
 {
     cursor: pointer;
-    background: #368bec none repeat scroll 0 0;
+    background: var(--btn-blue) none repeat scroll 0 0;
     border: medium none;
     border-radius: 6px;
-    box-shadow: 0 5px 0 #07439e;
-    color: #fff;
+    box-shadow: 0 5px 0 var(--btn-blue-dark);
+    color: var(--main-white);
 
     height: 40px;
     width: 52% !important;
@@ -137,25 +122,6 @@ header{
     widows: auto;
 }
 
-a:link {
-    color: white;
-}
-
-/* visited link */
-a:visited {
-    color: white;
-}
-
-/* mouse over link */
-a:hover {
-    color: white !important;
-    text-decoration: none;
-}
-
-/* selected link */
-a:active {
-    color: white;
-}
 
 /* Pay No Attention to Below */
 @media screen and (max-width: 1700px) and (min-width: 1560px)
