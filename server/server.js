@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { RTMClient, WebClient } = require('@slack/client');
+const mailer = require('./mailer');
 
 const Conversation = require('./models/conversationModel');
 const Response = require('./models/responseModel');
@@ -90,6 +91,8 @@ setInterval(() => {
 
 let socketClients = [];
 io.on('connection', function(client){
+  console.log('connected to socket');
+  console.log('client ID: ', client.id);
 	console.log('new client connected');
 	socketClients.push(client);
 	client.emit('who connect');
@@ -97,12 +100,11 @@ io.on('connection', function(client){
 		usersConnected.push(username);
 		idConnected.push(client.id);
 	});
-//***********************
+
 	client.on('disconnect', function(){
 		console.log('client disconnect', client.id);
 	});
 });
-//***********************
 
 // Initialize an RTM API client
 rtm.on('message', (event) => {
