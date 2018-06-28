@@ -116,7 +116,8 @@ conversationRouter.put('/conversations/:id', validateToken, function(req, res){
 
 conversationRouter.delete('/conversations/:id', validateToken, function(req, res){
   const _id = req.params.id;
-  Note.findOneAndRemove({ _id })
+  console.log('DELETE', _id);
+  Conversation.findOneAndRemove({ _id })
   .then(removedConversation => {
     res.json(removedConversation);
   })

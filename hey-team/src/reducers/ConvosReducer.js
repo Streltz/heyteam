@@ -53,6 +53,14 @@ const ConvosReducer = (state = initState, action) => {
                 }
             });
             return {...state, convos: tempConvos}
+
+        case 'DELETED_CONVO':
+
+            const deletedConvos = state.convos.filter(convo => {
+                return convo._id !== action.payload._id;
+            });
+            console.log('CONVO AFTER DELTE', deletedConvos);
+            return {...state, convos: deletedConvos, originalConvos: deletedConvos}
            
         case SORTING:
             if(action.payload === "All"){

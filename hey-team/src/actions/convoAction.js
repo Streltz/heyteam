@@ -68,13 +68,16 @@ export const viewConversation = info => {
 		};
   };
 
-export const deleteConversation = info => {
+export const deleteConvo = (id, history) => {
+	console.log('HISTORY', history);
 	 return dispatch => {
 		 dispatch({ type: 'LOADING_CONVO' });
 		 axios
-			 .post(`${ROOT_URL}/convos/remove/${info}`)
+			 .delete(`${ROOT_URL}/conversations/${id}`, {headers: {token: localStorage.getItem('token')}})
 			 .then(response => {
-					 dispatch({ type: 'DELETED_CONVO', payload: response.data });
+			 		history.push('/dashboard');
+					dispatch({ type: 'DELETED_CONVO', payload: response.data });
+					 
 				})
 		  .catch(err => {
 					dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });
