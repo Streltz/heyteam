@@ -47,7 +47,7 @@ class ViewConvo extends React.Component {
               </div>
 
               <div className="part-edit-delete">
-                <Link to={{ pathname: '/dashboard/edit', state: {convo} }}>
+                <Link to={`edit/${convo._id}`}>
                   {convo.responses.length > 0 ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
                 </Link>
                 <div className="delete-convo">
