@@ -8,54 +8,79 @@ class EditConvo extends Component {
       Content: '',
   };
 
+constructor(props) {
+    super(props);
+    this.processChange = this.processChange.bind(this);
+    this.processUpdate = this.processUpdate.bind(this);
+  }
+
+  processChange(event) {
+    const newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
+  }
+
   processUpdate(event) {
-      // event.preventDefault();
-      // axios
-      // .put(`http://localhost:4444/convos/$(this.props.match.params.id`, this.state)
-      // .then(() => {
-      //     window.location.href = '/';
-      // })
-      // .catch((error) => {
-      //     alert('Server error: try again');
-      // });
+    event.preventDefault();
+  //  axios.put(`http://localhost:4444/conversation/${this.props.match.params.id}`, this.state).then(() => {
+  //    window.location.href = '/';
+ //   })
+ //   .catch((error) => {
+ //     alert('Server error: Please try again later.');
+  //  });
   }
-
+  
   componentDidMount() {
-      // axios
-      // .get( `http://localhost:4444/convos/`)
-      // .then((response) => {
-      //     // this.setState(() => convo.id === Number(this.props.match.params.id));
-      // })
-      // .catch((error) => {
-      //     alert('Server error');
-      //     window.location.href = '/';
-      // });
+  //  axios.get('http://localhost:4444/conversation/').then((response) => {
+  //    this.setState(() => response.data.find(convo => convo.id === Number(this.props.match.params.id)));
+  //  })
+   // .catch((error) => {
+   //   alert('Server error: Please try again later.');
+   //   window.location.href = '/';
+  //  });
   }
-
+  
   render() {
+		console.log(this.props);
     return (
-      <div>
-{/*         
-         className="edit">
-          <div className="edit_heading">Edit Convo</div>
-          <form className="edit-convo" 
-          onChange={this.processChange} 
-          onSubmit={this.processUpdate}>
-            <input type="text" 
-              className="edit-convo_title" id="Title" 
-              placeholder="Conversation Title"
-              value={this.state.Title} />
-            <textarea className="edit-convo_content" 
-              id="Content"
-              placeholder="Conversation Content"
-              value={this.state.Content} />
-            <input type="submit" className="edit-convo_update-button" content="Update" />
-          </form>
-        </div>
-         */}
-      </div>
-    );
-  }
-}
+				<main id="main-addconvo">
+        <Card className="edge-card">
+          <div className="card-dashoard">
+            <div className="sub-header text-left col-md-12"> Add a New Conversation </div>
 
-export default EditConvo; 
+            <form onSubmit={e => e.preventDefault()}>
+              <input
+                className="form-control"
+                onChange={this.handleInput}
+                name="title"
+                type="text"
+                value={this.state.title}
+                placeholder="Enter Name for this conversation"
+              />
+              <br />
+              <div className="sub-header text-left col-md-12">Schedule</div>
+              <div className="days">
+
+                {
+                  days.map((day, index) => {
+                    return <div key={day} className={this.state.schedule_days.includes(index) ? 'day btn btn-success' : 'day btn btn-secondary'} onClick={() => { this.handleDaySelect(index) }}>{day}</div>
+                  })
+                }
+              </div>
+              <br //>
+              <div className="sub-header text-left col-md-12">Schedule</div>
+              <div className="days">
+
+                {
+                  days.map((day, index) => {
+                    return <div key={day} className={this.state.schedule_days.includes(index) ? 'day btn btn-success' : 'day btn btn-secondary'} onClick={() => { this.handleDaySelect(index) }}>{day}</div>
+                  })
+                }
+              </div>
+              <br /> 
+    );
+	}
+} 
+
+
+export default EditConvo;
