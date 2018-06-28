@@ -55,7 +55,7 @@ class Landing extends React.Component {
 
         <section id="section-product" className="section-content">
           <div className="section-heading">
-            Product:
+            Product
           </div>
           <div className="section-body">
           Questions can be sent immediately or scheduled for a future time and date. Hey Team's new question card comes with a full 
