@@ -44,19 +44,24 @@ class Landing extends React.Component {
 
         <section id="section-create" className="section-content text-right">
           <div className="section-heading">
-            Create
+              Create
           </div>
-          <div className="section-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          <div className="section-body">            
+            Create separate and private conversations with the members of your team simultaneously
+            Well organized conversations complete with timestamps and titles           
           </div>
         </section>
 
         <section id="section-product" className="section-content">
           <div className="section-heading">
-            Product
+            Product:
           </div>
           <div className="section-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit finibus consectetur. Nam eu orci tempus, consequat nulla id, fermentum nibh.
+          Questions can be sent immediately or scheduled for a future time and date. Hey Team's new question card comes with a full 
+          list of options such as Time and Date, Participants and whether they want have the conversation privately through 
+          Slack's Direct Messaging feature or in a separate Hey Bot Slack channel.
+          Our Conversations feature will organize all your questions and show Managers who has responded, how they responded and when they responded. 
+          Hey Bot also offers the option of having these organized messages sent to the Manager's e-mail as well for safe record keeping.
           </div>
           <div>
             {
