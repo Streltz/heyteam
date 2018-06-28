@@ -12,7 +12,7 @@ const ConversationSchema = new mongoose.Schema({
 	active: {type: Boolean, default: true},
 	created_on: {type: Number, default: Date.now()},
 	daySent: {type: Number, default: null},
-	dateSent: {type: mongoose.Schema.Types.Mixed},
+	dateSent: {type: mongoose.Schema.Types.Mixed, default: null},
 	newMessages: {type: Number, default: 0}
 });
 
