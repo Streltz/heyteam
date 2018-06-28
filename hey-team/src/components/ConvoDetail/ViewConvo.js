@@ -7,35 +7,52 @@ import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
-import { getConvos, editConversation } from '../../actions/convoAction';
+import { getConvos, editConversation, deleteConvo } from '../../actions/convoAction';
 
 class ViewConvo extends React.Component {
   state = {
     redirect: false,
+    convoId: ''
   };
 
   componentDidMount() {
     this.props.getConvos();
     const convoId = this.props.match.params.id;
+    this.setState({convoId});
     this.props.editConversation(convoId, 'resetNewMessage');
   }
 
+  handleDelete = ()=>{
+    this.props.deleteConvo(this.state.convoId, this.props.history);
+  }
+
   render() {
+    console.log('CONVOSSSSSS', this.props.convos.convos);
     if(this.props.convos.convos.length < 1) return null;
     // const Converter = require('react-showdown').Converter;
     // const converter = new Converter();
+
+    
+    let convo = null;
+    let userNames = null;
+    let unresponded = null;
     const id = this.props.match.params.id;
-    const convo = this.props.convos.convos.find(convo => {
+    console.log('IIIIDDDD', id);
+
+      const foundConvo = this.props.convos.convos.find(convo => {
       return convo._id === id;
-    });
-
-    const userNames = convo.responses.map(res=>{
-      return res.username;
-    });
-
-    const unresponded = convo.participants.filter(user=>{
+      });
+      console.log('FOUND CONVO', foundConvo);
+      convo = foundConvo;
+      const foundUserNames = convo.responses.map(res=>{
+        return res.username;
+        });
+      userNames = foundUserNames;
+      const foundUnresponded = convo.participants.filter(user=>{
       return !userNames.includes(user.name);
     });
+      unresponded = foundUnresponded;
+    
 
     return (
       <main id='viewconvo-main'>
@@ -47,11 +64,11 @@ class ViewConvo extends React.Component {
               </div>
 
               <div className="part-edit-delete">
-                <Link to="/dashboard/edit">
-                  {convo.responses.length > 0 ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
+                <Link to={`edit/${convo._id}`}>
+                  {!convo.dateSent ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
                 </Link>
                 <div className="delete-convo">
-                  <span className="delete-icon"><i className="material-icons">delete</i></span>
+                  <span className="delete-icon" onClick={()=>{this.handleDelete()}}><i className="material-icons">delete</i></span>
                 </div>
               </div>
             </div>
@@ -120,4 +137,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getConvos, editConversation})(ViewConvo);
+export default connect(mapStateToProps, {deleteConvo, getConvos, editConversation})(ViewConvo);
