@@ -87,13 +87,26 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
 });
 
 conversationRouter.put('/conversations/:id', validateToken, function(req, res){
-  console.log('REQ PARAMS', req.params);
+  console.log('REQ BODY', req.body);
   const {id} = req.params;
+  const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
   Conversation.findById(id)
-  .then(convo => {
-    convo.newMessages = 0;
-    convo.save().then(updated=>{
-      res.json(updated._id);
+  .then(conversation => {
+    console.log('CONVO FROM DB', conversation);
+    conversation.title = title;
+    // conversation.time = convertTime(time, ampm, timezone);
+    conversation.schedule_days = schedule_days;
+    conversation.question = question;
+    conversation.participants = participants; 
+    console.log('CONVER ASSIGNED', conversation);
+    conversation.save().then(updated=>{
+      Conversation.findById(updated._id)
+      .populate('responses')
+  .exec((err, convo) => {
+    console.log('FIND CONVO', convo);
+      res.json(convo);
+  });
+      
     });
   })
   .catch(err => {

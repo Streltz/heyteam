@@ -44,17 +44,16 @@ const ConvosReducer = (state = initState, action) => {
 
         return {...state, convos: cpyConvos};
 
-        case 'EDIT_CONVO':
-            // return {
-            //     ...state,
-            //     convos: state.convos.map(convo => {
-            //         if (convo.id === action.payload.id) {
-            //         return action.payload;
-            //     }
-            //     return convo;
-            // }),
-            // loading: false
-        // }
+        case 'EDITED_CONVO':
+            const tempConvos = state.convos.map(convo => {
+                if(convo._id === action.payload._id){
+                    return action.payload;
+                }else{
+                    return convo;
+                }
+            });
+            return {...state, convos: tempConvos}
+           
         case SORTING:
             if(action.payload === "All"){
                 const sorted = state.originalConvos;

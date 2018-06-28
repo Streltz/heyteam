@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-// import { addConvo } from '../../actions/convoAction';
+import { editConversation } from '../actions/convoAction';
 
 import { fetchSlackUsers, searchSlackUsers } from '../actions/userAction';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Card, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 // import './styles.css';
 
-class AddConvo extends Component {
+class EditConvo extends Component {
   state = {
     title: '',
     schedule_days: [],
@@ -86,7 +86,7 @@ class AddConvo extends Component {
     convo.ampm = this.state.selectedAmpm;
     convo.question = this.state.question;
     convo.participants = this.state.participants;
-    this.props.addConvo(convo, this.props.history);
+    this.props.editConversation(this.props.match.params.id,convo, this.props.history);
   }
 
   handleDaySelect = (data) => {
@@ -164,7 +164,8 @@ class AddConvo extends Component {
       <main id="main-addconvo">
         <Card className="edge-card">
           <div className="card-dashoard">
-            <div className="sub-header text-left col-md-12"> Add a New Conversation </div>
+            <div className="sub-header text-left col-md-12"> 
+            Edit </div>
 
             <form onSubmit={e => e.preventDefault()}>
               <input
@@ -271,7 +272,7 @@ class AddConvo extends Component {
                 onClick={this.handleSubmit}
                 type="button"
                 className='btn btn-primary'>
-                Add Conversation
+                Save
           </button><br />
             </form>
             {this.state.redirect && <Redirect to={'/'} />}
@@ -283,11 +284,10 @@ class AddConvo extends Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log('STATE CONVO', state.convos);
   return {
     convos: state.convos,
     user: state.user
   }
 }
 
-export default connect(mapStateToProps, { searchSlackUsers, fetchSlackUsers })(AddConvo);
+export default connect(mapStateToProps, { searchSlackUsers, fetchSlackUsers, editConversation })(EditConvo);
