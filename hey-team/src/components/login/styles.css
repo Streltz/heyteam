@@ -18,6 +18,15 @@
     border-right: none;
 }
 
+#return-btn
+{
+    font-weight: 300;
+}
+#return-btn > a:hover
+{
+    color: white !important;
+}
+
 #create-account
 {
     margin-top: 8px;

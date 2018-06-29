@@ -62,6 +62,11 @@ class SignUp extends React.Component {
             </form>
           </div>
         </Card>
+        <div id="return-btn" className="white col-md-5 float-right">
+          <Link to="/">
+            Return Home
+          </Link>
+        </div>
       </main>
     );
   }
