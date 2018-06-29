@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'reactstrap';
-
+import axios from 'axios';
 import './styles.css';
-
+const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
 class Preferences extends React.Component {
 
   state = {
@@ -14,7 +14,11 @@ class Preferences extends React.Component {
     this.setState({
       selectedOption: event.target.value
     });
-    //TODO: hook up with action and change preferences
+
+    axios.post(`${ROOT_URL}/preference`, {pref: event.target.value}, {headers: {token: localStorage.getItem('token')}})
+      .then(res => {
+        console.log('Preference changed');
+    });
   }
 
   render() {
