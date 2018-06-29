@@ -25,6 +25,8 @@
 
   --main-background: #F9F4F6;   
   --alt-background: rgb(229, 234, 241);
+
+  --green-main: rgb(62, 207, 143);
 }
 
 html
@@ -116,7 +118,7 @@ a:active {
   line-height: 1.3333;
   font-size: 45px;
   padding: 0px;
-
+  text-shadow: 1px 1px 10px rgba(78, 81, 83, 0.507);
 }
 
 /* Buttons */
@@ -176,7 +178,46 @@ a:active {
 {
   color: var(--main-white);
 }
+.btn-original
+{
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  border-radius: 4px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+  white-space: nowrap;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.btn-original:hover
+{
+  margin-top: -2px !important;
+  box-shadow: 2px 5px 7px rgba(37, 37, 68, 0.205), 1px 2px 3px rgba(0,0,0,.08) !important;
+}
 
+.btn-green
+{
+  background: var(--green-main);
+  text-shadow: 0 1px 3px rgba(36,180,126,.4);
+}
+.btn-green > a:hover
+{
+  color: var(--main-white) !important;
+}
+
+.btn-white
+{
+  background: var(--main-white);
+  text-shadow: 0 1px 3px rgba(50, 85, 119, 0.4);
+}
+.btn-white > a
+{
+  color: var(--alt-color-light) !important;   
+}
 
 /* Cards */
 .card-dull  
