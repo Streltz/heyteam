@@ -20,7 +20,6 @@ class Signin extends React.Component {
     if (event != undefined) {
       event.preventDefault();
       this.props.signIn(this.state, this.props.history);
-      console.log("ev", event);
     }
   }
 
