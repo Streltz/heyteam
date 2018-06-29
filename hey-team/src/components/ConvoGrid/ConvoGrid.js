@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { getConvos } from '../../actions/convoAction';
+import { getConvos, deleteConvo } from '../../actions/convoAction';
 import ViewConvo from '../ConvoDetail/ViewConvo';
 import ConvoHeader from './ConvoHeader';
 // import Convo from './Convo';
@@ -12,7 +12,8 @@ class ConvoGrid extends React.Component {
   state = {
     title: "",
     content: "",
-    modal: false
+    modal: false,
+    deleteId: ''
   };
 
   viewConvo = (convo) => {
@@ -46,12 +47,15 @@ class ConvoGrid extends React.Component {
     this.setState({ show: true });
   }
 
-  toggle(action) {
+  toggle(data) {
     this.setState({
       modal: !this.state.modal
     });
-    if(action === 'delete'){
-        
+    if(data.action === 'set_id'){
+      this.setState({deleteId: data.id});
+    }
+    if(data.action === 'delete'){
+      this.props.deleteConvo(this.state.deleteId, this.props.history);
     }
   }
 
@@ -75,7 +79,7 @@ class ConvoGrid extends React.Component {
                       </div>
                     </Link>
                     <div className="convo-status">
-                      <div className="delete-icon" onClick={()=>{this.toggle()}}><i className="material-icons">delete</i></div>
+                      <div className="delete-icon" onClick={()=>{this.toggle({action: 'set_id', id: convo._id})}}><i className="material-icons">delete</i></div>
                       <div className="responded">{convo.responses.length > 0 ? <i className="material-icons">message</i> : null}
                       </div>
                       {convo.newMessages > 0 ? <div className="new-messages">{convo.newMessages}</div> : null}
@@ -96,7 +100,7 @@ class ConvoGrid extends React.Component {
             Delete this conversation?
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={()=>{this.toggle('delete')}}>Delete</Button>{' '}
+            <Button color="danger" onClick={()=>{this.toggle({action: 'delete'})}}>Delete</Button>{' '}
             <Button color="secondary" onClick={()=>{this.toggle()}}>Cancel</Button>
           </ModalFooter>
         </Modal>
@@ -111,4 +115,4 @@ const mapStateToProps = (state) => {
     convos: state.convos
   }
 }
-export default connect(mapStateToProps, { getConvos })(ConvoGrid);
+export default connect(mapStateToProps, { getConvos, deleteConvo })(ConvoGrid);

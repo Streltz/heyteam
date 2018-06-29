@@ -77,7 +77,6 @@ export const deleteConvo = (id, history) => {
 			 .then(response => {
 			 		history.push('/dashboard');
 					dispatch({ type: 'DELETED_CONVO', payload: response.data });
-					 
 				})
 		  .catch(err => {
 					dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });
