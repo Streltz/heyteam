@@ -21,6 +21,7 @@ class Convo extends React.Component {
              {this.props.convo.question}
           </div>
           <div className="convo-status">
+            <div className="delete-icon"><i className="material-icons">delete</i></div>
             <div className="responded">{this.props.convo.responses.length > 0 ? <i className="material-icons">message</i> : null}
             </div>
             {this.props.convo.newMessages > 0 ? <div className="new-messages">{this.props.convo.newMessages}</div> : null}

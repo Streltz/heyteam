@@ -8,11 +8,13 @@ import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
 import { getConvos, editConversation, deleteConvo } from '../../actions/convoAction';
+import { ModalHeader, ModalBody, ModalFooter, Modal, Button } from 'reactstrap';
 
 class ViewConvo extends React.Component {
   state = {
     redirect: false,
-    convoId: ''
+    convoId: '',
+    modal: false
   };
 
   componentDidMount() {
@@ -22,9 +24,14 @@ class ViewConvo extends React.Component {
     this.props.editConversation(convoId, 'resetNewMessage');
   }
 
-  handleDelete = ()=>{
-    this.props.deleteConvo(this.state.convoId, this.props.history);
-  }
+  toggle(action) {
+    this.setState({
+      modal: !this.state.modal
+    });
+
+    if(action === 'delete'){
+      this.props.deleteConvo(this.state.convoId, this.props.history);
+    }   
 
   render() {
     if(this.props.convos.convos.length < 1) return null;
@@ -54,7 +61,8 @@ class ViewConvo extends React.Component {
                   {!convo.dateSent ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
                 </Link>
                 <div className="delete-convo">
-                  <span className="delete-icon" onClick={()=>{this.handleDelete()}}><i className="material-icons">delete</i></span>
+                  <span className="delete-icon" onClick={()=>{this.toggle()}}><i className="material-icons">delete</i></span>
+
                 </div>
               </div>
             </div>
@@ -112,6 +120,15 @@ class ViewConvo extends React.Component {
               {this.state.redirect ? <Redirect to='/404' /> : null}
             </div>
             <Card/>
+            <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalBody>
+            Delete this conversation?
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={()=>{this.toggle('delete')}}>Delete</Button>{' '}
+            <Button color="secondary" onClick={()=>{this.toggle()}}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
           </main>
     )
   }
