@@ -27,33 +27,18 @@ class ViewConvo extends React.Component {
   }
 
   render() {
-    console.log('CONVOSSSSSS', this.props.convos.convos);
     if(this.props.convos.convos.length < 1) return null;
-    // const Converter = require('react-showdown').Converter;
-    // const converter = new Converter();
-
-    
-    let convo = null;
-    let userNames = null;
-    let unresponded = null;
     const id = this.props.match.params.id;
-    console.log('IIIIDDDD', id);
-
-      const foundConvo = this.props.convos.convos.find(convo => {
+    const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
-      });
-      console.log('FOUND CONVO', foundConvo);
-      convo = foundConvo;
-      const foundUserNames = convo.responses.map(res=>{
-        return res.username;
-        });
-      userNames = foundUserNames;
-      const foundUnresponded = convo.participants.filter(user=>{
+    });
+    const userNames = convo.responses.map(res=>{
+      return res.username;  
+    });
+    const unresponded = convo.participants.filter(user=>{
       return !userNames.includes(user.name);
     });
-      unresponded = foundUnresponded;
     
-
     return (
       <main id='viewconvo-main'>
           {!this.props.loading ? 
