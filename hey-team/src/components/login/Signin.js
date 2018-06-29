@@ -20,7 +20,6 @@ class Signin extends React.Component {
     if (event != undefined) {
       event.preventDefault();
       this.props.signIn(this.state, this.props.history);
-      console.log("ev", event);
     }
   }
 
@@ -63,6 +62,11 @@ class Signin extends React.Component {
             </form>
           </div>
         </Card>
+        <div id="return-btn" className="white col-md-5 float-right">
+          <Link to="/">
+            Return Home
+          </Link>
+        </div>
       </main>
 
     );
