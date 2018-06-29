@@ -26,16 +26,20 @@ socket.on('connect', (data)=>{
 class App extends Component {
 
   componentDidMount(){
+
    socket.on('new response', (data)=>{
-    console.log('CONVO SOCKET', data.convo);
        this.createNotification(data.response);
        this.props.newResponse(data.convo);
+        const pop = new Audio('/sounds/pop.flac');
+      pop.play();
      });
   }
 
   createNotification = (res) => {
     console.log('RES', res);
      NotificationManager.info(`"${res.texts[res.texts.length - 1].text}"`, `New response from ${res.username}`);
+
+
   };
 
   render() {
