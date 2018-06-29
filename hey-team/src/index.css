@@ -146,7 +146,7 @@ a:active {
 }
 .circle-btn-blue
 {
-	background-color: var(--btn-blue);
+	background-image: linear-gradient(3deg, rgb(81, 35, 247), rgb(12, 149, 240));
 	color: var(--main-white);	
 	font-size: 20px;
 	cursor: pointer;
