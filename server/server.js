@@ -109,7 +109,7 @@ io.on('connection', function(client){
 // Initialize an RTM API client
 rtm.on('message', (event) => {
   console.log('*****SLACK REPLY****', event.text);
-
+if(event.channel[0] === 'D' && event.channel[1] === 'B'){
   Conversation.find({}).then(conversations => {
     let userConvos =[];
     conversations.forEach(convo => {
@@ -174,6 +174,7 @@ rtm.on('message', (event) => {
       }
     })     
   });
+}
 });
 
 
