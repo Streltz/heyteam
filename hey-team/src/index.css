@@ -14,6 +14,9 @@
   --alt-color-light: #19647E;
   --alt-color-dark: #1B4353;
 
+  --vib-blue-light: rgb(12, 149, 240);
+  --vib-blue-dark: rgb(81, 35, 247);
+
   --link-blue: rgb(28, 161, 223);
   --link-blue-hover: rgba(44, 129, 207, 0.938);
 
@@ -146,7 +149,7 @@ a:active {
 }
 .circle-btn-blue
 {
-	background-image: linear-gradient(3deg, rgb(81, 35, 247), rgb(12, 149, 240));
+	background-image: linear-gradient(3deg, var(--vib-blue-dark), var(--vib-blue-light));
 	color: var(--main-white);	
 	font-size: 20px;
 	cursor: pointer;
