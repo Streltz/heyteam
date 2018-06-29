@@ -130,7 +130,7 @@ rtm.on('message', (event) => {
       console.log('RES FINDONE', res);
       if(res){
         res.texts.push({text: event.text, time: getTime()});
-        res.save().then(res=>{
+        res.save().then(resSaved=>{
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
@@ -139,7 +139,7 @@ rtm.on('message', (event) => {
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
         			socketClients.forEach(client=>{
-        				client.emit('new response', populated);
+        				client.emit('new response', {convo: populated, response: resSaved});
         			});
         		});
         	});
@@ -152,7 +152,7 @@ rtm.on('message', (event) => {
         newRes.question = latestConvo.question;
         newRes.texts = [{text: event.text, time: getTime()}];
         newRes.date_submitted = new Date();
-        newRes.save().then(res => {
+        newRes.save().then(resSaved => {
           latestConvo.responses.push(res._id);
           latestConvo.newMessages += 1;
           latestConvo.save()
@@ -161,7 +161,7 @@ rtm.on('message', (event) => {
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
         			if(err) console.log(err);
         			socketClients.forEach(client=>{
-        				client.emit('new response', populated);
+        				client.emit('new response', {convo: populated, response: resSaved});
         			});
         		});
         	});

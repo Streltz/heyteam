@@ -13,6 +13,8 @@ import Billing from './components/Billing/Billing';
 import RequireAuth from './components/HOC/RequireAuth';
 import { newResponse } from './actions/convoAction';
 import { connect } from 'react-redux';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000');
@@ -24,17 +26,23 @@ socket.on('connect', (data)=>{
 class App extends Component {
 
   componentDidMount(){
-    socket.on('new response', (convo)=>{
-      console.log('sock new res', convo);
-      this.props.newResponse(convo);
-    });
-  } 
+   socket.on('new response', (data)=>{
+       this.createNotification(data.response);
+       this.props.newResponse(data.convo);
+     });
+  }
+
+  createNotification = (res) => {
+    console.log('RES', res);
+     NotificationManager.info(`"${res.texts[res.texts.length - 1].text}"`, `New response from ${res.username}`);
+  };
 
   render() {
     return (
       <div className="App">
         <Router>
         <div className="left-panel">
+        <NotificationContainer />
           <Route path ="/" component = {Landing} exact />
           <Route path ="/dashboard" component = {RequireAuth(Dashboard)} />
           <Route path ="/editconvo/:id" component = {EditConvo} />
