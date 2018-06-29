@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const secretEnv = process.env.SEC_KEY || 'secret';
 
 const validateToken = (req, res, next) => {
-  const token = req.headers.authorization;
+  const token = req.headers.token;
   if (!token) {
     res
       .status(422)
@@ -40,16 +40,30 @@ userRouter.post('/signup', function(req, res){
 	const user = new User();
 	user.name = name;
 	user.email = email;
-	console.log(name, email, password);
+	// console.log(name, email, password);
 	bcrypt.hash(password, 11, (err, hash) => {
 		console.log(err);
 		if (err) throw err;
 		user.password = hash;
-		console.log(user);
+		// console.log(user);
 		user.save().then(savedUser => {
-			res.json(savedUser);
-		});
+			// console.log('savedUser', savedUser);
+			res.json({success: true, savedUser});
+		}).catch(err => {
+			if (err.code == 11000){
+				res.send({error: 11000});
+			}
+		})
 	});
+});
+
+userRouter.post('/preference', validateToken, function(req, res){
+ 	User.findById(req.decoded.userId).then(user=>{
+ 		user.sendEmail = req.body.pref;
+ 		user.save().then(saved=>{
+ 			res.json(saved);
+ 		});
+ 	});
 });
 
 userRouter.post('/login', function(req, res){
@@ -57,7 +71,7 @@ userRouter.post('/login', function(req, res){
 	User.findOne({ email }).then(user => {
 		if(!user){
 			console.log('USER NOT FOUND');
-			res.json({success: false, message: 'Wrong email or password'});
+			res.json({success: false, message: 'Invalid Email or Password'});
 		}
 		if(user){
 			userObject = {
@@ -68,7 +82,7 @@ userRouter.post('/login', function(req, res){
 			bcrypt.compare(password, user.password, function(err, valid) {
     			if(!valid){
     				console.log('LOGIN FAIL: WRONG EMAIL OR PASSWORD');
-    				res.json({success: false, message: 'Wrong email or password'});
+    				res.json({success: false, message: 'Invalid Email or Password'});
     			}else{
     				const token = jwt.sign(userObject, secretEnv, { expiresIn: '1000h' });
         		   res.json({success: true, token: token, name: user.name });

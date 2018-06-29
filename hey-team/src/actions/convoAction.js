@@ -38,16 +38,18 @@ export const addConvo = (info, history) => {
    };
 };
 
-export const editConversation = (id, type, history) => {
+export const editConversation = (id, data, history) => {
+	console.log('DATA', data);
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios
-			.put(`${ROOT_URL}/conversations/${id}`, {type}, {headers: {token: localStorage.getItem('token')}})
+			.put(`${ROOT_URL}/conversations/${id}`, data, {headers: {token: localStorage.getItem('token')}})
 			.then(response => {
-					dispatch({ type: 'RESET_NEW_MESSAGE', payload: response });
+					dispatch({ type: 'EDITED_CONVO', payload: response.data });
+					history.push(`/dashboard/${id}`);
 				})
 		  .catch(err => {
-					// disptch({ type: 'ERROR_EDITING_CONVO', payload: err });
+					dispatch({ type: 'ERROR_EDITING_CONVO', payload: err });
 			});
 	 };
 };
@@ -66,13 +68,16 @@ export const viewConversation = info => {
 		};
   };
 
-export const deleteConversation = info => {
+export const deleteConvo = (id, history) => {
+	console.log('HISTORY', history);
 	 return dispatch => {
 		 dispatch({ type: 'LOADING_CONVO' });
 		 axios
-			 .post(`${ROOT_URL}/convos/remove/${info}`)
+			 .delete(`${ROOT_URL}/conversations/${id}`, {headers: {token: localStorage.getItem('token')}})
 			 .then(response => {
-					 dispatch({ type: 'DELETED_CONVO', payload: response.data });
+			 		history.push('/dashboard');
+					dispatch({ type: 'DELETED_CONVO', payload: response.data });
+					 
 				})
 		  .catch(err => {
 					dispatch({ type: 'ERROR_DELETING_CONVO', payload: err });

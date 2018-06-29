@@ -28,7 +28,12 @@ export const signUp = (newUser, history) => {
     return (dispatch) => {
       axios.post(`${ROOT_URL}/signup`, newUser)
       .then(res => {
-        if(res.status === 200){
+        if (res.data.error === 11000) {
+          dispatch({
+            type: 'SIGNUP_ERROR',
+            payload: "Someone's already using that email."
+          })
+        } else if (res.data.success){
           alert('You have signed up successfully, please log in.');
           history.push('/signin');
         }

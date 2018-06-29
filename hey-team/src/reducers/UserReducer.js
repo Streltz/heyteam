@@ -41,6 +41,9 @@ const UserReducer = (state = userInit, action) => {
 		case 'SIGNIN_ERROR':
 		return { ...state, formError: action.payload}
 
+		case 'SIGNUP_ERROR':
+		return { ...state, formError: action.payload}
+
 		case SEARCH_SLACKUSERS:
 		if(action.payload === '') return { ...state, slackUsersMutated: [] };
 		const users = state.slackUsersOrigin;

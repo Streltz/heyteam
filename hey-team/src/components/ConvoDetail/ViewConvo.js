@@ -7,36 +7,39 @@ import Response from './Response';
 import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
-import { getConvos, editConversation } from '../../actions/convoAction';
+import { getConvos, editConversation, deleteConvo } from '../../actions/convoAction';
 
 class ViewConvo extends React.Component {
   state = {
     redirect: false,
+    convoId: ''
   };
 
   componentDidMount() {
     this.props.getConvos();
     const convoId = this.props.match.params.id;
+    this.setState({convoId});
     this.props.editConversation(convoId, 'resetNewMessage');
+  }
+
+  handleDelete = ()=>{
+    this.props.deleteConvo(this.state.convoId, this.props.history);
   }
 
   render() {
     if(this.props.convos.convos.length < 1) return null;
-    // const Converter = require('react-showdown').Converter;
-    // const converter = new Converter();
     const id = this.props.match.params.id;
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });
-
+    console.log('RENDER CONVO SINGLE', convo);
     const userNames = convo.responses.map(res=>{
-      return res.username;
+      return res.username;  
     });
-
     const unresponded = convo.participants.filter(user=>{
       return !userNames.includes(user.name);
     });
-
+    
     return (
       <main id='viewconvo-main'>
           {!this.props.loading ? 
@@ -47,11 +50,11 @@ class ViewConvo extends React.Component {
               </div>
 
               <div className="part-edit-delete">
-                <Link to="/dashboard/edit">
-                  {convo.responses.length > 0 ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
+                <Link to={`edit/${convo._id}`}>
+                  {!convo.dateSent ? <span className="edit-icon"><i className="material-icons">edit</i></span> : null }
                 </Link>
                 <div className="delete-convo">
-                  <span className="delete-icon"><i className="material-icons">delete</i></span>
+                  <span className="delete-icon" onClick={()=>{this.handleDelete()}}><i className="material-icons">delete</i></span>
                 </div>
               </div>
             </div>
@@ -120,4 +123,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getConvos, editConversation})(ViewConvo);
+export default connect(mapStateToProps, {deleteConvo, getConvos, editConversation})(ViewConvo);
