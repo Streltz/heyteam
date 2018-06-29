@@ -44,7 +44,7 @@ html
     }
     50% {
         margin-top: 33.5%;
-        height: 41%;
+        height: 40.4%;
     }
 }
 
@@ -72,7 +72,7 @@ html
     padding-bottom: 200px;
     height: 700px;
     color: var(--main-white);
-    background-image: linear-gradient(-180deg, var(--alt-color-light), var(--main-color-light));
+    background-image: linear-gradient(180deg, var(--vib-blue-dark), var(--vib-blue-light));
 
     text-align: center;
     z-index: 2;
@@ -114,11 +114,6 @@ html
 {
     margin-left: 15px
 }
-#buy-now
-{
-    margin-top: 30px;
-    color: var(--main-white);
-}
 .header-text
 {
     line-height: 1.4;
@@ -133,7 +128,14 @@ html
     font-size: 1.3em;
     font-weight: 300;
 }
-
+.btn-group > button
+{
+    margin-left: 60px;
+}
+.btn-group
+{
+    margin-top: 40px;
+}
 
 /* Section Content */
 .section-content

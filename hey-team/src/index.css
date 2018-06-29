@@ -14,6 +14,9 @@
   --alt-color-light: #19647E;
   --alt-color-dark: #1B4353;
 
+  --vib-blue-light: rgb(12, 149, 240);
+  --vib-blue-dark: rgb(81, 35, 247);
+
   --link-blue: rgb(28, 161, 223);
   --link-blue-hover: rgba(44, 129, 207, 0.938);
 
@@ -25,6 +28,8 @@
 
   --main-background: #F9F4F6;   
   --alt-background: rgb(229, 234, 241);
+
+  --green-main: rgb(62, 207, 143);
 }
 
 html
@@ -116,7 +121,7 @@ a:active {
   line-height: 1.3333;
   font-size: 45px;
   padding: 0px;
-
+  text-shadow: 1px 1px 10px rgba(78, 81, 83, 0.507);
 }
 
 /* Buttons */
@@ -144,7 +149,7 @@ a:active {
 }
 .circle-btn-blue
 {
-	background-color: var(--btn-blue);
+	background-image: linear-gradient(3deg, var(--vib-blue-dark), var(--vib-blue-light));
 	color: var(--main-white);	
 	font-size: 20px;
 	cursor: pointer;
@@ -176,20 +181,59 @@ a:active {
 {
   color: var(--main-white);
 }
+.btn-original
+{
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  border-radius: 4px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+  white-space: nowrap;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.btn-original:hover
+{
+  margin-top: -2px !important;
+  box-shadow: 2px 5px 7px rgba(37, 37, 68, 0.205), 1px 2px 3px rgba(0,0,0,.08) !important;
+}
 
+.btn-green
+{
+  background: var(--green-main);
+  text-shadow: 0 1px 3px rgba(36,180,126,.4);
+}
+.btn-green > a:hover
+{
+  color: var(--main-white) !important;
+}
+
+.btn-white
+{
+  background: var(--main-white);
+  text-shadow: 0 1px 2px rgba(19, 81, 102, 0.178);
+}
+.btn-white > a
+{
+  color: var(--alt-color-light) !important;   
+}
 
 /* Cards */
 .card-dull  
 {     
-    box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-    padding: 30px;  
-    padding-top: 45px !important;
-    height: 460px;
+  box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
+  padding: 30px;  
+  padding-top: 45px !important;
+  height: 460px;
 }
 .edge-card
 {
 	box-shadow: 0 2px 2px 0 rgba(43, 43, 43, 0.151), 0 3px 1px -2px rgba(34, 34, 34, 0.082), 0 1px 5px 0 rgba(31, 31, 31, 0.13);  
-    padding: 30px;  
-    height: auto;
-    align-content: center;
+  padding: 30px;  
+  height: auto;
+  align-content: center;
 }

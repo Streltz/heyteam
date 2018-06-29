@@ -5,7 +5,7 @@
     padding-left: 15%;
 
     padding-bottom: 15%;
-    background-image: radial-gradient(center center, circle cover, rgb(29, 117, 199), rgb(48, 72, 87)); 
+    background-image: radial-gradient(center center, circle cover,rgb(37, 149, 224), rgb(82, 43, 223)); 
 }
 
 #signin-form > input
@@ -16,6 +16,15 @@
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+#return-btn
+{
+    font-weight: 300;
+}
+#return-btn > a:hover
+{
+    color: white !important;
 }
 
 #create-account

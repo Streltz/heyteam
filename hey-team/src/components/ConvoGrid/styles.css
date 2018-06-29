@@ -43,7 +43,7 @@
 	margin-right: 20px;
 	margin-bottom: 25px;
 	color: var(--main-dark);
-	height: 200px;
+	height: 192px;
 	width: 215px;
 }
 .edge-convo .title {
@@ -84,13 +84,18 @@
 
 	background: var(--main-background);
 	color: var(--hover-light);
-	height: 40px;
+	height: 30px;
 }
 .convo-status .responded {
 	display: inline-block;
 	float: right;
 	margin: 5px 5px -5px 0px;
 }
+.convo-status .delete-icon {
+	display: inline-block;
+	float: left;
+	margin-top: 3px;
+}	
 
 .convo-status .new-messages {
 	position: absolute;
