@@ -63,15 +63,47 @@ const ConvosReducer = (state = initState, action) => {
             return {...state, convos: deletedConvos, originalConvos: deletedConvos}
            
         case SORTING:
-            if(action.payload === "All"){
-                const sorted = state.originalConvos;
-                return {...state, convos: sorted}
-            }
-            if(action.payload === "All"){
-                const sorted = state.originalConvos;
+            if(action.payload === "All" || action.payload === 'Newest'){
+                let copyState = state.originalConvos;
+                console.log('copy state convo', copyState);
+                const sorted = copyState.sort((a, b) => {
+                        console.log('ab', a, b);
+                const idA = a.created_on;
+                const idB = b.created_on;
+                 console.log('id', idA, idB);
+              
+                let comparison = 0;
+                if(idA > idB){
+                        comparison = 1;
+                } else if (idA > idB) {
+                    comparison = -1;
+                }
+                    return comparison
+                });
+                console.log('SORTED', sorted);
                 return {...state, convos: sorted}
             }
 
+            if(action.payload === 'Oldest'){
+                let copyState = state.originalConvos;
+                console.log('copy state convo', copyState);
+                const sorted = copyState.sort((a, b) => {
+                        console.log('ab', a, b);
+                const idA = a.created_on;
+                const idB = b.created_on;
+                 console.log('id', idA, idB);
+              
+                let comparison = 0;
+                if(idA < idB){
+                        comparison = 1;
+                } else if (idA > idB) {
+                    comparison = -1;
+                }
+                    return comparison
+                });
+                console.log('SORTED', sorted);
+                return {...state, convos: sorted}
+            }
 
         default:
             return state;

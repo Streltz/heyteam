@@ -75,6 +75,7 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     conversation.title = title;
     conversation.time = convertTime(time, ampm, timezone);
     conversation.schedule_days = schedule_days;
+    conversation.created_on = Date.now();
     conversation.question = question;
     conversation.participants = participants; 
     // console.log('CONVERSATIOND DATA', conversation);

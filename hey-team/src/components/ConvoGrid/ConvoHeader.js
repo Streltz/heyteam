@@ -12,9 +12,6 @@ class ConvoHeader extends React.Component {
     this.setState({
       active: tab
     });
-  }
-
-  handleSorting = (tab)=>{
     this.props.sortConvos(tab);
   }
   

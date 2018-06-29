@@ -39,7 +39,6 @@ class ConvoGrid extends React.Component {
   }
 
   render() {
-    console.log("CONVO LIST", this.props.convos);
     return (
       <main id="convo-main">
         <ConvoHeader />
