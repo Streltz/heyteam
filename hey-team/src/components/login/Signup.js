@@ -73,6 +73,7 @@ class SignUp extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('state user: ', state.user);
   return {
     user: state.user
   }

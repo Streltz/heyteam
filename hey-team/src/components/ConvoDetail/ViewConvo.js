@@ -31,8 +31,7 @@ class ViewConvo extends React.Component {
 
     if(action === 'delete'){
       this.props.deleteConvo(this.state.convoId, this.props.history);
-    }
-  }
+    }   
 
   render() {
     if(this.props.convos.convos.length < 1) return null;
@@ -63,6 +62,7 @@ class ViewConvo extends React.Component {
                 </Link>
                 <div className="delete-convo">
                   <span className="delete-icon" onClick={()=>{this.toggle()}}><i className="material-icons">delete</i></span>
+
                 </div>
               </div>
             </div>
