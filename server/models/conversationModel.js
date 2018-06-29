@@ -10,7 +10,7 @@ const ConversationSchema = new mongoose.Schema({
  	participants: [{type: mongoose.Schema.Types.Mixed}],
 	responses: [{type: ObjectId, ref: 'Response'}],
 	active: {type: Boolean, default: true},
-	created_on: {type: Number, default: Date.now()},
+	created_on: {type: mongoose.Schema.Types.Mixed},
 	daySent: {type: Number, default: null},
 	dateSent: {type: mongoose.Schema.Types.Mixed, default: null},
 	newMessages: {type: Number, default: 0}
