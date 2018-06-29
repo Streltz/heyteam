@@ -4,17 +4,6 @@ const Conversation = require('./models/conversationModel');
 
 const botEmail = 'hey.bot360@gmail.com'
 
-function groupEmail(array){
-    const mail = {};
-    array.forEach(convo => {
-      if(!mail[convo.email]){
-        mail[convo.email] = { conversations: [{question: convo.question, responses: convo.responses}]}
-      }else{
-        mail[convo.email].conversations.push({question: convo.question, responses: convo.responses});
-      }
-    });
-    return mail;
-}
 const sendTime = 18;
 
 setInterval(() => {
@@ -26,28 +15,29 @@ setInterval(() => {
             if (err) {
                 console.log('error: ', err)
             }
+
             conversations.forEach(convo => {
-                // console.log('convo: ', convo);
-                const userObject = {
-                    email: convo.uid.email,
-                    question: convo.question,
-                    responses: []
-                }
-                convo.responses.forEach(res => {
-                    console.log('stringsplitjoin res: ' , res.date_submitted.toString().split('').slice(3, 15).join(''))
-                    console.log('stringsplitjoin now : ', now.toString().split('').slice(3, 15).join(''));
-                    if (res.date_submitted.toString().split('').slice(3, 15).join('') == now.toString().split('').slice(3, 15).join('')) {
-                        userObject.responses.push(res);
+                // check user's email preference
+                if(convo.uid.sendEmail === 'On'){
+                    const userObject = {
+                        email: convo.uid.email,
+                        question: convo.question,
+                        responses: []
                     }
-                })
-                if (userObject.responses.length > 0) {
-                    emailList.push(userObject);
+                    // build user email list
+                    convo.responses.forEach(res => {
+                        if (res.date_submitted.toString().split('').slice(3, 15).join('') == now.toString().split('').slice(3, 15).join('')) {
+                            userObject.responses.push(res);
+                        }
+                    })
+                    if (userObject.responses.length > 0) {
+                        emailList.push(userObject);
+                    }
                 }
             })
+            // restructure email list into structure of single email with many conversions
             const mailReady = groupEmail(emailList);
-            console.log('mailList: ', emailList);
-            console.log('mailReady CONVO XXXXXXXXXXX: ', mailReady);
-            
+            // loop thorugh emailReady to send out email
             for (key in mailReady) {
                 console.log('MAILREADY', mailReady[key]);
                 const transporter = nodemailer.createTransport({
@@ -57,13 +47,8 @@ setInterval(() => {
                     pass: '!heyteam!5'
                     }
                 })
-                // <div wrapper>
-                    // <div convo>
-                    //     <div question>question</div>
-                    //     <div response>response</div>
-                    //     <div response>response</div>
-                    // <div>
-                // < wrapper>
+
+                // build html template for email
                 let convos = ''
                 mailReady[key].conversations.forEach(convo=>{
     
@@ -89,6 +74,7 @@ setInterval(() => {
                     subject: `Hey-Bot Daily Digest`,
                     html: convos
                 }
+                // send email
                 transporter.sendMail(mailOptions, function(err, res) {
                     if (err) {
                     console.error('there was an error: ', err);
@@ -101,3 +87,16 @@ setInterval(() => {
         })
     }
 }, 360000)
+
+// function to group email list
+function groupEmail(array){
+    const mail = {};
+    array.forEach(convo => {
+      if(!mail[convo.email]){
+        mail[convo.email] = { conversations: [{question: convo.question, responses: convo.responses}]}
+      }else{
+        mail[convo.email].conversations.push({question: convo.question, responses: convo.responses});
+      }
+    });
+    return mail;
+}

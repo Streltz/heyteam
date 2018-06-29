@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const secretEnv = process.env.SEC_KEY || 'secret';
 
 const validateToken = (req, res, next) => {
-  const token = req.headers.authorization;
+  const token = req.headers.token;
   if (!token) {
     res
       .status(422)
@@ -50,6 +50,15 @@ userRouter.post('/signup', function(req, res){
 			res.json(savedUser);
 		});
 	});
+});
+
+userRouter.post('/preference', validateToken, function(req, res){
+ 	User.findById(req.decoded.userId).then(user=>{
+ 		user.sendEmail = req.body.pref;
+ 		user.save().then(saved=>{
+ 			res.json(saved);
+ 		});
+ 	});
 });
 
 userRouter.post('/login', function(req, res){
