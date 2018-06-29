@@ -127,10 +127,10 @@ rtm.on('message', (event) => {
     const latestConvo = userConvos[userConvos.length - 1];
 
     Response.findOne({conversation: latestConvo._id, username: user.name}).then(res => {
-      console.log('RES FINDONE', res);
       if(res){
         res.texts.push({text: event.text, time: getTime()});
         res.save().then(resSaved=>{
+          console.log('SAVED', resSaved);
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
@@ -153,7 +153,7 @@ rtm.on('message', (event) => {
         newRes.texts = [{text: event.text, time: getTime()}];
         newRes.date_submitted = new Date();
         newRes.save().then(resSaved => {
-          latestConvo.responses.push(res._id);
+          latestConvo.responses.push(resSaved._id);
           latestConvo.newMessages += 1;
           latestConvo.save()
           .then(saved=>{
