@@ -36,9 +36,10 @@ class SignUp extends React.Component {
             <div className="text-left col-md-12 heading"> Sign Up </div>
             <div className="text-left card-descriptor col-md-12">for a new Hey-Bot Account</div>
             <br />
+            <div className="form-error text-left card-descriptor col-md-12">{this.props.user.formError}</div>
 
             <input className="col-md-10 form-control" type="text" name="name" value={this.state.name} 
-            placeholder="Username" onChange={this.handleOnChange}/><br />
+            placeholder="Name" onChange={this.handleOnChange}/><br />
 
             <input className="col-md-10 form-control" type="text" name="email" value={this.state.email} 
             placeholder="Email" onChange={this.handleOnChange}/><br />
@@ -59,6 +60,7 @@ class SignUp extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('state user: ', state.user);
   return {
     user: state.user
   } 
