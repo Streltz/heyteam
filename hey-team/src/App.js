@@ -27,7 +27,7 @@ class App extends Component {
 
   componentDidMount(){
    socket.on('new response', (data)=>{
-    console.log(data);
+    console.log('CONVO SOCKET', data.convo);
        this.createNotification(data.response);
        this.props.newResponse(data.convo);
      });

@@ -127,16 +127,19 @@ rtm.on('message', (event) => {
     const latestConvo = userConvos[userConvos.length - 1];
 
     Response.findOne({conversation: latestConvo._id, username: user.name}).then(res => {
+      console.log('FIND ONE RES', res);
       if(res){
         res.texts.push({text: event.text, time: getTime()});
         res.save().then(resSaved=>{
           console.log('SAVED', resSaved);
+          console.log('Lated Convo', latestConvo);
         	latestConvo.newMessages += 1;
         	latestConvo.save()
         	.then(saved=>{
         		console.log('SAVED RESPONSE');
         		//TODO: find a way to save and populate all in one query intead of using another findById
         		Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
+              console.log('PPOULATED RESPONSE', populated);
         			if(err) console.log(err);
         			socketClients.forEach(client=>{
         				client.emit('new response', {convo: populated, response: resSaved});
@@ -153,8 +156,10 @@ rtm.on('message', (event) => {
         newRes.texts = [{text: event.text, time: getTime()}];
         newRes.date_submitted = new Date();
         newRes.save().then(resSaved => {
+          console.log('SAVED RES', resSaved);
           latestConvo.responses.push(resSaved._id);
           latestConvo.newMessages += 1;
+          console.log('CONVO AFTER PUSHED RES', latestConvo);
           latestConvo.save()
           .then(saved=>{
         		//TODO: find a way to save and populate all in one query intead of using another findById
