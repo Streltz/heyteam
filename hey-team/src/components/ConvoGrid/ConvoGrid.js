@@ -100,7 +100,7 @@ class ConvoGrid extends React.Component {
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={()=>{this.toggle({action: 'delete'})}}>Delete</Button>{' '}
-            <Button color="secondary" onClick={()=>{this.toggle()}}>Cancel</Button>
+            <Button color="secondary" onClick={()=>{this.toggle({})}}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </main>

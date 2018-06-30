@@ -31,7 +31,8 @@ class ViewConvo extends React.Component {
 
     if(action === 'delete'){
       this.props.deleteConvo(this.state.convoId, this.props.history);
-    }   
+    }
+  }
 
   render() {
     if(this.props.convos.convos.length < 1) return null;
