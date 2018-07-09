@@ -46,8 +46,10 @@ class Landing extends React.Component {
           <div className="col-md-12">
           </div>
         </header>
-        <div id="robot-image">
-        </div>
+        <div className="animte-img">
+          <div id="robot-image">
+          </div>
+        </div>        
         <section id="section-create" className="section-content text-right">
           <div className="section-heading">
               Create
