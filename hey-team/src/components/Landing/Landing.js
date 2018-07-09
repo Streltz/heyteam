@@ -33,11 +33,11 @@ class Landing extends React.Component {
               <div className="col-md-12 desc-text">
                 Hey-Bot is the best platform to build and manage private Slack conversations.
               </div>
-              <div className="col-md-8 btn-group">
-                <button className="btn-green btn-original col-md-4">
+              <div className="btn-group">
+                <button className="btn-green btn-original">
                  <Link to="/billing">Buy Now</Link>
                 </button>
-                <button className="btn-white btn-original col-md-4">
+                <button className="btn-white btn-original">
                  <Link to="/signup">Create Account</Link> 
                 </button>
               </div>
@@ -47,7 +47,9 @@ class Landing extends React.Component {
           </div>
         </header>
         <div id="robot-image">
-        </div>
+        <div className="animate-img">
+          </div>
+        </div>        
         <section id="section-create" className="section-content text-right">
           <div className="section-heading">
               Create
