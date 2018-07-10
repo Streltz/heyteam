@@ -34,7 +34,7 @@ class CheckoutForm extends React.Component {
     name: '',
     complete: false,
     summary: null,
-    amount: 0,
+    amount: 0.50,
     error:''
   }
 
@@ -50,7 +50,7 @@ class CheckoutForm extends React.Component {
     }
     if (this.state.name && this.state.amount > 0) {
     this.props.stripe.createToken({name: this.state.name}).then(result=>{
-        axios.post(`${ROOT_URL}/billing`, {token: result.token.id}).then(res=>{
+        axios.post(`${ROOT_URL}/billing`, {token: result.token.id, amount: this.state.amount}).then(res=>{
           if(res.data.status === 'succeeded'){
             this.setState({complete: true, summary: res.data });
           }
@@ -81,7 +81,7 @@ class CheckoutForm extends React.Component {
   render() {
     if (this.state.complete) return (<div>
       <h1>Purchase Complete</h1>
-      <div>{this.state.summary.source.name} with card ending {this.state.summary.source.last4} will be charged {this.state.summary.amount} {this.state.summary.currency}</div>
+      <div>{this.state.summary.source.name} with card ending {this.state.summary.source.last4} will be charged {this.state.amount} {this.state.summary.currency}</div>
       </div>);
     return (
       <main className="main-billing">
@@ -129,7 +129,7 @@ class CheckoutForm extends React.Component {
 
             <div className="amount-input col-md-12">
               <span className="heading col-md-4"> Amount: $ </span>
-              <input className="col-md-8"type="number" min='0' name="amount" value={this.state.amount}
+              <input className="col-md-8"type="number" min='0.5' name="amount" value={this.state.amount}
               placeholder="0.00" onChange={this.handleAmountChange} />
               <br />
             </div>
