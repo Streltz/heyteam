@@ -33,7 +33,8 @@ class CheckoutForm extends React.Component {
   state = {
     name: '',
     complete: false,
-    summary: null
+    summary: null,
+    amount: ''
   }
 
   handlePayment = (ev) => {
@@ -50,7 +51,7 @@ class CheckoutForm extends React.Component {
 
     handleOnChange = (event) => {
     this.setState({
-      name: event.target.value
+      [event.target.name]: event.target.value
     });
   }
 
@@ -102,6 +103,12 @@ class CheckoutForm extends React.Component {
                 fontSize: '20px',
                 lineHeight: '25px',
                 } }}/>
+
+            <div className="amount-input">
+              Amount:
+             <input type="text" name="amount" value={this.state.amount}
+                placeholder="0.00" onChange={this.handleOnChange} /><br />
+            </div>
                     
             <button className="light-blue-btn col-md-10 submit-btn" onClick={this.handlePayment}>
                 Submit
