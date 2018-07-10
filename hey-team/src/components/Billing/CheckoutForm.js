@@ -1,10 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import {injectStripe, CardElement, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement,
 PaymentRequestButtonElement, IbanElement, IdealBankElement} from 'react-stripe-elements';
 
 import { Card } from 'reactstrap';
 
 import './styles.css';
+
+const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
 
 const createOptions = (fontSize, padding) => {
   return {
@@ -29,25 +32,45 @@ const createOptions = (fontSize, padding) => {
 class CheckoutForm extends React.Component {
   state = {
     name: '',
+    complete: false,
+    summary: null
   }
 
   handlePayment = (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
-
-    this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
-      console.log('Received Stripe token:', token);
+    console.log('EV', ev.target);
+    alert(this.state.name);
+    this.props.stripe.createToken({name: this.state.name}).then(result=>{
+      console.log('RESULT', result.token.id);
+      axios.post(`${ROOT_URL}/billing`, {token: result.token.id}).then(res=>{
+        console.log('DATA', res.data);
+        if(res.data.status === 'succeeded'){
+          this.setState({complete: true, summary: res.data });
+        }
+      });
     });
-
   };
 
+    handleOnChange = (event) => {
+    this.setState({
+      name: event.target.value
+    });
+  }
+
   render() {
+    if (this.state.complete) return (<div>
+      <h1>Purchase Complete</h1>
+      <div>{this.state.summary.source.name} with card ending {this.state.summary.source.last4} will be charged {this.state.summary.amount} {this.state.summary.currency}</div>
+      </div>);
     return (
       <main className="main-billing">
         <Card className="edge-card">
           <div className="card-dashboard">
             <div className="logo text-left col-md-12">Billing</div>
             <br /><br />
+             <input type="text" name="name" value={this.state.name}
+                placeholder="Name" onChange={this.handleOnChange} /><br />
 
             {/* <label>
           Card number

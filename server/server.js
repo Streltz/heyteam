@@ -12,7 +12,7 @@ const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 const userRoutes = require('./routes/userRoutes');
 const conversationRoutes = require('./routes/conversationRoutes');
-const paymentAPI = require('./routes/payment');
+const billingRouter = require('./routes/payment');
 const app = express();
 const server = require('http').createServer(app);  
 // const slackAPI = require('./slack_api');
@@ -49,7 +49,7 @@ mongoose
     console.log('error connect to mongo', err);
 });
 
-app.use('/', userRoutes, conversationRoutes);
+app.use('/', userRoutes, conversationRoutes, billingRouter);
 
 /////////////////////////////////////////////
 const rtm = new RTMClient(token);

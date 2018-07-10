@@ -1,4 +1,6 @@
+const express = require('express');
 const stripe = require('../stripe');
+const billingRouter = express.Router();
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
     if (stripeErr) {
@@ -8,16 +10,24 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
     }
 }
 
-const paymentAPI = bill => {
-    app.get('/billing', (req, res) => {
-        res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+// const paymentAPI = bill => {
+    // billingRouter.get('/billing', (req, res) => {
+    //     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+    // });
+
+    billingRouter.post('/billing', (req, res) => {
+        stripe.charges.create({
+            amount: 1000,
+            currency: "usd",
+            description: "An example charge",
+            source: req.body.token
+        }).then(status=>{
+            console.log('after reacte status', status);
+            res.json(status);
+        });
     });
 
-    app.post('/billing', (req, res) => {
-        stripe.charges.create(req.body, postStripCharge(res));
-    });
+//     return bill;
+// };
 
-    return bill;
-};
-
-module.exports = paymentAPI
+module.exports = billingRouter;
