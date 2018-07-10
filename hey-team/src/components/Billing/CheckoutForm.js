@@ -39,12 +39,8 @@ class CheckoutForm extends React.Component {
   handlePayment = (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
-    console.log('EV', ev.target);
-    alert(this.state.name);
     this.props.stripe.createToken({name: this.state.name}).then(result=>{
-      console.log('RESULT', result.token.id);
       axios.post(`${ROOT_URL}/billing`, {token: result.token.id}).then(res=>{
-        console.log('DATA', res.data);
         if(res.data.status === 'succeeded'){
           this.setState({complete: true, summary: res.data });
         }
@@ -67,10 +63,12 @@ class CheckoutForm extends React.Component {
       <main className="main-billing">
         <Card className="edge-card">
           <div className="card-dashboard">
-            <div className="logo text-left col-md-12">Billing</div>
+            <div className="billing-title">Billing</div>
             <br /><br />
+            <div className="name-input">
              <input type="text" name="name" value={this.state.name}
                 placeholder="Name" onChange={this.handleOnChange} /><br />
+            </div>
 
             {/* <label>
           Card number
@@ -103,11 +101,8 @@ class CheckoutForm extends React.Component {
                 color: '#32325d',
                 fontSize: '20px',
                 lineHeight: '25px',
-                '::placeholder': {
-                  color: '#aab7c4'
-                },
                 } }}/>
-                        
+                    
             <button className="light-blue-btn col-md-10 submit-btn" onClick={this.handlePayment}>
                 Submit
             </button>

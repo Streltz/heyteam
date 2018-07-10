@@ -40,12 +40,31 @@ form {
     border-radius: 4px;
     background: white;
 } */
+.billing-title {
+    color: #cccccc;
+    font-size: 33px;
+}
+.name-input {
+    text-align: left;
+}
+
+.name-input input {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 22px;
+    border: 1px solid white;
+    border-bottom: 1px solid #DCDFE6;
+    color: #DCDFE6;
+}
+
 .stripe-cardElement
 {   
     box-sizing: border-box;
     width: 500px;
     border-radius: 4px;
     border: 1px solid transparent;
+    border-bottom: 1px solid #DCDFE6;
+    padding-bottom: 4px;
 }
 
 .submit-btn
