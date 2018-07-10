@@ -34,25 +34,48 @@ class CheckoutForm extends React.Component {
     name: '',
     complete: false,
     summary: null,
-    amount: ''
+    amount: 0,
+    error:''
   }
+
 
   handlePayment = (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
+    if (this.state.amount === 0) {
+      this.setState({error: "Amount must be greater than $0.00"})
+    }
+    if (!this.state.name) {
+      this.setState({error: "Must provide a name"})
+    }
+    if (this.state.name && this.state.amount > 0) {
     this.props.stripe.createToken({name: this.state.name}).then(result=>{
-      axios.post(`${ROOT_URL}/billing`, {token: result.token.id}).then(res=>{
-        if(res.data.status === 'succeeded'){
-          this.setState({complete: true, summary: res.data });
-        }
-      });
-    });
+        axios.post(`${ROOT_URL}/billing`, {token: result.token.id}).then(res=>{
+          if(res.data.status === 'succeeded'){
+            this.setState({complete: true, summary: res.data });
+          }
+        });
+      }).catch(err => console.log('catch err: ', err));
+    }
   };
 
-    handleOnChange = (event) => {
+  handleOnChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleAmountChange = (ev) => {
+    console.log(typeof (ev.target.value) === 'number')
+    if (Number(ev.target.value != NaN)) {
+      this.setState({
+        [ev.target.name]: ev.target.value
+      })
+    } else {
+      this.setState({
+        [ev.target.name]: ''
+      })
+    }
   }
 
   render() {
@@ -105,9 +128,13 @@ class CheckoutForm extends React.Component {
                 } }}/>
 
             <div className="amount-input">
-              Amount:
-             <input type="text" name="amount" value={this.state.amount}
-                placeholder="0.00" onChange={this.handleOnChange} /><br />
+              Amount: $
+             <input type="number" min='0' name="amount" value={this.state.amount}
+                placeholder="0.00" onChange={this.handleAmountChange} /><br />
+            </div>
+
+            <div className="form-error text-center card-descriptor col-md-12">
+              {this.state.error != '' ? this.state.error : null}
             </div>
                     
             <button className="light-blue-btn col-md-10 submit-btn" onClick={this.handlePayment}>
