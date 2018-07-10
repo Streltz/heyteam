@@ -127,10 +127,11 @@ class CheckoutForm extends React.Component {
                 lineHeight: '25px',
                 } }}/>
 
-            <div className="amount-input">
-              Amount: $
-             <input type="number" min='0' name="amount" value={this.state.amount}
-                placeholder="0.00" onChange={this.handleAmountChange} /><br />
+            <div className="amount-input col-md-12">
+              <span className="heading col-md-4"> Amount: $ </span>
+              <input className="col-md-8"type="number" min='0' name="amount" value={this.state.amount}
+              placeholder="0.00" onChange={this.handleAmountChange} />
+              <br />
             </div>
 
             <div className="form-error text-center card-descriptor col-md-12">

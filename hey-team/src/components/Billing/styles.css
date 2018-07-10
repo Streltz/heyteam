@@ -48,13 +48,21 @@ form {
     text-align: left;
 }
 
-.name-input input {
+.name-input > input, .amount-input > input {
     width: 100%;
     margin-bottom: 20px;
     font-size: 22px;
-    border: 1px solid white;
+    border: 1px solid var(--main-white);
     border-bottom: 1px solid #DCDFE6;
-    color: #DCDFE6;
+    color: var(--main-dark-light);
+}
+.amount-input
+{
+    margin-top: 10px;
+}
+.amount-input > .heading
+{
+    color: var(--main-dark-light);
 }
 
 .stripe-cardElement
@@ -69,6 +77,10 @@ form {
 
 .submit-btn
 {
-    margin-top: 220px;
+    margin-top: 20px;
 }
 
+.form-error
+{
+    margin-top: 100px;
+}
