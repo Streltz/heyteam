@@ -55,14 +55,19 @@ body {
 /* Heading */
 .heading
 {   
-    font-family: 'Google Sans',arial,sans-serif;
-    padding-bottom: 0;
-    padding-top: 16px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.3333;
-    margin-bottom: 0;
-    margin-top: 0;
+  font-family: 'Google Sans',arial,sans-serif;
+  padding-bottom: 0;
+  padding-top: 16px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3333;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.inverse-white
+{
+  color: var(--main-white) !important;
 }
 
 /* Links */

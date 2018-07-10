@@ -22,7 +22,7 @@ class Landing extends React.Component {
             <div className="nav-link-group col-md-9">
               <Link to="/signup">Sign Up</Link>
               <Link className="right-label" to="/signin">Sign In</Link>
-            </div>  
+            </div>
           </div>
         </header>
 
@@ -35,10 +35,10 @@ class Landing extends React.Component {
               </div>
               <div className="btn-group">
                 <button className="btn-green btn-original">
-                 <Link to="/billing">Buy Now</Link>
+                  <Link to="/signup">Buy Now</Link>
                 </button>
                 <button className="btn-white btn-original">
-                 <Link to="/signup">Create Account</Link> 
+                  <Link to="/signup">Create Account</Link>
                 </button>
               </div>
             </div>
@@ -47,16 +47,16 @@ class Landing extends React.Component {
           </div>
         </header>
         <div id="robot-image">
-        <div className="animate-img">
+          <div className="animate-img">
           </div>
-        </div>        
+        </div>
         <section id="section-create" className="section-content text-right">
           <div className="section-heading">
-              Create
+            Create
           </div>
-          <div className="section-body">            
+          <div className="section-body">
             Create separate and private conversations with the members of your team simultaneously
-            Well organized conversations complete with timestamps and titles           
+            Well organized conversations complete with timestamps and titles
           </div>
         </section>
 
@@ -65,16 +65,66 @@ class Landing extends React.Component {
             Product
           </div>
           <div className="section-body">
-          Questions can be sent immediately or scheduled for a future time and date. Hey Team's new question card comes with a full 
-          list of options such as Time and Date, Participants and whether they want have the conversation privately through 
-          Slack's Direct Messaging feature or in a separate Hey Bot Slack channel.
-          Our Conversations feature will organize all your questions and show Managers who has responded, how they responded and when they responded. 
-          Hey Bot also offers the option of having these organized messages sent to the Manager's e-mail as well for safe record keeping.
+            Questions can be sent immediately or scheduled for a future time and date. Hey Team's new question card comes with a full
+            list of options such as Time and Date, Participants and whether they want have the conversation privately through
+            Slack's Direct Messaging feature or in a separate Hey Bot Slack channel.
+            Our Conversations feature will organize all your questions and show Managers who has responded, how they responded and when they responded.
+            Hey Bot also offers the option of having these organized messages sent to the Manager's e-mail as well for safe record keeping.
           </div>
           <div>
             {
               // Video goes here.
             }
+          </div>
+        </section>
+
+        <section id="section-team" className="section-content">
+          <div className="section-heading inverse-white">
+            Our Team
+          </div>
+          <div className="section-body">
+            <div className="card-container">
+              <div class="card team-mem">
+                <div className="mike-img circle-img"></div>
+                <div className="container">
+                  <h2 className="sized-head">Mike Streltsoff</h2>
+                  <p className="title">Full-Stack</p>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+              <div className="card team-mem">
+                <div className="david-img circle-img"></div>
+                <div className="container">
+                  <h2>David Soudry</h2>
+                  <p className="title">Full-Stack</p>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+              <div className="card team-mem">
+                <div className="lo-img circle-img"></div>
+                <div className="container">
+                  <h2>Lo Saephan</h2>
+                  <p className="title">Full-Stack</p>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+              <div className="card team-mem">
+                <div className="eileen-img circle-img"></div>
+                <div className="container">
+                  <h2>Eileen Eddy</h2>
+                  <p className="title">Full-Stack</p>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+              <div className="card team-mem">
+                <div className="guy-img circle-img"></div>
+                <div className="container">
+                  <h2>Guy Ross</h2>
+                  <p className="title">Full-Stack</p>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
