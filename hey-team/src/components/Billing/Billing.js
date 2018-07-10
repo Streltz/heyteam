@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {StripeProvider} from 'react-stripe-elements';
-
+import {StripeProvider, Elements} from 'react-stripe-elements';
 import Store from './Store';
-
+import CheckoutForm from './CheckoutForm';
 class Billing extends React.Component {
   
   render() {
     return (
       <div>
-        <StripeProvider apiKey="pk_test_8UHcn9VUzIRm8MGqifwA82kD">
-          <row>
+        <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+          {/* <row>
             <Store />
-          </row>
+          </row> */}
+          <Elements>
+            <CheckoutForm />
+          </Elements>
         </StripeProvider>
       </div>
     );
