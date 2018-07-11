@@ -89,8 +89,8 @@ class ViewConvo extends React.Component {
                 <div className="schedule-title">Schedule</div>
                 <div className="schedule-time">{convo.dateSent}</div>
                 <br/>
-                <div className="unres-title">Unresponded</div>
-                <div className="unresponded-boxes">
+                <div className="schedule-title">Unresponded</div>
+                <div className="participants">
                   {
                       unresponded.map(participant=>{
                         const img = participant.profile.image_32;
