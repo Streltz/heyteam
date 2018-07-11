@@ -245,6 +245,108 @@ html
     transform-origin: top left;
 }
 
+/* Team Section */
+#section-team > .section-body
+{
+    margin-right: 50%;    
+}
+#section-team > .section-heading
+{
+    margin-top: 50px;
+    font-weight: 400;
+    font-size: 3em;    
+}
+#section-team > .section-body
+{
+    margin-left: 15%;
+}
+#section-team
+{
+    height: 80% !important;
+    width: 100%;
+    
+    background-image: linear-gradient(0deg, var(--vib-blue-dark), var(--vib-blue-light));
+
+    text-align: center;
+    z-index: 0;
+
+    position: absolute;
+    top: 120%;
+    bottom: 0;
+    right: 0;   
+    left: 0;
+}
+
+/* ~~~~~~~~~~~ */
+.team-mem
+{
+    margin-right: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 250px;
+    height: 410px;
+}
+.card-container
+{
+    display: inline-flex;
+}
+/* ~~~~~~~~~~~~~~~ */
+.david-img, .lo-img, .eileen-img, .guy-img, .mike-img
+{
+    margin-bottom: 30px;
+}
+.mike-img
+{    
+    background-repeat: no-repeat;
+    background-size: 210px 255px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/team/mike.jpg');
+}
+.sized-head
+{
+    font-size: 30px;
+}
+.david-img
+{
+    background-repeat: no-repeat;
+    background-size: 210px 200px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/team/david.jpg');
+}
+.lo-img
+{
+    background-repeat: no-repeat;
+    background-size: 270px 200px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/team/lo.png');
+}
+.eileen-img
+{
+    background-repeat: no-repeat;
+    background-size: 260px 200px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/team/eileen.jpg');
+}
+.guy-img
+{
+    background-repeat: no-repeat;
+    background-size: 200px 207px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/team/guy.jpg');
+}
+
+.circle-img
+{
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 20px;
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);
+}
 
 
 /* Pay No Attention to Below */
