@@ -73,7 +73,7 @@ setInterval(() => {
         lastQuestion = conversation._id;
         //edit the daySent to day
         conversation.daySent = day;
-        conversation.dateSent = Date.now();
+        conversation.dateSent = getTime();
         conversation.save();
         conversation.participants.forEach(user=>{
           rtm.sendMessage(conversation.question, user.channelId).then(res=>{

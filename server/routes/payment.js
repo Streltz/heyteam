@@ -15,9 +15,14 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
     //     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
     // });
 
+    const amountFix = x => {
+        return Math.round(100 * parseFloat(x.toString().replace(/[$,]/g, '')));
+      }
+
     billingRouter.post('/billing', (req, res) => {
+        console.log('amount: ', req.body.amount);
         stripe.charges.create({
-            amount: 1000,
+            amount: amountFix(req.body.amount),
             currency: "usd",
             description: "An example charge",
             source: req.body.token
