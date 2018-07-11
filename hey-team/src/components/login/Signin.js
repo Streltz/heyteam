@@ -40,7 +40,7 @@ class Signin extends React.Component {
               <div className="text-left col-md-12 heading"> Sign In </div>
               <div className="text-left card-descriptor col-md-12">with your Hey-Bot Account</div>
               <br />
-              
+              <div style={{color: 'red', textAlign: 'left', marginLeft: '15px', marginBottom: '10px'}}>{this.props.user.formError}</div>
               <input className="col-md-10 form-control" name="email" value={this.state.email}
                 placeholder="Email" onChange={this.handleOnChange} /><br />
 

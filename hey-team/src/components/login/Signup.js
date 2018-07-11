@@ -41,6 +41,7 @@ class SignUp extends React.Component {
               <div className="text-left col-md-12 heading"> Sign Up </div>
               <div className="text-left card-descriptor col-md-12">for a new Hey-Bot Account</div>
               <br />
+              <div style={{color: 'red', textAlign: 'left', marginLeft: '15px', marginBottom: '10px'}}>{this.props.user.formError}</div>
               <input className="col-md-10 form-control" type="text" name="name" value={this.state.name}
                 placeholder="Username" onChange={this.handleOnChange} /><br />
 
