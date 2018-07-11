@@ -32,6 +32,7 @@ class Signin extends React.Component {
   render() {
     return (
       <main id="main-login">
+      <div className="form-error text-left card-descriptor col-md-12">{this.props.user.formError}</div>
         <Card className="edge-dull">
           <div className="login card-dull">
             <form id="signin-form" onSubmit={(e) => { this.handleSignIn(e) }}>
