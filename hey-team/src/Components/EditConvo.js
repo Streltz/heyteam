@@ -86,7 +86,7 @@ class EditConvo extends Component {
     convo.ampm = this.state.selectedAmpm;
     convo.question = this.state.question;
     convo.participants = this.state.participants;
-    this.props.editConversation(this.props.match.params.id,convo, this.props.history);
+    this.props.editConversation(this.props.match.params.id, convo, this.props.history);
   }
 
   handleDaySelect = (data) => {

@@ -63,7 +63,7 @@ class CheckoutForm extends React.Component {
       <main className="main-billing">
         <Card className="edge-card">
           <div className="card-dashboard">
-            <div className="billing-title">Billing</div>
+            <div className="billing-title text-left col-md-12">Billing</div>
             <br /><br />
             <div className="name-input">
              <input type="text" name="name" value={this.state.name}

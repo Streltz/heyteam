@@ -12,8 +12,6 @@ class Convo extends React.Component {
 
 
   render() {
-    alert();
-    console.log('CONVO prpos', this.props.convo);
     return (
       <Card className="edge-convo">
           <div className="title">{this.props.convo.title}</div>
