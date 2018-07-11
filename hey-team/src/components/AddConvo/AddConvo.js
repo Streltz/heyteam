@@ -26,7 +26,12 @@ class AddConvo extends Component {
     selectedUser: null,
     removeIndex: null,
     addIndex: null,
-    removeQuestion: null
+    removeQuestion: null,
+    errorTitle: '',
+    errorSchedule: '',
+    errorTime: '',
+    errorQuestion: '',
+    errorParticipants: ''
   };
 
   componentDidMount() {
@@ -73,15 +78,50 @@ class AddConvo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const convo = {};
-    convo.title = this.state.title;
-    convo.schedule_days = this.state.schedule_days;
-    convo.time = this.state.selectedTime;
-    convo.timezone = this.state.selectedZone;
-    convo.ampm = this.state.selectedAmpm;
-    convo.question = this.state.question;
-    convo.participants = this.state.participants;
-    this.props.addConvo(convo, this.props.history);
+    if(this.state.title === ''){
+      this.setState({errorTitle: 'Missing title'}, function(){
+      });
+    }else{
+      this.setState({errorTitle: ''});
+    }
+
+    if(this.state.schedule_days.length === 0){
+      this.setState({errorSchedule: 'Missing schedule day'});
+    }else{
+      this.setState({errorSchedule: ''});
+    }
+
+    if(this.state.selectedTime === 'Select Time' || this.state.selectedZone === 'Time Zone'){
+      this.setState({errorTime: 'Missing time or timezone'});
+    }else{
+      this.setState({errorTime: ''});
+    }
+
+    if(this.state.question === ''){
+      this.setState({errorQuestion: 'Missing question'});
+    }else{
+      this.setState({errorQuestion: ''});
+    }
+
+    if(this.state.participants.length === 0){
+      this.setState({errorParticipants: 'Missing participant'});
+    }else{
+      this.setState({errorQuestion: ''});
+    }
+
+    const {title, schedule_days, selectedTime, selectedZone, question, participants} = this.state;
+    if(title != '' && schedule_days.length > 0 && question != '' && selectedTime != 'Select Time' && selectedZone != 'Time Zone' && participants.length > 0){
+      const convo = {};
+      convo.title = this.state.title;
+      convo.schedule_days = this.state.schedule_days;
+      convo.time = this.state.selectedTime;
+      convo.timezone = this.state.selectedZone;
+      convo.ampm = this.state.selectedAmpm;
+      convo.question = this.state.question;
+      convo.participants = this.state.participants;
+      this.props.addConvo(convo, this.props.history);
+      this.setState({errorTime: '', errorParticipants: '', errorQuestion: '', errorTitle: '', errorSchedule: ''});
+    }
   }
 
   handleDaySelect = (data) => {
@@ -161,7 +201,7 @@ class AddConvo extends Component {
         <Card className="edge-card">
           <div className="card-dashoard">
             <div className="sub-header text-left col-md-12"> Add a New Conversation </div>
-
+            <div style={{color: 'red'}}>{this.state.errorTitle}</div>
             <form onSubmit={e => e.preventDefault()}>
               <input
                 className="form-control"
@@ -171,8 +211,10 @@ class AddConvo extends Component {
                 value={this.state.title}
                 placeholder="Enter Name for this conversation"
               />
+              
               <br />
               <div className="sub-header text-left col-md-12">Schedule</div>
+              <div style={{color: 'red'}}>{this.state.errorSchedule}</div>
               <div className="days">
 
                 {
@@ -181,9 +223,13 @@ class AddConvo extends Component {
                   })
                 }
               </div>
+          
               <br />
-              <div className="time">
+
+              <div className="select-schedule-time">
+                <div style={{color: 'red', marginBottom: '-40px'}}>{this.state.errorTime}</div>
                 <div className='select-time'>
+                
                   <ButtonDropdown isOpen={this.state.timeDropdownOpen} toggle={() => { this.toggle('time') }}>
                     <DropdownToggle color="light" caret>
                       {this.state.selectedTime}
@@ -231,12 +277,16 @@ class AddConvo extends Component {
                   </ButtonDropdown>
                 </div>
               </div>
+              
 
               <br />
               <div className="sub-header text-left col-md-12">Question</div>
+              <div style={{color: 'red'}}>{this.state.errorQuestion}</div>
               <div className="input-group mb-3">
                 <input className="form-control" type='text' onChange={this.onChangeQuestion} value={this.state.question} placeholder="Type a question" />
               </div>
+              
+
               <br />
               <div className="sub-header text-left col-md-12">Participants</div>
               <div className="display-users">
@@ -250,6 +300,7 @@ class AddConvo extends Component {
                   })
                 }
               </div>
+              <div style={{color: 'red'}}>{this.state.errorParticipants}</div>
               <input className="form-control" type="text" placeholder="search" onChange={this.searchUser} value={this.state.search} />
               <div className="display-users">
                 {
