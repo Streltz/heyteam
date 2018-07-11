@@ -36,7 +36,7 @@ class SideBar extends React.Component {
           <div className="sidebar-content">
             <i className="fa fa-cc-stripe"></i>
             <span className="tab-label">
-              Billing
+              Donate
             </span>
           </div>
         </Link>
