@@ -110,7 +110,7 @@ class AddConvo extends Component {
     }
 
     const {title, schedule_days, selectedTime, selectedZone, question, participants} = this.state;
-    if(title != '' && schedule_days.length > 0 && question != '' && selectedTime != 'Select Time' && selectedZone != 'Time Zone' && participants.length > 0){
+    if(title !== '' && schedule_days.length > 0 && question !== '' && selectedTime !== 'Select Time' && selectedZone !== 'Time Zone' && participants.length > 0){
       const convo = {};
       convo.title = this.state.title;
       convo.schedule_days = this.state.schedule_days;
