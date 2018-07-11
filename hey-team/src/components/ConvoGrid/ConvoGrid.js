@@ -69,10 +69,10 @@ class ConvoGrid extends React.Component {
             this.props.convos.convos.map(convo => {
               return (
                 
-                  <Card className="edge-convo">
+                  <Card className="edge-convo" key={convo._id}>
                     
                       <div className="title">{convo.title}</div>
-                      <Link key={convo._id} to={`dashboard/${convo._id}`}>
+                      <Link to={`dashboard/${convo._id}`}>
                       <div className="convo-content">            
                          {convo.question}
                       </div>
@@ -109,7 +109,6 @@ class ConvoGrid extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('STATE CONVO', state.convos);
   return {
     convos: state.convos
   }

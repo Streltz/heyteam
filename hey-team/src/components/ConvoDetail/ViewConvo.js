@@ -40,7 +40,6 @@ class ViewConvo extends React.Component {
     const convo = this.props.convos.convos.find(convo => {
       return convo._id === id;
     });
-    console.log('RENDER CONVO SINGLE', convo);
     const userNames = convo.responses.map(res=>{
       return res.username;  
     });
