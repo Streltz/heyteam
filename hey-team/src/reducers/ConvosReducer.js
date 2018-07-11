@@ -4,7 +4,7 @@ const initState = {
     originalConvos: [],
     convos: []
 }
-
+//Todo: remove originalConvo, we do not need it.
 const ConvosReducer = (state = initState, action) => {
     switch (action.type) {
         case 'LOADING_CONVOS':
@@ -59,18 +59,14 @@ const ConvosReducer = (state = initState, action) => {
             const deletedConvos = state.convos.filter(convo => {
                 return convo._id !== action.payload._id;
             });
-            console.log('CONVO AFTER DELTE', deletedConvos);
             return {...state, convos: deletedConvos, originalConvos: deletedConvos}
            
         case SORTING:
             if(action.payload === "All" || action.payload === 'Newest'){
-                let copyState = state.originalConvos;
-                console.log('copy state convo', copyState);
+                let copyState = state.convos;
                 const sorted = copyState.sort((a, b) => {
-                        console.log('ab', a, b);
                 const idA = a.created_on;
                 const idB = b.created_on;
-                 console.log('id', idA, idB);
               
                 let comparison = 0;
                 if(idA > idB){
@@ -80,18 +76,14 @@ const ConvosReducer = (state = initState, action) => {
                 }
                     return comparison
                 });
-                console.log('SORTED', sorted);
                 return {...state, convos: sorted}
             }
 
             if(action.payload === 'Oldest'){
-                let copyState = state.originalConvos;
-                console.log('copy state convo', copyState);
+                let copyState = state.convos;
                 const sorted = copyState.sort((a, b) => {
-                        console.log('ab', a, b);
                 const idA = a.created_on;
                 const idB = b.created_on;
-                 console.log('id', idA, idB);
               
                 let comparison = 0;
                 if(idA < idB){
@@ -101,7 +93,36 @@ const ConvosReducer = (state = initState, action) => {
                 }
                     return comparison
                 });
-                console.log('SORTED', sorted);
+                return {...state, convos: sorted}
+            }
+
+            if(action.payload === 'Responded'){
+                let copyState = state.convos;
+                let responded = [];
+                let notResponded = [];
+                copyState.forEach(convo=>{
+                    if(convo.responses.length > 0){
+                        responded.push(convo);
+                    }else{
+                        notResponded.push(convo);
+                    }
+                });
+                const sorted = responded.concat(notResponded);
+                return {...state, convos: sorted}
+            }
+
+            if(action.payload === 'Not Responded'){
+                let copyState = state.convos;
+                let responded = [];
+                let notResponded = [];
+                copyState.forEach(convo=>{
+                    if(convo.responses.length > 0){
+                        responded.push(convo);
+                    }else{
+                        notResponded.push(convo);
+                    }
+                });
+                const sorted = notResponded.concat(responded);
                 return {...state, convos: sorted}
             }
 
