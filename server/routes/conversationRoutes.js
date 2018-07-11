@@ -67,6 +67,37 @@ const convertTime = (time, ampm, zone)=>{
   return hour;
 }
 
+const scheduleTime = (time, ampm, zone, schedule_days) => {
+  let arr = [];
+  for (x of schedule_days) {
+      switch (x) {
+        case 0:
+          arr.push('Sun')
+          break;
+        case 1:
+          arr.push('Mon')
+          break;
+        case 2:
+          arr.push('Tue')
+          break;
+        case 3:
+          arr.push('Wed')
+          break;
+        case 4:
+          arr.push('Thurs')
+          break;
+        case 5:
+          arr.push('Fri')
+          break;
+        case 6:
+          arr.push('Sat')
+          break;
+      }
+  }
+  const days = arr.join(' ');
+  return (days + ' ' + time + ' ' + ampm + ' ' + zone)
+}
+
 conversationRouter.post('/conversation', validateToken, function(req, res){
     const { userId } = req.decoded;
     const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
@@ -75,7 +106,7 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     conversation.title = title;
     conversation.time = convertTime(time, ampm, timezone);
     conversation.schedule_days = schedule_days;
-    conversation.created_on = Date.now();
+    conversation.created_on = scheduleTime(time, ampm, timezone, schedule_days);
     conversation.question = question;
     conversation.participants = participants; 
     conversation.save().then(savedConversaton => {

@@ -87,7 +87,7 @@ class ViewConvo extends React.Component {
                 </div>
                 <br/>
                 <div className="schedule-title">Schedule</div>
-                <div className="schedule-time">{convo.dateSent}</div>
+                <div className="schedule-time">{convo.dateSent? convo.dateSent : convo.created_on}</div>
                 <br/>
                 <div className="schedule-title">Unresponded</div>
                 <div className="participants">
