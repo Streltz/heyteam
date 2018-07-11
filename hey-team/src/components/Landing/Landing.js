@@ -35,7 +35,7 @@ class Landing extends React.Component {
               </div>
               <div className="btn-group">
                 <button className="btn-green btn-original">
-                  <Link to="/signup">Buy Now</Link>
+                  <Link to="/signup">Donate</Link>
                 </button>
                 <button className="btn-white btn-original">
                   <Link to="/signup">Create Account</Link>
