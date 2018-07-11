@@ -39,7 +39,9 @@ export const addConvo = (info, history) => {
 };
 
 export const editConversation = (id, data, history) => {
-	console.log('DATA', data);
+	if(data === 'resetNewMessage'){
+		data = {type: data, id}
+	}
 	return dispatch => {
 		dispatch({ type: 'LOADING_CONVOS' });
 		axios
@@ -69,7 +71,6 @@ export const viewConversation = info => {
   };
 
 export const deleteConvo = (id, history) => {
-	console.log('HISTORY', history);
 	 return dispatch => {
 		 dispatch({ type: 'LOADING_CONVO' });
 		 axios
@@ -97,10 +98,16 @@ export const getConvos = info => {
 };
 
 export const newResponse = convo => {
-	console.log('action new resp', convo);
 	return({
 		type: 'NEW_RESPONSE',
 		payload: convo
+	});
+};
+
+export const resetNewMessage = id => {
+	return({
+		type: 'RESET_NEW_MESSAGE',
+		payload: id
 	});
 };
 
