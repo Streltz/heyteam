@@ -106,7 +106,7 @@ class AddConvo extends Component {
     if(this.state.participants.length === 0){
       this.setState({errorParticipants: 'Missing participant'});
     }else{
-      this.setState({errorQuestion: ''});
+      this.setState({errorParticipants: ''});
     }
 
     const {title, schedule_days, selectedTime, selectedZone, question, participants} = this.state;
