@@ -19,7 +19,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 import openSocket from 'socket.io-client';
 
 
-const socket = openSocket('https://mysterious-coast-15187.herokuapp.com');
+const socket = openSocket('http://localhost:5000');
 
 socket.on('connect', (data)=>{
   console.log('connect', data);
