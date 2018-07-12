@@ -108,7 +108,7 @@ io.on('connection', function(client){
 
 // Initialize an RTM API client
 rtm.on('message', (event) => {
-  console.log('*****SLACK REPLY****', event.text);
+  console.log('*****SLACK REPLY****', event);
 if(event.channel[0] === 'D' && event.channel[1] === 'B'){
   Conversation.find({}).then(conversations => {
     let userConvos =[];
@@ -131,15 +131,15 @@ if(event.channel[0] === 'D' && event.channel[1] === 'B'){
       if(res){
         res.texts.push({text: event.text, time: getTime()});
         res.save().then(resSaved=>{
-          console.log('SAVED', resSaved);
-          console.log('Lated Convo', latestConvo);
+          // console.log('SAVED', resSaved);
+          // console.log('Lated Convo', latestConvo);
           latestConvo.newMessages += 1;
           latestConvo.save()
           .then(saved=>{
             console.log('SAVED RESPONSE');
             //TODO: find a way to save and populate all in one query intead of using another findById
             Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
-              console.log('PPOULATED RESPONSE', populated);
+              // console.log('PPOULATED RESPONSE', populated);
               if(err) console.log(err);
               socketClients.forEach(client=>{
                 client.emit('new response', {convo: populated, response: resSaved});
