@@ -30,11 +30,11 @@ return modTime;
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 
-// server.use(cors({
-//   origin: 'https://whispering-journey-17247.herokuapp.com',
-//   credentials: true
-// }));
-app.use(cors());
+app.use(cors({
+  origin: 'heyteam.app',
+  credentials: true
+}));
+// app.use(cors());
 
 app.use(bodyParser.json());
 
