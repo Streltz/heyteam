@@ -9,7 +9,7 @@ export const SORTING = 'SORTING';
 // SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = 'https://mysterious-coast-15187.herokuapp.com';
+const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
 //'http://localhost:5000' || 
 const slackURL = 'https://slack.com/api/im.open?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 export const addConvo = (info, history) => {
