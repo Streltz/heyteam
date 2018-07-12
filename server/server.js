@@ -30,11 +30,11 @@ return modTime;
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 
-app.use(cors({
-  origin: 'https://www.heyteam.app/',
-  credentials: true
-}));
-// app.use(cors());
+// app.use(cors({
+//   origin: 'https://www.heyteam.app/',
+//   credentials: true
+// }));
+app.use(cors());
 
 app.use(bodyParser.json());
 
