@@ -70,7 +70,7 @@ setInterval(() => {
 
                 const mailOptions = {
                     from: botEmail,
-                    to: botEmail,
+                    to: key,
                     subject: `Hey-Bot Daily Digest`,
                     html: convos
                 }

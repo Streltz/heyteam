@@ -27,12 +27,17 @@ class App extends Component {
 
   componentDidMount(){
 
-   socket.on('new response', (data)=>{
+    const localName = localStorage.getItem('userName');
+    // console.log('localName: ', localName);
+    socket.on('new response', (data)=>{
+    //  console.log('latestConvo', data.convo);
+     if (localName === data.convo.uid.name) {
        this.createNotification(data.response);
        this.props.newResponse(data.convo);
-        const pop = new Audio('/sounds/pop.flac');
-      pop.play();
-     });
+       const pop = new Audio('/sounds/pop.flac');
+       pop.play();
+      }
+    });
   }
 
   createNotification = (res) => {

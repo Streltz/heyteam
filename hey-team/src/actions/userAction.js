@@ -14,7 +14,8 @@ const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-37947
 // SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
+const ROOT_URL = 'https://mysterious-coast-15187.herokuapp.com';
+//'http://localhost:5000' || 
 
 export const signOut = (history) => {
   localStorage.removeItem('userName');
@@ -80,7 +81,7 @@ export const fetchSlackUsers = () => {
     axios.get(`${slackURL}`)
     .then(res => {
       if(res.status === 200){
-        console.log(res.data);
+        // console.log(res.data);
         dispatch({
           type: FETCHED_SLACKUSERS,
           payload: res.data.members

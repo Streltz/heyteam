@@ -125,7 +125,7 @@ const ConvosReducer = (state = initState, action) => {
                 const sorted = notResponded.concat(responded);
                 return {...state, convos: sorted}
             }
-
+            break;
         default:
             return state;
     }

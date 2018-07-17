@@ -53,18 +53,36 @@ conversationRouter.get('/conversations/:id', validateToken, function(req, res){
 	});
 });
 
-const convertTime = (time, ampm, zone)=>{
-  let hour = null;
+const convertTime = (time, ampm, zone, days)=>{
+  let localHour = null;
   let newTime = time.split(':')[0];
   if(ampm === 'AM'){
-    hour = newTime;
+    localHour = newTime;
   }else if(ampm === 'PM'){
     if(newTime === '12'){
       newTime = '0';
     }
-    hour = Number(newTime) + 12;
+    localHour = Number(newTime) + 12;
   }
-  return hour;
+  const timeData = [
+    {timezone: 'PST', difference: 7}, 
+    {timezone: 'MST', difference: 6}, 
+    {timezone: 'CST', difference: 5}, 
+    {timezone: 'EST', difference: 4}
+    ]
+  timeData.forEach(time=>{
+    if(zone === time.timezone){
+      if(localHour > 24 - time.difference){
+        localHour = (localHour + time.difference) - 24;
+        days.forEach((day, i)=>{
+          days[i]++;
+        });
+      }else{
+        localHour = Number(localHour) + time.difference;
+      }
+    }
+  });
+  return {time: localHour, days};
 }
 
 const scheduleTime = (time, ampm, zone, schedule_days) => {
@@ -102,10 +120,13 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
     const { userId } = req.decoded;
     const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
     const conversation = new Conversation();
-     conversation.uid = userId;
+    const timeSync = convertTime(time, ampm, timezone, schedule_days);
+    console.log('TimeSync: ', timeSync);
+    conversation.uid = userId;
     conversation.title = title;
-    conversation.time = convertTime(time, ampm, timezone);
-    conversation.schedule_days = schedule_days;
+    conversation.time = timeSync.time;
+    conversation.timeZone = timezone;
+    conversation.schedule_days = timeSync.days;
     conversation.created_on = scheduleTime(time, ampm, timezone, schedule_days);
     conversation.question = question;
     conversation.participants = participants; 
@@ -113,7 +134,8 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
       res.json(savedConversaton);
     })
     .catch(err => {
-      res.send(err);
+      console.log('convo post err: ', err);
+      // res.send(err);
     });
 });
 

@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import { getConvos, deleteConvo } from '../../actions/convoAction';
-import ViewConvo from '../ConvoDetail/ViewConvo';
 import ConvoHeader from './ConvoHeader';
-// import Convo from './Convo';
 import { Link } from 'react-router-dom';
 import './styles.css';
-import { Card, CardBody,
-  CardTitle, ModalHeader, ModalBody, ModalFooter, Modal, Button } from 'reactstrap';
+import { Card, ModalBody, ModalFooter, Modal, Button } from 'reactstrap';
 class ConvoGrid extends React.Component {
   state = {
     title: "",

@@ -4,8 +4,11 @@ const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // const { secret } = require('../config');
+const stripe = require('../stripe');
 
 const secretEnv = process.env.SEC_KEY || 'secret';
+
+const slackURL = 'https://slack.com/api/im.open?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
@@ -97,6 +100,31 @@ userRouter.post('/search-participant', function(req, res){
 	// TODO
 	// use slack api to look up slack user by search term
 	// send back response with a slack user
+});
+
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+    if (stripeErr) {
+        res.status(500).send({ error: stripeErr });
+    } else {
+        res.status(200).send({ success: stripeRes });
+    }
+}
+
+stripeRouter.get('/billing', (req, res) => {
+    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+});
+
+userRouter.post('/billing', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+});
+
+userRouter.post('/slackURL', validateToken, (req, res) => {
+	const promises = []; 
+	console.log('req: ', req);
+		req.body.info.participants.map(part=>{
+			const promise = axios.post(`${slackURL}&user=${part.id}`);
+		   promises.push(promise);
+		});
 });
 
 module.exports = userRouter;
