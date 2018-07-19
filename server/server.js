@@ -8,7 +8,7 @@ const mailer = require('./mailer');
 const Conversation = require('./models/conversationModel');
 const Response = require('./models/responseModel');
 
-const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
+const token = process.env.slackToken;
 
 const userRoutes = require('./routes/userRoutes');
 const conversationRoutes = require('./routes/conversationRoutes');
@@ -18,6 +18,7 @@ const server = require('http').createServer(app);
 // const slackAPI = require('./slack_api');
 var io = require('socket.io')(server);
 
+const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
 
 
 function getTime(){
@@ -38,9 +39,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-const mLab = process.env.MLAB_URI;
 // || 'mongodb://localhost:27017/heyteam'
-
+//process.env.MLAB_URI
 mongoose
   .connect(mLab)
   .then(conn => {

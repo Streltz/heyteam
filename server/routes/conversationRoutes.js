@@ -4,8 +4,12 @@ const conversationRouter = express.Router();
 const Conversation = require('../models/conversationModel');
 const jwt =  require('jsonwebtoken');
 // const { secret } = require('../config');
+const axios = require('axios');
 
 const secretEnv = process.env.SEC_KEY || 'secret';
+
+const slackURL = `https://slack.com/api/im.open?token=${process.env.slackToken}`;
+//process.env.slackURL
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
@@ -117,6 +121,23 @@ const scheduleTime = (time, ampm, zone, schedule_days) => {
 }
 
 conversationRouter.post('/conversation', validateToken, function(req, res){
+  let promises = [];
+  req.body.participants.forEach(part => {
+    const prom = axios.post(`${slackURL}&user=${part.id}`)
+    promises.push(prom);
+  })
+
+	// info.participants.forEach((p, i)=>{
+	// p.channelId = values.data[i].data.channel.id;
+	// });
+	// console.log('promises: ',promises)
+
+	Promise.all(promises).then(values => {
+		// console.log('values: ', values.data.channel)
+		req.body.participants.forEach((p, i)=>{
+			p.channelId = values[i].data.channel.id;
+		})
+    
     const { userId } = req.decoded;
     const { question, title, time, ampm, timezone, schedule_days, participants} = req.body;
     const conversation = new Conversation();
@@ -137,6 +158,8 @@ conversationRouter.post('/conversation', validateToken, function(req, res){
       console.log('convo post err: ', err);
       // res.send(err);
     });
+  })
+  .catch(err => console.log('Promise.all error: ', err))
 });
 
 conversationRouter.put('/conversations/:id', validateToken, function(req, res){

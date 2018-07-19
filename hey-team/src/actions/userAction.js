@@ -5,7 +5,6 @@ export const LOGGED_OUT = 'LOGGED_OUT';
 export const FETCHED_SLACKUSERS = 'FETCHED_SLACKUSERS';
 export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
 
-const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
 
 //***
 // NOTE: When developing locally, change ROOT_URL to localhost.
@@ -14,7 +13,7 @@ const slackURL = 'https://slack.com/api/users.list?token=xoxb-154966377728-37947
 // SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = 'http://localhost:5000';
+const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000';
 //'http://localhost:5000' || 
 //'https://mysterious-coast-15187.herokuapp.com'
 
@@ -79,8 +78,9 @@ export const signIn = (user, history) => {
 
 export const fetchSlackUsers = () => {
   return (dispatch) => {
-    axios.get(`${slackURL}`)
+    axios.get(`${ROOT_URL}/getusers`)
     .then(res => {
+      console.log('fetch users res: ', res)
       if(res.status === 200){
         // console.log(res.data);
         dispatch({
@@ -88,8 +88,9 @@ export const fetchSlackUsers = () => {
           payload: res.data.members
         });
       }
-    });
-  }
+    })
+    .catch(err => console.log('fetchSlackUsers error: ', err))
+  };
 }
 
 export const searchSlackUsers = (term) => {
