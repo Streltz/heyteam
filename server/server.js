@@ -28,6 +28,7 @@ function getTime(){
 return modTime;
 }
 
+console.log('process.env ', process.env.NODE_ENV);
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 

@@ -13,7 +13,7 @@ export const SEARCH_SLACKUSERS = 'SEARCH_SLACKUSERS'
 // SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000';
+const ROOT_URL ='https://mysterious-coast-15187.herokuapp.com';
 //'http://localhost:5000' || 
 //'https://mysterious-coast-15187.herokuapp.com'
 

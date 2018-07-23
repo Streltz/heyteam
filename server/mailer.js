@@ -4,7 +4,7 @@ const Conversation = require('./models/conversationModel');
 
 const botEmail = 'hey.bot360@gmail.com'
 
-const sendTime = 18;
+const sendTime = 23;
 
 setInterval(() => {
     const now = new Date();
@@ -86,7 +86,7 @@ setInterval(() => {
             }
         })
     }
-}, 360000)
+}, 3600000)
 
 // function to group email list
 function groupEmail(array){

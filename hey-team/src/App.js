@@ -17,7 +17,8 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import openSocket from 'socket.io-client';
-const socket = process.env.NODE_ENV === 'production' ? openSocket('https://mysterious-coast-15187.herokuapp.com') : openSocket('http://localhost:5000');
+const socket = openSocket('https://mysterious-coast-15187.herokuapp.com');
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 //'https://mysterious-coast-15187.herokuapp.com'
 
 socket.on('connect', (data)=>{

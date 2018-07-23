@@ -76,7 +76,7 @@ const convertTime = (time, ampm, zone, days)=>{
     ]
   timeData.forEach(time=>{
     if(zone === time.timezone){
-      if(localHour > 24 - time.difference){
+      if(localHour >= 24 - time.difference){
         localHour = (localHour + time.difference) - 24;
         days.forEach((day, i)=>{
           days[i]++;
