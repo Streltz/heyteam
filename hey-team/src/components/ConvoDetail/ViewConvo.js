@@ -8,7 +8,7 @@ import './convo_detail.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'reactstrap';
 import { getConvos, editConversation, deleteConvo } from '../../actions/convoAction';
-import { ModalHeader, ModalBody, ModalFooter, Modal, Button } from 'reactstrap';
+import { ModalBody, ModalFooter, Modal, Button } from 'reactstrap';
 
 class ViewConvo extends React.Component {
   state = {
@@ -72,8 +72,8 @@ class ViewConvo extends React.Component {
                       const img = participant.profile.image_32;
                       const name = participant.profile.display_name;
                       return (
-                        <div className="participant">
-                        <div className="image"><img src={`${img}`} /></div>
+                        <div key={participant.id} className="participant">
+                        <div className="image" alt=""><img src={`${img}`} /></div>
                         <div className="display-name">{name}</div>
                         </div>
                       )
@@ -96,7 +96,7 @@ class ViewConvo extends React.Component {
                         const img = participant.profile.image_32;
                         const name = participant.profile.display_name;
                         return (<div className="participant">
-                        <div className="image"><img src={`${img}`} /></div>
+                        <div className="image" alt=""><img src={`${img}`} /></div>
                         <div className="display-name">{name}</div>
                         </div>)
                       })

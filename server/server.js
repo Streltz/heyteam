@@ -8,7 +8,7 @@ const mailer = require('./mailer');
 const Conversation = require('./models/conversationModel');
 const Response = require('./models/responseModel');
 
-const token = 'xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
+const token = process.env.slackToken;
 
 const userRoutes = require('./routes/userRoutes');
 const conversationRoutes = require('./routes/conversationRoutes');
@@ -18,6 +18,7 @@ const server = require('http').createServer(app);
 // const slackAPI = require('./slack_api');
 var io = require('socket.io')(server);
 
+const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
 
 
 function getTime(){
@@ -27,6 +28,7 @@ function getTime(){
 return modTime;
 }
 
+console.log('process.env ', process.env.NODE_ENV);
 
 if (!token) { console.log('You must specify a token to use this example'); process.exitCode = 1; return; }
 
@@ -38,8 +40,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-const mLab = process.env.MLAB_URI || 'mongodb://localhost:27017/heyteam';
-
+// || 'mongodb://localhost:27017/heyteam'
+//process.env.MLAB_URI
 mongoose
   .connect(mLab)
   .then(conn => {
@@ -56,17 +58,18 @@ const rtm = new RTMClient(token);
 // Start the connection to the platform
 rtm.start();
 
-setInterval(() => {        
+
+setInterval(() => {       
   Conversation.find({}).then(conversations => {
-    // console.log('CONVO DB', conversations);
+    // console.log('CONVO DB');
     conversations.forEach(conversation=>{
       const now = new Date();
       const hour = now.getHours();
       const day = now.getDay();
+      
       // console.log('TIME', hour, day);
       if(hour === conversation.time 
-        && conversation.schedule_days.includes(day) 
-        && !conversation.sent 
+        && conversation.schedule_days.includes(day)
         && conversation.daySent !== day 
         && conversation.active === true){
         console.log('PASS IF STATEMENT');
@@ -76,6 +79,7 @@ setInterval(() => {
         conversation.dateSent = getTime();
         conversation.save();
         conversation.participants.forEach(user=>{
+          console.log()
           rtm.sendMessage(conversation.question, user.channelId).then(res=>{
             console.log('Sent and Res', res);
           });
@@ -125,6 +129,7 @@ if(event.channel[0] === 'D' && event.channel[1] === 'B'){
     });
 
     const latestConvo = userConvos[userConvos.length - 1];
+    console.log('latestConvo', latestConvo);
 
     Response.findOne({conversation: latestConvo._id, username: user.name}).then(res => {
       console.log('FIND ONE RES', res);
@@ -138,7 +143,7 @@ if(event.channel[0] === 'D' && event.channel[1] === 'B'){
           .then(saved=>{
             console.log('SAVED RESPONSE');
             //TODO: find a way to save and populate all in one query intead of using another findById
-            Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
+            Conversation.findById(saved._id).populate('responses').populate('uid').exec((err, populated)=>{
               console.log('PPOULATED RESPONSE', populated);
               if(err) console.log(err);
               socketClients.forEach(client=>{
@@ -163,7 +168,7 @@ if(event.channel[0] === 'D' && event.channel[1] === 'B'){
           latestConvo.save()
           .then(saved=>{
             //TODO: find a way to save and populate all in one query intead of using another findById
-            Conversation.findById(saved._id).populate('responses').exec((err, populated)=>{
+            Conversation.findById(saved._id).populate('responses').populate('uid').exec((err, populated)=>{
               if(err) console.log(err);
               socketClients.forEach(client=>{
                 client.emit('new response', {convo: populated, response: resSaved});

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
-import AddConvo from './components/CreateConvo';
+// import AddConvo from './components/CreateConvo';
 import EditConvo from './components/EditConvo';
 import ViewConvo from './components/ConvoDetail/ViewConvo';
 import Dashboard from './components/Dashboard';
@@ -17,7 +17,9 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000');
+const socket = openSocket('https://mysterious-coast-15187.herokuapp.com');
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+//'https://mysterious-coast-15187.herokuapp.com'
 
 socket.on('connect', (data)=>{
   console.log('connect', data);
@@ -27,12 +29,17 @@ class App extends Component {
 
   componentDidMount(){
 
-   socket.on('new response', (data)=>{
+    const localName = localStorage.getItem('userName');
+    // console.log('localName: ', localName);
+    socket.on('new response', (data)=>{
+    //  console.log('latestConvo', data.convo);
+     if (localName === data.convo.uid.name) {
        this.createNotification(data.response);
        this.props.newResponse(data.convo);
-        const pop = new Audio('/sounds/pop.flac');
-      pop.play();
-     });
+       const pop = new Audio('/sounds/pop.flac');
+       pop.play();
+      }
+    });
   }
 
   createNotification = (res) => {

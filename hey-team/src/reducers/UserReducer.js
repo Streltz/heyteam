@@ -1,5 +1,5 @@
 
-import { SIGN_UP, LOGGED_IN, LOGGED_OUT, FETCHED_SLACKUSERS, SEARCH_SLACKUSERS } from '../actions/userAction';
+import { LOGGED_IN, LOGGED_OUT, FETCHED_SLACKUSERS, SEARCH_SLACKUSERS } from '../actions/userAction';
 // initial user state
 const userInit = {
 	logged_in: false,
@@ -29,9 +29,6 @@ const UserReducer = (state = userInit, action) => {
 		case LOGGED_OUT:
 		return { ...state, logged_in: false, name: null}
 
-		case LOGGED_OUT:
-		return { ...state, logged_in: false, name: null}
-
 		case 'CLEAR_FORM_ERROR':
 		return { ...state, formError: ''}
 
@@ -48,7 +45,10 @@ const UserReducer = (state = userInit, action) => {
 		if(action.payload === '') return { ...state, slackUsersMutated: [] };
 		const users = state.slackUsersOrigin;
 		const filtered = users.filter(user=>{
-			if(user.profile.display_name.toLowerCase().includes(action.payload.toLowerCase())) return user;
+			if(user.profile.display_name.toLowerCase().includes(action.payload.toLowerCase())) {
+				return user;	
+			}
+			return null;
 		});
 		return { ...state, slackUsersMutated: filtered }
 

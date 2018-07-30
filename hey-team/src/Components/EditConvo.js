@@ -135,6 +135,7 @@ class EditConvo extends Component {
       if (part.profile.display_name !== user.profile.display_name) {
         return part;
       }
+      return null;
     });
     this.setState({ participants: filtered, removeIndex: null });
   }
@@ -144,6 +145,7 @@ class EditConvo extends Component {
       if (q !== question) {
         return q;
       }
+      return null;
     });
     this.setState({ questions: filtered, removeQuestion: null });
   }

@@ -18,7 +18,7 @@ class SignUp extends React.Component {
   }
 
   handleSignUp = (event) => {
-    if (event != undefined) {
+    if (event !== undefined) {
       event.preventDefault();
       this.props.signUp(this.state, this.props.history);
     }

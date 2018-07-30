@@ -71,10 +71,8 @@ class Landing extends React.Component {
             Our Conversations feature will organize all your questions and show Managers who has responded, how they responded and when they responded.
             Hey Bot also offers the option of having these organized messages sent to the Manager's e-mail as well for safe record keeping.
           </div>
-          <div>
-            {
-              // Video goes here.
-            }
+          <div className="product-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/lZHVo1ppsbY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </section>
 

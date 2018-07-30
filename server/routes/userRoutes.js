@@ -4,8 +4,14 @@ const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // const { secret } = require('../config');
+const stripe = require('../stripe');
+const axios = require('axios');
 
 const secretEnv = process.env.SEC_KEY || 'secret';
+
+const slackURL = `https://slack.com/api/users.list?token=${process.env.slackToken}`;
+
+
 
 const validateToken = (req, res, next) => {
   const token = req.headers.token;
@@ -98,5 +104,32 @@ userRouter.post('/search-participant', function(req, res){
 	// use slack api to look up slack user by search term
 	// send back response with a slack user
 });
+
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+    if (stripeErr) {
+        res.status(500).send({ error: stripeErr });
+    } else {
+        res.status(200).send({ success: stripeRes });
+    }
+}
+
+// stripeRouter.get('/billing', (req, res) => {
+//     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+// });
+
+userRouter.post('/billing', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+});
+
+userRouter.get('/getusers', (req, res) => {
+	axios.get(`${slackURL}`)
+    .then(users => {
+		console.log('users: ', users.data);
+        res.send(users.data)
+	})
+	.catch(err => console.log('fetch error: ', err))
+});
+
+
 
 module.exports = userRouter;

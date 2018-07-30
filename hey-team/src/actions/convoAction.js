@@ -1,5 +1,5 @@
 import axios from 'axios';
-const URL = 'http://localhost:5000';
+// const URL = 'http://localhost:5000';
 export const SORTING = 'SORTING';
 
 //***
@@ -9,23 +9,14 @@ export const SORTING = 'SORTING';
 // SEE: https://stackoverflow.com/questions/41389584/react-js-use-environment-variables-to-specify-two-api-urls-based-on-production
 //***
 // const ROOT_URL = process.env.NODE_ENV === 'production' ? 'https://mysterious-coast-15187.herokuapp.com' : 'http://localhost:5000'; 
-const ROOT_URL = 'http://localhost:5000' || 'https://mysterious-coast-15187.herokuapp.com';
-const slackURL = 'https://slack.com/api/im.open?token=xoxb-154966377728-379472016500-tmzYflE4ynkTMQikM8eP8BYg';
+const ROOT_URL = 'https://mysterious-coast-15187.herokuapp.com';
+//'https://mysterious-coast-15187.herokuapp.com'
+//'http://localhost:5000' || 
+
 export const addConvo = (info, history) => {
 	return dispatch => {
-	   const promises = []; 
 
-		info.participants.map(part=>{
-			const promise = axios.post(`${slackURL}&user=${part.id}`);
-		   promises.push(promise);
-		});
-
-		Promise.all(promises).then(function(values) {
-		   info.participants.forEach((p, i)=>{
-		   p.channelId = values[i].data.channel.id;
-		});
-
-		axios 
+		axios
 		.post(`${ROOT_URL}/conversation`, info, {headers: {token: localStorage.getItem('token')}})
 		.then(response => {
 		dispatch({ type: 'CONVO_ADDED', payload: response.data });
@@ -34,8 +25,7 @@ export const addConvo = (info, history) => {
 		.catch(err => {
 		dispatch({ type: 'ERROR_ADDING_CONVO', payload: err });
 		});
-	  });
-   };
+   	};
 };
 
 export const editConversation = (id, data, history) => {
